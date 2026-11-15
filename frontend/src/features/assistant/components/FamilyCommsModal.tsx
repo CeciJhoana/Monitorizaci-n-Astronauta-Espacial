@@ -11,7 +11,7 @@
  * AVISO VISIBLE: Simulación de enlace · No es una llamada real.
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon } from "@/components/ui";
 
 export interface HabitatLatencyInfo {
@@ -100,6 +100,15 @@ export function FamilyCommsModal({
       timestamp: "Hoy · 08:15 UTC",
     },
   ]);
+
+  // Accesibilidad: cerrar con tecla Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
 
   const handleEnviar = (e: React.FormEvent) => {
     e.preventDefault();

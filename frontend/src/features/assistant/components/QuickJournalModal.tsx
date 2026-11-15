@@ -11,7 +11,7 @@
  * de la base en memoria para que el semáforo conductual lo refleje al instante.
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MOCK_DB } from "@/data/db";
 import type { EntradaBitacoraRow } from "@/data/db/schema";
 
@@ -39,6 +39,15 @@ export function QuickJournalModal({
 }: QuickJournalModalProps) {
   const [selectedMood, setSelectedMood] = useState<MoodRating>("Bien");
   const [cuerpo, setCuerpo] = useState("");
+
+  // Accesibilidad: cerrar con tecla Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
 
   const handleGuardar = (e: React.FormEvent) => {
     e.preventDefault();
