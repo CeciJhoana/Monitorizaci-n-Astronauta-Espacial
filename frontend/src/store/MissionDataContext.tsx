@@ -234,11 +234,54 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
     );
   }, [dataSource, snapshot.environmentReadings, currentEsp32Reading, rr1EnvData]);
 
+  // Alertas adaptadas según la telemetría activa
+  const alerts = useMemo(() => {
+    let list = [...snapshot.alerts];
+    if (dataSource === "rr1") {
+      const rr1Alert: MissionAlert = {
+        id: 991,
+        title: "Pico de CO₂ en hábitat ISS",
+        subject: "Módulo ISS (RR-1)",
+        category: "Entorno",
+        relativeTime: "Ventana 48h",
+        detail:
+          "Concentración máxima de 4,667 ppm en ISS (media 3,197 ppm). Ventilación en revisión.",
+        recommendedAction: "Verificar recirculación forzada y comparar con controles en Tierra.",
+        level: "Revisión",
+        tone: "amber",
+        icon: "wind",
+      };
+      list = [rr1Alert, ...list];
+    } else if (
+      dataSource === "esp32" &&
+      currentEsp32Reading &&
+      (currentEsp32Reading.spo2_pct < 95 || currentEsp32Reading.pulso_bpm >= 130)
+    ) {
+      const espAlert: MissionAlert = {
+        id: 992,
+        title:
+          currentEsp32Reading.spo2_pct < 95
+            ? "Saturación de O₂ baja sostenida"
+            : "Frecuencia cardíaca elevada",
+        subject: "Elena Martínez (ESP32)",
+        category: "Vitales",
+        relativeTime: currentEsp32Reading.time,
+        detail: `SpO₂ en ${currentEsp32Reading.spo2_pct}% y pulso en ${Math.round(currentEsp32Reading.pulso_bpm)} lpm.`,
+        recommendedAction: "Repetir medición de inmediato, verificar sensor y avisar a tripulación.",
+        level: "Crítica",
+        tone: "rose",
+        icon: "pulse",
+      };
+      list = [espAlert, ...list];
+    }
+    return list;
+  }, [snapshot.alerts, dataSource, currentEsp32Reading]);
+
   const value = useMemo<MissionDataValue>(
     () => ({
       crew,
-      alerts: snapshot.alerts,
-      activeAlerts: snapshot.alerts.filter((alert) => !acknowledgedAlertIds.includes(alert.id)),
+      alerts,
+      activeAlerts: alerts.filter((alert) => !acknowledgedAlertIds.includes(alert.id)),
       measurements,
       journal,
       environmentReadings,
@@ -267,7 +310,7 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
     }),
     [
       crew,
-      snapshot.alerts,
+      alerts,
       snapshot.trends,
       acknowledgedAlertIds,
       measurements,
