@@ -135,7 +135,7 @@ export function CompanionProvider({ children }: { children: ReactNode }) {
     "astra.voiceProfile",
     "calma",
   );
-  const [voiceEnabled, setVoiceEnabled] = usePersistentState<boolean>("astra.voiceEnabled", false);
+  const [voiceEnabled, setVoiceEnabled] = usePersistentState<boolean>("astra.voiceEnabled", true);
   const [subtitles, setSubtitles] = useState<string>(
     language === "es"
       ? "Hola. Soy ASTRA, tu acompañante de misión. ¿En qué te puedo ayudar hoy?"

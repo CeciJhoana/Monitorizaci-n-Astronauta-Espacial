@@ -138,10 +138,11 @@ export function AssistantPage() {
       if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal") {
         openModal({ type: "emergency" });
       } else if (resp.accionSugerida === "open_journal") {
-        navigate("journal");
+        setActiveModal("journal");
       }
       setSubtitles(resp.text);
-      speak(resp.speechText);
+      // Si el usuario habló por micrófono, responder SIEMPRE con voz
+      speak(resp.speechText, { force: true });
     },
     onInterimTranscript: (interim) => {
       setSubtitles(`🎙️ "${interim}..."`);
@@ -403,24 +404,101 @@ export function AssistantPage() {
           )}
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          {/* Conmutador de voz */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+          {/* Botón Probar Voz */}
           <button
-            onClick={() => setVoiceEnabled(!voiceEnabled)}
+            type="button"
+            onClick={() => {
+              unlockVoice();
+              const testPhrase =
+                language === "es"
+                  ? "Hola, soy Astra, tu acompañante de misión."
+                  : "Hello, I am Astra, your mission companion.";
+              setSubtitles(testPhrase);
+              speak(testPhrase, { force: true });
+            }}
             style={{
-              background: voiceEnabled ? "#7C3AED" : "transparent",
-              color: voiceEnabled ? "#FFFFFF" : "#5A5668",
-              border: "1px solid #C4B5FD",
+              background: "#7C3AED",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: 999,
+              padding: "4px 12px",
+              fontFamily: "Instrument Sans, sans-serif",
+              fontSize: 11,
+              fontWeight: 600,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 5,
+            }}
+            title="Probar voz de Astra"
+          >
+            <span>🔊</span>
+            <span>{language === "es" ? "Probar voz" : "Test voice"}</span>
+          </button>
+
+          {/* Indicador / Desbloqueo de voz */}
+          <button
+            type="button"
+            onClick={unlockVoice}
+            style={{
+              background: isUnlocked ? "#ECFDF5" : "#FFFBEB",
+              border: `1px solid ${isUnlocked ? "#A7F3D0" : "#FDE68A"}`,
+              color: isUnlocked ? "#065F46" : "#92400E",
               borderRadius: 999,
               padding: "4px 12px",
               fontFamily: "JetBrains Mono, monospace",
               fontSize: 10,
               cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
             }}
-            title={voiceEnabled ? "Desactivar voz hablada" : "Activar voz hablada"}
+            title={
+              isUnlocked
+                ? "Voz desbloqueada y lista para hablar"
+                : "Pulsa para desbloquear la salida de audio"
+            }
           >
-            {voiceEnabled ? "🔊 VOZ ACTIVA" : "🔇 VOZ MUTE"}
+            <span>{isUnlocked ? "●" : "○"}</span>
+            <span>
+              {isUnlocked
+                ? language === "es"
+                  ? "Voz activada"
+                  : "Voice active"
+                : language === "es"
+                ? "Pulsa para activar la voz"
+                : "Click to enable voice"}
+            </span>
           </button>
+
+          {/* Interruptor Responder con voz */}
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              cursor: "pointer",
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 10,
+              color: "#1E1035",
+              background: "rgba(90, 86, 104, 0.08)",
+              padding: "4px 10px",
+              borderRadius: 999,
+            }}
+            title="Activar/desactivar locución de voz para respuestas de texto"
+          >
+            <input
+              type="checkbox"
+              checked={voiceEnabled}
+              onChange={(e) => {
+                unlockVoice();
+                setVoiceEnabled(e.target.checked);
+              }}
+              style={{ accentColor: "#7C3AED", cursor: "pointer" }}
+            />
+            <span>{language === "es" ? "Responder con voz" : "Voice reply"}</span>
+          </label>
 
           {/* Selector de idioma */}
           <button
@@ -459,6 +537,31 @@ export function AssistantPage() {
           </button>
         </div>
       </header>
+
+      {/* Aviso si el navegador no tiene voces disponibles */}
+      {voices.length === 0 && (
+        <div
+          style={{
+            background: "#FFFBEB",
+            border: "1px solid #FDE68A",
+            color: "#92400E",
+            padding: "8px 14px",
+            borderRadius: 8,
+            fontFamily: "JetBrains Mono, monospace",
+            fontSize: 10,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span>⚠️</span>
+          <span>
+            {language === "es"
+              ? "No se detectaron voces locales en este navegador. Las respuestas se mostrarán en texto."
+              : "No speech synthesis voices detected in browser. Subtitles will remain visible."}
+          </span>
+        </div>
+      )}
 
       {/* Reloj de Misión Simulado con Control de Velocidad */}
       <section
@@ -753,8 +856,10 @@ export function AssistantPage() {
           textAlign: "center",
           minHeight: 64,
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          gap: 10,
         }}
       >
         <p
@@ -768,6 +873,188 @@ export function AssistantPage() {
         >
           {subtitles}
         </p>
+
+        {/* Opciones interactivas contextuales para Soledad */}
+        {lastDiagnostic.intent === "soledad" && (
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                setActiveModal("journal");
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              📝 {language === "es" ? "Registrar bitácora" : "Log journal"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                setActiveModal("breathing");
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              🫁 {language === "es" ? "Respiración guiada" : "Guided breathing"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                setActiveModal("family");
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              📡 {language === "es" ? "Canal familiar" : "Family comms"}
+            </button>
+          </div>
+        )}
+
+        {/* Opciones interactivas contextuales para Desconocido (Fallback) */}
+        {lastDiagnostic.intent === "desconocido" && (
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                handleShortcutClick("estado");
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              📊 {language === "es" ? "Revisar mi estado" : "Check status"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                handleShortcutClick("ejercicio");
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              🏃 {language === "es" ? "Planear ejercicio" : "Plan workout"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                handleShortcutClick("bitacora");
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              📝 {language === "es" ? "Registrar bitácora" : "Log journal"}
+            </button>
+          </div>
+        )}
+
+        {/* Opciones interactivas contextuales para Dolor */}
+        {lastDiagnostic.intent === "dolor" && (
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                openModal({ type: "emergency" });
+              }}
+              style={{
+                background: "#FEF2F2",
+                border: "1px solid #FECACA",
+                color: "#991B1B",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontWeight: 600,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              🚨 {language === "es" ? "Pecho / Falta de aire (Emergencia)" : "Chest / Short of breath (Emergency)"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                const r = sessionRef.current.responder("cabeza", activeData, language);
+                setLastDiagnostic({
+                  rawText: "cabeza",
+                  normalizedText: "cabeza",
+                  language,
+                  intent: r.intent,
+                  confidence: r.confidence ?? 0.9,
+                  threshold: 0.5,
+                  source: "teclado",
+                });
+                setSubtitles(r.text);
+                speak(r.speechText);
+              }}
+              style={{
+                background: "#F5F3FF",
+                border: "1px solid #C4B5FD",
+                color: "#7C3AED",
+                borderRadius: 999,
+                padding: "4px 12px",
+                fontSize: 11,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+              }}
+            >
+              🩺 {language === "es" ? "Cabeza / Espalda (Médico de vuelo)" : "Head / Back (Flight surgeon)"}
+            </button>
+          </div>
+        )}
       </section>
 
       {/* SEMÁFORO CONDUCTUAL Y EVALUACIÓN DETERMINISTA */}
