@@ -1,0 +1,1318 @@
+/* ============================================================
+   responsive.css — puntos de quiebre de escritorio grande a móvil
+   ============================================================ */
+
+@media (min-width: 1550px) {
+  :root {
+    --sidebar-width: 248px;
+  }
+  .sidebar {
+    padding-inline: 22px;
+  }
+  .nav-item {
+    font-size: 12px;
+    padding-block: 14px;
+  }
+  main {
+    padding: 37px 43px 0;
+  }
+  .topbar {
+    padding-inline: 43px;
+  }
+  .page-heading p {
+    font-size: 12px;
+  }
+  .button {
+    font-size: 11px;
+    padding: 12px 16px;
+  }
+  .mission-banner {
+    min-height: 236px;
+  }
+  .banner-copy {
+    padding: 28px 33px;
+  }
+  .mission-banner h2 {
+    font-size: 29px;
+    margin-block: 16px 22px;
+  }
+  .stat-card {
+    padding: 19px 20px;
+  }
+  .stat-top {
+    font-size: 10px;
+  }
+  .stat-main {
+    height: 65px;
+  }
+  .stat-bottom {
+    font-size: 9px;
+  }
+  .panel-title h3 {
+    font-size: 14px;
+  }
+  .panel-title p {
+    font-size: 10px;
+  }
+  .panel {
+    padding: 23px;
+  }
+  .crew-panel {
+    padding: 22px 0 0;
+  }
+  td {
+    padding-block: 16px;
+  }
+  .person-cell strong {
+    font-size: 11px;
+  }
+  .person-cell div > span {
+    font-size: 8px;
+  }
+  .alert-card {
+    padding: 16px;
+  }
+  .alert-card h4 {
+    font-size: 12px;
+  }
+  .alert-card p {
+    font-size: 9px;
+  }
+  .alert-meta {
+    font-size: 8px;
+  }
+  .alert-link {
+    font-size: 9px;
+  }
+  .env-item {
+    padding-block: 18px;
+  }
+  .env-label {
+    font-size: 10px;
+  }
+  .env-value {
+    font-size: 17px;
+  }
+  .env-label > span {
+    font-size: 8px;
+  }
+  .environment-foot {
+    margin-inline: -23px;
+  }
+  .chart-legend > span {
+    font-size: 8px;
+  }
+  .badge {
+    font-size: 8px;
+  }
+  .text-link {
+    font-size: 9px;
+  }
+}
+@media (max-width: 1190px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+  .sidebar {
+    padding-inline: 11px;
+  }
+  .brand {
+    padding-inline: 9px;
+  }
+  .nav-item {
+    font-size: 10.5px;
+    gap: 9px;
+  }
+  .mission-switch {
+    padding-inline: 8px;
+  }
+  .mission-switch div > span {
+    font-size: 8px;
+  }
+  .local-card {
+    padding-inline: 0;
+  }
+  .local-card strong {
+    font-size: 8px;
+  }
+  .sidebar-profile {
+    gap: 7px;
+  }
+  .sidebar-profile strong {
+    font-size: 9px;
+  }
+  .sidebar-profile div > span {
+    font-size: 7.5px;
+  }
+  .topbar {
+    padding-inline: 24px;
+  }
+  main {
+    padding-inline: 24px;
+  }
+  .topbar-right {
+    gap: 17px;
+  }
+  .page-heading {
+    align-items: flex-start;
+  }
+  .page-heading p {
+    max-width: 310px;
+    line-height: 1.8;
+  }
+  .heading-actions {
+    padding-top: 25px;
+    gap: 6px;
+  }
+  .button {
+    padding: 10px;
+    font-size: 9px;
+    gap: 6px;
+  }
+  h1 {
+    font-size: 23px;
+  }
+  .stats-grid {
+    gap: 10px;
+  }
+  .stat-card {
+    padding-inline: 12px;
+  }
+  .stat-top {
+    font-size: 8px;
+  }
+  .stat-main > strong {
+    font-size: 27px;
+  }
+  .stat-main .sparkline {
+    width: 60px;
+  }
+  .stat-bottom {
+    font-size: 6.5px;
+    gap: 3px;
+  }
+  .stat-tag {
+    font-size: 6px;
+    padding: 3px 5px;
+  }
+  .tiny-avatars .avatar {
+    width: 21px;
+    height: 21px;
+    font-size: 5px;
+  }
+  .dashboard-middle,
+  .dashboard-bottom {
+    gap: 14px;
+    grid-template-columns: 1.8fr 1fr;
+  }
+  .panel {
+    padding: 16px;
+  }
+  .alerts-panel {
+    padding: 16px 12px 10px;
+  }
+  .alert-card {
+    padding: 10px 8px;
+    gap: 7px;
+  }
+  .alert-card h4 {
+    font-size: 9px;
+  }
+  .alert-meta {
+    font-size: 6px;
+  }
+  .alert-meta > span {
+    font-size: 5.5px;
+  }
+  .alert-card p {
+    font-size: 7px;
+  }
+  .alert-link {
+    font-size: 7px;
+  }
+  .panel-title h3 {
+    font-size: 11px;
+  }
+  .panel-title p {
+    font-size: 7px;
+  }
+  .panel-title select {
+    font-size: 9px;
+    padding-inline: 7px;
+  }
+  .chart-legend {
+    gap: 10px;
+  }
+  .chart-legend > span {
+    font-size: 6px;
+  }
+  .chart-unit {
+    font-size: 6.5px;
+  }
+  .chart-tabs {
+    gap: 14px;
+  }
+  .chart-tabs button {
+    font-size: 8px;
+  }
+  .crew-panel {
+    padding: 16px 0 0;
+  }
+  .crew-panel .panel-title {
+    padding-inline: 15px;
+  }
+  .person-cell {
+    gap: 7px;
+  }
+  .person-cell strong {
+    font-size: 8px;
+  }
+  .person-cell div > span {
+    font-size: 6px;
+  }
+  td,
+  th {
+    padding-inline: 8px;
+  }
+  th {
+    font-size: 5.5px;
+  }
+  td:first-child,
+  th:first-child {
+    padding-left: 14px;
+  }
+  .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 8px;
+  }
+  .badge {
+    padding-inline: 5px;
+    font-size: 6px;
+  }
+  .environment-panel {
+    padding: 16px 14px 0;
+  }
+  .environment-foot {
+    margin-inline: -14px;
+    font-size: 6px;
+  }
+  .env-label {
+    font-size: 7px;
+  }
+  .env-label > span {
+    font-size: 6px;
+  }
+  .env-item {
+    gap: 8px;
+  }
+  .env-icon {
+    padding: 5px;
+  }
+  .daily-note div > span {
+    font-size: 7px;
+  }
+  .footer-brand > span {
+    display: none;
+  }
+  .crew-summary > div {
+    gap: 12px;
+    padding: 20px;
+  }
+  .crew-summary div > span {
+    font-size: 9px;
+  }
+  .vitals-cards {
+    gap: 10px;
+  }
+  .vital-card {
+    padding: 14px;
+  }
+  .vital-card > strong {
+    font-size: 20px;
+  }
+  .vital-card p {
+    font-size: 8px;
+  }
+  .wellness-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .environment-grid {
+    gap: 15px;
+  }
+  .environment-grid .env-label {
+    font-size: 9px;
+  }
+  .wellness-banner h2 {
+    font-size: 19px;
+  }
+  .journal-layout {
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .journal-panel {
+    padding: 22px;
+  }
+  .journal-panel h2 {
+    font-size: 21px;
+  }
+  .journal-actions {
+    flex-wrap: wrap;
+  }
+  .journal-actions > .button {
+    margin-left: auto;
+  }
+}
+@media (max-width: 950px) {
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .page-heading p {
+    max-width: none;
+  }
+  .heading-actions {
+    padding-top: 4px;
+  }
+  .topbar-right {
+    gap: 12px;
+  }
+  .connection {
+    font-size: 8px;
+  }
+  .utc-time {
+    display: none;
+  }
+  .mission-facts > div {
+    padding-inline: 17px;
+  }
+  .mission-facts > div:last-child {
+    display: none;
+  }
+  .banner-copy {
+    width: 70%;
+  }
+  .mission-banner h2 {
+    font-size: 24px;
+  }
+  .banner-status {
+    font-size: 5.5px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+  .stat-top {
+    font-size: 10px;
+  }
+  .stat-bottom {
+    font-size: 8px;
+  }
+  .stat-main .sparkline {
+    width: 90px;
+  }
+  .stat-main > strong {
+    font-size: 30px;
+  }
+  .tiny-avatars .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 7px;
+  }
+  .dashboard-middle,
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .panel-title h3 {
+    font-size: 13px;
+  }
+  .panel-title p {
+    font-size: 9px;
+  }
+  .alert-card {
+    padding: 15px;
+  }
+  .alert-card h4 {
+    max-width: none;
+    font-size: 11px;
+  }
+  .alert-meta {
+    font-size: 8px;
+  }
+  .alert-meta > span {
+    font-size: 8px;
+  }
+  .alert-card p {
+    font-size: 9px;
+  }
+  .alert-link {
+    font-size: 9px;
+  }
+  .alert-symbol {
+    margin-right: 4px;
+  }
+  .chart-tabs button {
+    font-size: 10px;
+  }
+  .chart-unit {
+    font-size: 9px;
+  }
+  .chart-legend > span {
+    font-size: 8px;
+  }
+  .person-cell strong {
+    font-size: 11px;
+  }
+  .person-cell div > span {
+    font-size: 8px;
+  }
+  th {
+    font-size: 7px;
+  }
+  td {
+    padding-block: 15px;
+  }
+  .avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .badge {
+    font-size: 8px;
+  }
+  .text-link {
+    font-size: 9px;
+  }
+  .environment-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .environment-list .env-item {
+    border: 0;
+    display: block;
+  }
+  .environment-list .env-icon {
+    display: inline-flex;
+    margin-bottom: 10px;
+  }
+  .env-label {
+    font-size: 8px;
+  }
+  .env-label > span {
+    display: none;
+  }
+  .env-value {
+    font-size: 18px;
+    margin-block: 10px;
+  }
+  .environment-foot {
+    padding-block: 14px;
+    font-size: 8px;
+  }
+  .daily-note {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .daily-note > .text-link {
+    margin-top: 5px;
+  }
+  .daily-note div > span {
+    line-height: 1.8;
+  }
+  .footer-version {
+    display: none;
+  }
+  .crew-summary {
+    gap: 12px;
+  }
+  .crew-summary > div {
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 15px;
+  }
+  .crew-summary div > span {
+    width: 100%;
+  }
+  .vitals-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .vital-card p {
+    font-size: 10px;
+  }
+  .environment-hero {
+    padding: 25px;
+    flex-wrap: wrap;
+  }
+  .environment-hero > svg {
+    width: 45px;
+  }
+  .environment-hero h2 {
+    font-size: 22px;
+  }
+  .environment-hero > .button {
+    margin-top: 5px;
+  }
+  .environment-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .environment-grid .env-item {
+    border-bottom: 1px solid #f3edf7;
+    padding: 20px 0;
+  }
+  .environment-grid .env-label {
+    font-size: 12px;
+  }
+  .environment-grid .env-label > span {
+    display: inline;
+    font-size: 9px;
+  }
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+  .wellness-banner {
+    flex-wrap: wrap;
+    padding: 25px;
+    gap: 15px;
+  }
+  .wellness-banner > div {
+    flex: 1;
+  }
+  .wellness-banner h2 {
+    font-size: 20px;
+  }
+  .wellness-banner p {
+    line-height: 1.8;
+  }
+  .safety-banner {
+    flex-wrap: wrap;
+  }
+  .safety-banner > div {
+    flex: 1;
+  }
+  .protocol-card {
+    padding: 22px;
+  }
+  .protocol-card h3 {
+    font-size: 17px;
+  }
+  .protocol-card .text-link {
+    font-size: 8px;
+  }
+  .journal-layout {
+    grid-template-columns: 1fr;
+  }
+  .journal-layout > .panel:nth-child(2) {
+    display: none;
+  }
+  .journal-panel h2 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 650px) {
+  :root {
+    --sidebar-width: 64px;
+  }
+  .sidebar {
+    padding: 22px 7px 0;
+    align-items: center;
+  }
+  .brand {
+    padding: 0;
+  }
+  .brand-symbol svg {
+    width: 32px;
+    height: 32px;
+  }
+  .brand > span:last-child,
+  .mission-switch,
+  .nav-caption,
+  .nav-item > span,
+  .sidebar-profile,
+  .local-card,
+  .sidebar-bottom > .nav-item:last-of-type {
+    display: none;
+  }
+  .sidebar nav {
+    margin-top: 34px;
+    width: 100%;
+  }
+  .nav-item {
+    justify-content: center;
+    padding: 13px 0;
+    width: 47px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .nav-item.active::after {
+    content: "";
+    position: absolute;
+    left: -7px;
+    width: 3px;
+    height: 23px;
+    background: #aa8cd2;
+    border-radius: 0 3px 3px 0;
+  }
+  .nav-item.active {
+    background: #f0e9f8;
+  }
+  .sidebar-bottom {
+    width: auto;
+    padding-top: 35px;
+    padding-bottom: 20px;
+  }
+  .sidebar-bottom > .nav-item {
+    font-size: 0;
+    gap: 0;
+    padding-block: 13px;
+  }
+  .sidebar-bottom > .nav-item > svg {
+    width: 20px;
+  }
+  .topbar {
+    height: 63px;
+    padding-inline: 17px;
+  }
+  .breadcrumb {
+    font-size: 8px;
+    gap: 7px;
+  }
+  .breadcrumb > span {
+    max-width: 105px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .connection,
+  .profile-button {
+    display: none;
+  }
+  .notification-button {
+    padding: 2px;
+  }
+  .topbar-right {
+    gap: 5px;
+  }
+  main {
+    padding: 23px 15px 0;
+  }
+  .page-heading {
+    margin-bottom: 21px;
+  }
+  .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.2px;
+  }
+  h1 {
+    font-size: 23px;
+    line-height: 1.45;
+    margin-top: 10px;
+  }
+  .page-heading p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .heading-actions {
+    margin-top: 5px;
+    gap: 8px;
+  }
+  .button {
+    font-size: 8px;
+    padding: 10px;
+    gap: 5px;
+  }
+  .button svg {
+    width: 14px;
+  }
+  .mission-banner {
+    min-height: 218px;
+  }
+  .banner-copy {
+    padding: 22px 19px;
+    width: 100%;
+  }
+  .banner-eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.3px;
+  }
+  .mission-banner h2 {
+    font-size: 23px;
+    margin-block: 18px;
+  }
+  .mission-banner::before {
+    left: 0;
+    opacity: 0.4;
+    background-position: 60%;
+  }
+  .mission-banner::after {
+    background: linear-gradient(90deg, #242b41ed, #242b4155);
+  }
+  .banner-status {
+    display: none;
+  }
+  .earth-coordinates {
+    display: none;
+  }
+  .orbit-graphic {
+    width: 70%;
+    opacity: 0.5;
+  }
+  .orbit-ring {
+    right: -180px;
+  }
+  .ring-two {
+    right: -200px;
+  }
+  .orbital-marker {
+    right: 15px;
+    top: 65px;
+  }
+  .mission-facts > div {
+    padding-inline: 19px;
+  }
+  .mission-facts strong {
+    font-size: 17px;
+  }
+  .mission-facts > div > span {
+    font-size: 6px;
+  }
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 23px;
+    gap: 8px;
+  }
+  .section-heading h2 {
+    font-size: 15px;
+  }
+  .section-heading > span {
+    font-size: 7px;
+  }
+  .stats-grid {
+    gap: 9px;
+    margin-bottom: 15px;
+  }
+  .stat-card {
+    padding: 12px 10px;
+  }
+  .stat-top {
+    font-size: 7px;
+    gap: 5px;
+  }
+  .stat-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+  }
+  .stat-icon > svg {
+    width: 15px;
+  }
+  .stat-main {
+    height: 53px;
+  }
+  .stat-main > strong {
+    font-size: 27px;
+  }
+  .stat-main strong small {
+    font-size: 9px;
+  }
+  .stat-main .sparkline {
+    width: 49px;
+  }
+  .mini-ring {
+    width: 30px;
+    height: 30px;
+    font-size: 7px;
+  }
+  .stat-bottom {
+    font-size: 6px;
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+  .stat-tag {
+    display: none;
+  }
+  .stat-bottom .status-dot {
+    width: 4px;
+    height: 4px;
+  }
+  .tiny-avatars .avatar {
+    width: 19px;
+    height: 19px;
+    font-size: 4.5px;
+    margin-left: -7px;
+  }
+  .tiny-avatars {
+    padding-left: 3px;
+  }
+  .panel {
+    padding: 15px;
+    border-radius: 9px;
+  }
+  .panel-title {
+    gap: 6px;
+  }
+  .panel-title h3 {
+    font-size: 11px;
+  }
+  .panel-title p {
+    font-size: 7px;
+    max-width: 180px;
+    line-height: 1.7;
+  }
+  .panel-title select {
+    font-size: 8px;
+    padding: 6px 4px;
+  }
+  .chart-tabs {
+    gap: 15px;
+  }
+  .chart-tabs button {
+    font-size: 8px;
+  }
+  .chart-unit {
+    font-size: 6px;
+  }
+  .trend-chart {
+    margin-top: 20px;
+  }
+  .chart-legend {
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .chart-legend > span {
+    font-size: 6px;
+    gap: 4px;
+  }
+  .legend-line {
+    width: 9px;
+  }
+  .dashboard-middle,
+  .dashboard-bottom {
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .alert-card {
+    padding: 13px;
+  }
+  .alert-card h4 {
+    font-size: 11px;
+  }
+  .alerts-panel .panel-title {
+    margin-bottom: 14px;
+  }
+  .alert-meta {
+    font-size: 7px;
+  }
+  .alert-meta > span {
+    font-size: 7px;
+  }
+  .alert-link {
+    font-size: 8px;
+  }
+  .crew-panel {
+    padding: 15px 0 0;
+  }
+  .crew-panel .panel-title {
+    padding-inline: 14px;
+  }
+  .crew-panel .panel-title .text-link {
+    font-size: 7px;
+  }
+  table {
+    min-width: 460px;
+  }
+  td:first-child,
+  th:first-child {
+    padding-left: 14px;
+  }
+  .person-cell strong {
+    font-size: 10px;
+  }
+  .person-cell div > span {
+    font-size: 7px;
+  }
+  .table-value {
+    font-size: 12px;
+  }
+  .environment-panel {
+    padding-bottom: 0;
+  }
+  .environment-foot {
+    margin-inline: -15px;
+    font-size: 7px;
+  }
+  .env-value {
+    font-size: 16px;
+  }
+  .env-label {
+    font-size: 7px;
+  }
+  .environment-list {
+    gap: 10px;
+  }
+  .env-value small {
+    font-size: 6px;
+  }
+  .daily-note {
+    padding: 13px;
+  }
+  .daily-note div {
+    flex: 1;
+  }
+  .daily-note strong {
+    font-size: 8px;
+  }
+  .daily-note div > span {
+    font-size: 7px;
+  }
+  .daily-note .text-link {
+    font-size: 8px;
+  }
+  footer {
+    display: block;
+    text-align: center;
+    padding: 17px 0;
+    margin-top: 20px;
+    font-size: 6px;
+    line-height: 2.4;
+  }
+  .footer-brand {
+    justify-content: center;
+    margin-bottom: 3px;
+    font-size: 10px;
+  }
+  .crew-summary {
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  .crew-summary > div {
+    padding: 12px;
+    gap: 6px;
+  }
+  .crew-summary svg {
+    width: 17px;
+  }
+  .crew-summary strong {
+    font-size: 22px;
+  }
+  .crew-summary div > span {
+    font-size: 7px;
+    line-height: 1.6;
+  }
+  .search-input {
+    width: 120px;
+    font-size: 8px;
+    padding: 8px;
+  }
+  .info-note {
+    align-items: flex-start;
+    padding: 12px;
+    gap: 9px;
+  }
+  .info-note p {
+    font-size: 9px;
+  }
+  .info-note > svg {
+    width: 16px;
+    margin-top: 3px;
+  }
+  .vitals-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .vital-card {
+    padding: 14px;
+  }
+  .vital-card p {
+    font-size: 8px;
+  }
+  .vital-card strong {
+    font-size: 22px;
+  }
+  .vital-card strong small {
+    font-size: 8px;
+  }
+  .vital-card .badge {
+    font-size: 6px;
+  }
+  .vital-card > .sparkline {
+    height: 32px;
+  }
+  .empty-state {
+    padding: 25px 10px;
+  }
+  .empty-state h3 {
+    font-size: 12px;
+  }
+  .empty-state p {
+    font-size: 9px;
+  }
+  .alert-summary {
+    padding: 19px 15px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .alert-summary > div {
+    flex: 1;
+  }
+  .alert-summary > .badge {
+    margin-left: auto;
+  }
+  .alert-summary h2 {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .alert-summary p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .full-alerts .alert-card {
+    padding: 16px 12px;
+    gap: 12px;
+  }
+  .full-alerts .alert-meta {
+    font-size: 8px;
+  }
+  .full-alerts .alert-meta > span {
+    font-size: 7px;
+  }
+  .full-alerts .alert-card h4 {
+    font-size: 12px;
+  }
+  .full-alerts .alert-card p {
+    font-size: 10px;
+  }
+  .full-alerts .alert-link {
+    font-size: 9px;
+  }
+  .environment-hero {
+    padding: 22px;
+    gap: 16px;
+  }
+  .environment-hero > svg {
+    width: 38px;
+  }
+  .environment-hero h2 {
+    font-size: 20px;
+  }
+  .environment-hero p {
+    font-size: 8px;
+  }
+  .environment-hero > div {
+    flex: 1;
+  }
+  .environment-hero > .button {
+    margin-top: 0;
+  }
+  .environment-grid .env-label {
+    font-size: 10px;
+  }
+  .environment-grid .env-value {
+    font-size: 23px;
+  }
+  .two-columns {
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .radiation-number {
+    font-size: 29px;
+  }
+  .exposure-bars {
+    gap: 4px;
+  }
+  .context-item h4 {
+    font-size: 11px;
+  }
+  .context-item p {
+    font-size: 10px;
+  }
+  .wellness-banner {
+    padding: 22px;
+    gap: 14px;
+  }
+  .large-moon > svg {
+    width: 38px;
+  }
+  .wellness-banner h2 {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .wellness-banner p {
+    font-size: 9px;
+  }
+  .wellness-banner > div {
+    min-width: 150px;
+  }
+  .wellness-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .wellness-card {
+    padding: 22px;
+  }
+  .wellness-card .person-cell strong {
+    font-size: 12px;
+  }
+  .wellness-card .person-cell div > span {
+    font-size: 9px;
+  }
+  .sleep-score > .badge {
+    margin-left: auto;
+  }
+  .habit-line {
+    font-size: 10px;
+  }
+  .wellness-card .text-link {
+    font-size: 9px;
+  }
+  .routine-item {
+    padding: 16px 0;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .routine-item > span {
+    font-size: 11px;
+  }
+  .routine-item strong {
+    font-size: 10px;
+  }
+  .routine-item p {
+    font-size: 8px;
+  }
+  .routine-item > .badge {
+    font-size: 7px;
+  }
+  .safety-banner {
+    padding: 20px;
+    gap: 13px;
+  }
+  .safety-banner h3 {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .safety-banner p {
+    font-size: 9px;
+  }
+  .protocol-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .protocol-card {
+    padding: 25px;
+  }
+  .protocol-card h3 {
+    font-size: 20px;
+  }
+  .protocol-card .text-link {
+    font-size: 10px;
+  }
+  .protocol-card .stat-icon > svg {
+    width: 23px;
+  }
+  .journal-panel {
+    padding: 22px 17px;
+  }
+  .journal-panel h2 {
+    font-size: 21px;
+  }
+  .journal-panel > p {
+    font-size: 9px;
+    line-height: 1.8;
+  }
+  .mood-options {
+    gap: 6px;
+  }
+  .mood-options > button {
+    font-size: 7px;
+    padding: 10px 3px;
+  }
+  .mood-symbol {
+    width: 30px;
+    height: 30px;
+  }
+  .mood-symbol > svg {
+    width: 20px;
+  }
+  .journal-actions > span {
+    font-size: 7px;
+  }
+  .journal-panel textarea {
+    font-size: 10px;
+    padding: 12px;
+  }
+  .journal-entry > span:not(.badge) {
+    font-size: 8px;
+    margin-left: 10px;
+  }
+  .journal-entry p {
+    font-size: 11px;
+  }
+  .modal-backdrop {
+    padding: 15px;
+  }
+  .modal {
+    padding: 28px 23px;
+    max-height: calc(100dvh - 30px);
+  }
+  .modal h2 {
+    font-size: 22px;
+  }
+  .modal-description {
+    font-size: 11px;
+  }
+  .modal .eyebrow {
+    font-size: 7px;
+  }
+  .modal .button {
+    font-size: 11px;
+    padding: 12px;
+  }
+  .modal .button > svg {
+    width: 17px;
+  }
+  .form-row {
+    gap: 10px;
+  }
+  .field-label {
+    font-size: 9px;
+  }
+  .profile-stats {
+    gap: 7px;
+  }
+  .profile-stats div > span {
+    font-size: 7px;
+  }
+  .profile-stats strong {
+    font-size: 25px;
+  }
+  .toast {
+    left: 50%;
+    width: max-content;
+    max-width: calc(100vw - 25px);
+    font-size: 10px;
+    padding: 13px;
+    gap: 8px;
+  }
+  .notification-popover {
+    right: 12px;
+    top: 57px;
+    width: calc(100vw - 90px);
+    padding: 16px;
+  }
+  .notification-popover strong {
+    font-size: 10px;
+  }
+  .notification-popover small {
+    font-size: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
