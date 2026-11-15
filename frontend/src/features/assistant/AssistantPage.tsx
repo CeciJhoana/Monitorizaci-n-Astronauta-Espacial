@@ -7,10 +7,11 @@
  * fila de 9 atajos de bienestar, selector de idioma (ES/EN) y panel de modo demo.
  */
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { Icon } from "@/components/ui";
 import { Orb } from "@/components/companion/Orb";
 import { useSpeech } from "@/hooks/useSpeech";
+import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { MOCK_DB } from "@/data/db";
 import { selectCompanionData } from "@/data/companion/companionData";
 import {
@@ -62,6 +63,49 @@ export function AssistantPage() {
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
   const sessionRef = useRef(new CompanionSession());
+
+  // Reconocimiento de voz con push-to-talk
+  const {
+    isListening,
+    transcript: micTranscript,
+    interimTranscript: micInterim,
+    error: micError,
+    isSupported: isMicSupported,
+    toggleListening,
+  } = useSpeechRecognition({
+    language,
+    onFinalTranscript: (txt) => {
+      const resp = sessionRef.current.responder(txt, activeData, language);
+      if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal") {
+        openModal({ type: "emergency" });
+      } else if (resp.accionSugerida === "open_journal") {
+        navigate("journal");
+      }
+      setSubtitles(resp.text);
+      speak(resp.speechText);
+    },
+    onInterimTranscript: (interim) => {
+      setSubtitles(`🎙️ "${interim}..."`);
+    },
+    onOrbStateChange: (st) => setOrbState(st),
+    onCancelSpeech: cancel,
+  });
+
+  // Atajo de teclado: presionar 'm' o 'M' para alternar micrófono
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName?.toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+
+      if (e.key === "m" || e.key === "M") {
+        e.preventDefault();
+        toggleListening();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [toggleListening]);
 
   // Evaluación dinámica del semáforo conductual
   const rawData = useMemo(
@@ -523,57 +567,115 @@ export function AssistantPage() {
         )}
       </section>
 
-      {/* Caja de Texto con Botón Enviar */}
-      <form
-        onSubmit={handleSend}
-        style={{
-          display: "flex",
-          gap: 10,
-          width: "100%",
-        }}
-      >
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder={
-            language === "es"
-              ? "Habla o escribe a ASTRA (ej: ¿cuándo me toca comer? ¿cómo está mi salud?)..."
-              : "Speak or type to ASTRA (e.g. When do I eat? How is my health?)..."
-          }
+      {/* Caja de Texto con Botón Enviar y Micrófono */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
+        <form
+          onSubmit={handleSend}
           style={{
-            flex: 1,
-            background: "#FFFFFF",
-            border: "1px solid rgba(90, 86, 104, 0.3)",
-            borderRadius: 999,
-            padding: "12px 20px",
-            fontFamily: "Instrument Sans, sans-serif",
-            fontSize: 13,
-            color: "#1E1035",
-            outline: "none",
-          }}
-        />
-        <button
-          type="submit"
-          style={{
-            background: "#7C3AED",
-            color: "#FFFFFF",
-            border: "none",
-            borderRadius: 999,
-            padding: "0 22px",
-            fontFamily: "Instrument Sans, sans-serif",
-            fontSize: 13,
-            fontWeight: 600,
-            cursor: "pointer",
             display: "flex",
+            gap: 10,
+            width: "100%",
             alignItems: "center",
-            gap: 6,
           }}
         >
-          <span>{language === "es" ? "Enviar" : "Send"}</span>
-          <Icon name="arrow" size={15} />
-        </button>
-      </form>
+          {/* Botón de micrófono */}
+          <button
+            type="button"
+            onClick={toggleListening}
+            disabled={!isMicSupported}
+            style={{
+              background: isListening ? "#EF4444" : isMicSupported ? "#FFFFFF" : "#F3F4F6",
+              color: isListening ? "#FFFFFF" : isMicSupported ? "#7C3AED" : "#9CA3AF",
+              border: isListening ? "2px solid #DC2626" : "1px solid rgba(90, 86, 104, 0.3)",
+              borderRadius: "50%",
+              width: 44,
+              height: 44,
+              minWidth: 44,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: isMicSupported ? "pointer" : "not-allowed",
+              boxShadow: isListening ? "0 0 14px rgba(239, 68, 68, 0.6)" : "none",
+              transition: "all 0.2s ease",
+            }}
+            title={
+              !isMicSupported
+                ? language === "es"
+                  ? "Micrófono no disponible, usa el teclado o los atajos. El reconocimiento suele requerir Chrome o Edge con internet."
+                  : "Microphone not supported, use keyboard or shortcuts. Recognition typically requires Chrome or Edge with internet."
+                : isListening
+                ? language === "es"
+                  ? "Escuchando... pulsa para enviar (o presiona M)"
+                  : "Listening... click to send (or press M)"
+                : language === "es"
+                ? "Hablar a ASTRA (M o pulsar)"
+                : "Speak to ASTRA (M or click)"
+            }
+          >
+            <span style={{ fontSize: 18 }}>{isListening ? "🔴" : "🎙️"}</span>
+          </button>
+
+          <input
+            type="text"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder={
+              language === "es"
+                ? "Habla o escribe a ASTRA (ej: ¿cuándo me toca comer? ¿cómo está mi salud?)..."
+                : "Speak or type to ASTRA (e.g. When do I eat? How is my health?)..."
+            }
+            style={{
+              flex: 1,
+              background: "#FFFFFF",
+              border: "1px solid rgba(90, 86, 104, 0.3)",
+              borderRadius: 999,
+              padding: "12px 20px",
+              fontFamily: "Instrument Sans, sans-serif",
+              fontSize: 13,
+              color: "#1E1035",
+              outline: "none",
+            }}
+          />
+          <button
+            type="submit"
+            style={{
+              background: "#7C3AED",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: 999,
+              padding: "0 22px",
+              height: 44,
+              fontFamily: "Instrument Sans, sans-serif",
+              fontSize: 13,
+              fontWeight: 600,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <span>{language === "es" ? "Enviar" : "Send"}</span>
+            <Icon name="arrow" size={15} />
+          </button>
+        </form>
+
+        {/* Mensaje de fallback si el navegador no tiene soporte de voz */}
+        {!isMicSupported && (
+          <span
+            style={{
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 9,
+              color: "#5A5668",
+              paddingLeft: 8,
+            }}
+          >
+            ℹ️{" "}
+            {language === "es"
+              ? "Micrófono no disponible, usa el teclado o los atajos. El reconocimiento suele requerir Chrome o Edge con internet."
+              : "Microphone unavailable, use keyboard or shortcuts. Recognition typically requires Chrome or Edge with internet."}
+          </span>
+        )}
+      </div>
 
       {/* Fila de Atajos (9 requeridos) */}
       <section aria-label="Atajos de consulta rápida">
