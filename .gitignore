@@ -1,0 +1,20 @@
+# Compilados / binarios Arduino
+*.bin
+*.elf
+*.hex
+build/
+*.o
+
+# Librería externa vendida aparte (se instala con arduino-cli)
+ESP32_BLE_Arduino-master/
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Sistema
+.DS_Store
+*.swp

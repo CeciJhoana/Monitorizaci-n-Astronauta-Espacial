@@ -1,0 +1,13 @@
+[Unit]
+Description=Servidor BLE
+After=network-online.target postgresql.service
+
+[Service]
+WorkingDirectory=/home/deyni
+Environment=PGPASSWORD=cambia_esta_clave
+ExecStart=/usr/bin/python3 /home/deyni/servidor_ble_postgres.py
+Restart=always
+User=deyni
+
+[Install]
+WantedBy=multi-user.target
