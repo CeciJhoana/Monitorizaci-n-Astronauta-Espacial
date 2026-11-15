@@ -237,7 +237,7 @@ function construirEntornos(): EntornoRow[] {
       id: ID.entornoOrbital,
       codigo: "orbital",
       nombre: "Estación orbital",
-      factor_gravedad: 1,
+      factor_gravedad: 0,
       descripcion: "Microgravedad en órbita terrestre a 408 km",
       ...comun,
     },

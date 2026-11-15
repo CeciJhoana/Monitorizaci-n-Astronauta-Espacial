@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "descripcion": "Umbrales del semáforo conductual y avisos agudos de ASTRA",
+    "estado": "Propuesta del equipo, por validar con fuentes oficiales de la NASA",
+    "disclaimer": "Prototipo conceptual · No es un dispositivo médico · Por validar con fuentes oficiales de la NASA"
+  },
+  "umbrales": {
+    "sueno_horas": {
+      "nombre": "Horas de sueño",
+      "n0_min": 7.5,
+      "n1_min": 5.5,
+      "n2_min": 4.5,
+      "unidad": "h"
+    },
+    "eficiencia_sueno_pct": {
+      "nombre": "Eficiencia de sueño",
+      "n0_min": 85,
+      "n1_min": 70,
+      "n2_min": 55,
+      "unidad": "%",
+      "ignorar_si_falta": true
+    },
+    "hrv_desviacion_pct": {
+      "nombre": "Desviación de HRV respecto a base",
+      "n0_min": -15,
+      "n1_min": -25,
+      "n2_min": -40,
+      "unidad": "%",
+      "nota": "N0 cubre dentro de +-10% y hueco de -10% a -15%"
+    },
+    "actividad_min": {
+      "nombre": "Actividad física diaria",
+      "n0_min": 60,
+      "n1_min": 30,
+      "n2_min": 10,
+      "unidad": "min"
+    },
+    "luz_lux": {
+      "nombre": "Exposición a luz de cabina",
+      "n0_min": 250,
+      "n1_min": 150,
+      "n2_min": 0,
+      "unidad": "lux"
+    },
+    "social_pct": {
+      "nombre": "Tiempo en zonas sociales",
+      "n0_min": 35,
+      "n1_min": 20,
+      "n2_min": 10,
+      "unidad": "%",
+      "ignorar_si_falta": true
+    },
+    "animo": {
+      "nombre": "Estado de ánimo en bitácora",
+      "n0_min": 0.3,
+      "n1_min": -0.1,
+      "n2_min": -0.6,
+      "escala": "Muy bien (+0.6), Bien (+0.35), Regular (+0.1), Con dificultad (-0.4)"
+    }
+  },
+  "vitales_agudos": {
+    "spo2_min_pct": 90,
+    "fc_max_bpm": 120,
+    "fc_min_bpm": 45,
+    "temp_max_c": 38.0,
+    "temp_min_c": 35.0,
+    "radiacion_max_msv_h": 20.0
+  },
+  "etiquetas": {
+    "0": { "es": "Óptimo", "en": "Optimal" },
+    "1": { "es": "Fatiga leve", "en": "Mild fatigue" },
+    "2": { "es": "Estrés por aislamiento", "en": "Isolation stress" },
+    "3": { "es": "Crítico", "en": "Critical" }
+  },
+  "escalado": {
+    "0": { "es": "Recomendación personal", "en": "Personal recommendation" },
+    "1": { "es": "Recomendación personal", "en": "Personal recommendation" },
+    "2": { "es": "Alerta a la tripulación sugerida", "en": "Crew alert suggested" },
+    "3": { "es": "Aviso a médicos de Tierra recomendado", "en": "Ground medical alert recommended" }
+  }
+}

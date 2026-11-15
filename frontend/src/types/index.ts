@@ -180,6 +180,7 @@ export interface MissionSnapshot {
 
 export type PageId =
   | "dashboard"
+  | "assistant"
   | "crew"
   | "vitals"
   | "wellness"
