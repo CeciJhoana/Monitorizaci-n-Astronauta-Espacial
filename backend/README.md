@@ -115,6 +115,16 @@ cd servidor
 # servidor en http://localhost:5000
 ```
 
+Si no tienes PostgreSQL instalado (o no puedes usar `sudo`), levántalo con Docker
+desde `backend/`. Usa el mismo usuario, clave y puerto que los valores por defecto:
+
+```bash
+cd backend
+docker compose up -d     # PostgreSQL 16 en localhost:5432 (datos en el volumen orbita-pgdata)
+cd servidor
+./run.sh                 # las tablas se crean solas al arrancar Flask
+```
+
 Pasos equivalentes manuales, si los prefieres:
 
 ```bash

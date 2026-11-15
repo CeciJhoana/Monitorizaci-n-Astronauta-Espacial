@@ -1,0 +1,24 @@
+# PostgreSQL de la estación, sin instalarlo en el sistema.
+# Uso: docker compose up -d   (desde backend/)
+# Credenciales y puerto coinciden con los valores por defecto de
+# servidor/servidor_ble_postgres.py y servidor/setup_db.sh.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: orbita-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ble_user
+      POSTGRES_PASSWORD: cambia_esta_clave
+      POSTGRES_DB: ble
+    ports:
+      - "5432:5432"
+    volumes:
+      - orbita-pgdata:/var/lib/postgresql/data
+
+volumes:
+  # Nombre fijo para conservar los datos aunque se borre/regenere el contenedor.
+  # Si el volumen ya existía (creado fuera de Compose), Docker avisa con un WARN
+  # ("was not created by Docker Compose"); es inofensivo y los datos se respetan.
+  orbita-pgdata:
+    name: orbita-pgdata
