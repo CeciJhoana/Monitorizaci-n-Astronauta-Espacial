@@ -30,7 +30,7 @@ import {
 } from "@/lib/companion/reminderEngine";
 
 export type CompanionLanguage = "es" | "en";
-export type OrbState = "idle" | "listening" | "speaking" | "thinking";
+export type OrbState = "idle" | "listening" | "speaking" | "thinking" | "alert";
 export type VoiceProfileId = "calma" | "clara" | "energique";
 export type ScenarioId =
   | "normal"

@@ -14,7 +14,13 @@ import { useSpeech } from "@/hooks/useSpeech";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { MOCK_DB } from "@/data/db";
 import { selectCompanionData } from "@/data/companion/companionData";
-import { evaluateBehavior, aplicarEscenario, type SemaphoreLevel } from "@/lib/companion/companionEngine";
+import { getCompanionDataForSource } from "@/data/telemetry/dataSources";
+import {
+  evaluateBehavior,
+  aplicarEscenario,
+  evaluateConsecutiveAcuteAlerts,
+  type SemaphoreLevel,
+} from "@/lib/companion/companionEngine";
 import { CompanionSession, normalizarTexto } from "@/lib/companion/intentEngine";
 import { FamilyCommsModal } from "./components/FamilyCommsModal";
 import { QuickJournalModal, type MoodRating } from "./components/QuickJournalModal";
@@ -27,6 +33,8 @@ import {
   type ScenarioId,
 } from "@/store/CompanionContext";
 import { useUi } from "@/store/UiContext";
+import { useMissionData } from "@/store/MissionDataContext";
+import { TelemetrySourceControl } from "@/components/telemetry/TelemetrySourceControl";
 
 export function AssistantPage() {
   const {
@@ -97,10 +105,13 @@ export function AssistantPage() {
     source: "inicio",
   });
 
-  // Evaluación dinámica del semáforo conductual
+  const { dataSource, esp32Readings, esp32Index } = useMissionData();
+  const currentEsp32 = esp32Readings[esp32Index];
+
+  // Evaluación dinámica del semáforo conductual a través del adaptador DataSource
   const rawData = useMemo(
-    () => selectCompanionData(MOCK_DB, activeAstronautId),
-    [activeAstronautId],
+    () => getCompanionDataForSource(activeAstronautId, dataSource, currentEsp32),
+    [activeAstronautId, dataSource, currentEsp32],
   );
 
   const activeData = useMemo(
@@ -112,6 +123,39 @@ export function AssistantPage() {
     () => evaluateBehavior(activeData, language),
     [activeData, language],
   );
+
+  // Detección de avisos agudos en ventana de 3 lecturas consecutivas (reproducción ESP32)
+  const esp32HistoryRef = useRef<Array<{ spo2_pct: number; pulso_bpm: number; temperatura_corporal_c: number }>>([]);
+  const lastAlertMetricRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (dataSource !== "esp32" || !currentEsp32) {
+      esp32HistoryRef.current = [];
+      lastAlertMetricRef.current = null;
+      return;
+    }
+
+    esp32HistoryRef.current.push({
+      spo2_pct: currentEsp32.spo2_pct,
+      pulso_bpm: currentEsp32.pulso_bpm,
+      temperatura_corporal_c: currentEsp32.temperatura_corporal_c,
+    });
+    if (esp32HistoryRef.current.length > 5) {
+      esp32HistoryRef.current.shift();
+    }
+
+    const { hasAcuteAlert, message, metric } = evaluateConsecutiveAcuteAlerts(esp32HistoryRef.current, 3);
+    if (hasAcuteAlert && metric && lastAlertMetricRef.current !== metric) {
+      lastAlertMetricRef.current = metric;
+      setOrbState("alert");
+      const fullText = `${message} (por validar)`;
+      setSubtitles(`⚠️ ${fullText}`);
+      speak(message);
+    } else if (!hasAcuteAlert && lastAlertMetricRef.current) {
+      lastAlertMetricRef.current = null;
+      setOrbState("idle");
+    }
+  }, [dataSource, currentEsp32, setOrbState, setSubtitles, speak]);
 
   // Reconocimiento de voz con push-to-talk
   const {
@@ -537,6 +581,9 @@ export function AssistantPage() {
           </button>
         </div>
       </header>
+
+      {/* Control de Fuentes de Telemetría (MODO DEMO) */}
+      <TelemetrySourceControl />
 
       {/* Aviso si el navegador no tiene voces disponibles */}
       {voices.length === 0 && (
