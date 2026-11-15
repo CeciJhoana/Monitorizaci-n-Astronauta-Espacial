@@ -14,12 +14,11 @@ import { useSpeech } from "@/hooks/useSpeech";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { MOCK_DB } from "@/data/db";
 import { selectCompanionData } from "@/data/companion/companionData";
-import {
-  evaluateBehavior,
-  aplicarEscenario,
-  type SemaphoreLevel,
-} from "@/lib/companion/companionEngine";
+import { evaluateBehavior, aplicarEscenario, type SemaphoreLevel } from "@/lib/companion/companionEngine";
 import { CompanionSession } from "@/lib/companion/intentEngine";
+import { FamilyCommsModal } from "./components/FamilyCommsModal";
+import { QuickJournalModal, type MoodRating } from "./components/QuickJournalModal";
+import { BreathingGuideModal } from "./components/BreathingGuideModal";
 import {
   useCompanion,
   VOICE_PROFILES,
@@ -71,6 +70,7 @@ export function AssistantPage() {
 
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
+  const [activeModal, setActiveModal] = useState<"family" | "journal" | "breathing" | null>(null);
   const sessionRef = useRef(new CompanionSession());
 
   // Evaluación dinámica del semáforo conductual
@@ -189,11 +189,28 @@ export function AssistantPage() {
   ];
 
   const handleShortcutClick = (id: string) => {
+    if (id === "familia") {
+      setActiveModal("family");
+      return;
+    }
+    if (id === "bitacora") {
+      setActiveModal("journal");
+      return;
+    }
+    if (id === "soledad") {
+      setActiveModal("breathing");
+      return;
+    }
+
     const resp = sessionRef.current.responder(id, activeData, language);
     if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal" || id === "emergencia") {
       openModal({ type: "emergency" });
-    } else if (resp.accionSugerida === "open_journal" || id === "bitacora") {
-      navigate("journal");
+    } else if (resp.accionSugerida === "open_journal") {
+      setActiveModal("journal");
+    } else if (resp.accionSugerida === "iniciar_respiracion") {
+      setActiveModal("breathing");
+    } else if (resp.accionSugerida === "abrir_familia") {
+      setActiveModal("family");
     }
     setSubtitles(resp.text);
     speak(resp.speechText);
@@ -207,7 +224,11 @@ export function AssistantPage() {
     if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal") {
       openModal({ type: "emergency" });
     } else if (resp.accionSugerida === "open_journal") {
-      navigate("journal");
+      setActiveModal("journal");
+    } else if (resp.accionSugerida === "iniciar_respiracion") {
+      setActiveModal("breathing");
+    } else if (resp.accionSugerida === "abrir_familia") {
+      setActiveModal("family");
     }
     setSubtitles(resp.text);
     speak(resp.speechText);
@@ -1163,6 +1184,41 @@ export function AssistantPage() {
             </div>
           )}
         </section>
+      )}
+
+      {/* Modales Especializados del Asistente */}
+      {activeModal === "family" && (
+        <FamilyCommsModal
+          entornoCodigo={activeData.entorno.codigo}
+          nombreTripulante={activeData.nombreTripulante}
+          language={language}
+          onClose={() => setActiveModal(null)}
+        />
+      )}
+
+      {activeModal === "journal" && (
+        <QuickJournalModal
+          tripulanteId={activeData.tripulanteId}
+          language={language}
+          onSave={(_animo, _nota, msgAgradecimiento) => {
+            setSubtitles(msgAgradecimiento);
+            speak(msgAgradecimiento);
+          }}
+          onClose={() => setActiveModal(null)}
+        />
+      )}
+
+      {activeModal === "breathing" && (
+        <BreathingGuideModal
+          language={language}
+          voiceEnabled={voiceEnabled}
+          speak={speak}
+          onFinish={(msgFinal) => {
+            setSubtitles(msgFinal);
+            speak(msgFinal);
+          }}
+          onClose={() => setActiveModal(null)}
+        />
       )}
 
       {/* Aviso de Prototipo Obligatorio */}
