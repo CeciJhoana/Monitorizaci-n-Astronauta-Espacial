@@ -135,8 +135,7 @@ export function Orb({
   const ringColor =
     level === 3 ? "#e11d48" : level === 2 ? "#d97706" : level === 1 ? "#f59e0b" : "#C4B5FD";
 
-  const haloColor =
-    level === 3 ? "#fda4af" : level === 2 ? "#fde68a" : "#C4B5FD";
+  const haloColor = level === 3 ? "#fda4af" : level === 2 ? "#fde68a" : "#C4B5FD";
 
   return (
     <svg
@@ -190,14 +189,7 @@ export function Orb({
       {/* Grupo móvil de constelación */}
       <g id="astra-orb-constellation">
         {/* Halo de la estrella principal (Arriba a la derecha: 44, 18) */}
-        <circle
-          id="astra-orb-halo"
-          cx="44"
-          cy="18"
-          r="7.5"
-          fill={haloColor}
-          opacity="0.15"
-        />
+        <circle id="astra-orb-halo" cx="44" cy="18" r="7.5" fill={haloColor} opacity="0.15" />
 
         {/* Línea conectora fina de la constelación */}
         <polyline

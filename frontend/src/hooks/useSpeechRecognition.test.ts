@@ -26,7 +26,10 @@ describe("SpeechRecognitionController (useSpeechRecognition)", () => {
   }
 
   it("detecta soporte cuando existe el constructor", () => {
-    const controller = new SpeechRecognitionController({ onFinalTranscript: vi.fn() }, MockSpeechRecognition);
+    const controller = new SpeechRecognitionController(
+      { onFinalTranscript: vi.fn() },
+      MockSpeechRecognition,
+    );
     expect(controller.isSupported()).toBe(true);
     expect(controller.getIsListening()).toBe(false);
   });
@@ -93,9 +96,7 @@ describe("SpeechRecognitionController (useSpeechRecognition)", () => {
     // Evento interim
     activeInstance.onresult?.({
       resultIndex: 0,
-      results: [
-        { 0: { transcript: "como estoy" }, isFinal: false, length: 1 },
-      ],
+      results: [{ 0: { transcript: "como estoy" }, isFinal: false, length: 1 }],
     });
 
     expect(onInterimTranscript).toHaveBeenCalledWith("como estoy");
@@ -104,9 +105,7 @@ describe("SpeechRecognitionController (useSpeechRecognition)", () => {
     // Evento final
     activeInstance.onresult?.({
       resultIndex: 0,
-      results: [
-        { 0: { transcript: "como estoy de salud" }, isFinal: true, length: 1 },
-      ],
+      results: [{ 0: { transcript: "como estoy de salud" }, isFinal: true, length: 1 }],
     });
 
     expect(onFinalTranscript).toHaveBeenCalledWith("como estoy de salud");

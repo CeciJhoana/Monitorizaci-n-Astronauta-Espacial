@@ -11,6 +11,12 @@ export const MISSION = {
   commander: "Elena Martínez",
 } as const;
 
+/**
+ * Tripulante monitorizado por la estación de telemetría real (ESP32).
+ * Coincide con `astronaut_id: "01"` del contrato de hardware.
+ */
+export const LIVE_ASTRONAUT_ID = "01";
+
 export const NAV_ITEMS: { id: PageId; label: string }[] = [
   { id: "dashboard", label: "Resumen de misión" },
   { id: "assistant", label: "Asistente ASTRA" },

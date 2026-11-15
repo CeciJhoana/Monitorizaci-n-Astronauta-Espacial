@@ -146,7 +146,8 @@ export function FamilyCommsModal({
                 ? "Te extrañamos mucho por aquí, pero estamos muy orgullosos de tu trabajo. ¡Un beso enorme!"
                 : "We miss you dearly here, but so proud of your mission. Sending you all our love!",
             ];
-            const seleccionada = RESPUESTAS_FAMILIA[Math.floor(Math.random() * RESPUESTAS_FAMILIA.length)];
+            const seleccionada =
+              RESPUESTAS_FAMILIA[Math.floor(Math.random() * RESPUESTAS_FAMILIA.length)];
             setMensajes((m) => [
               ...m,
               {
@@ -208,11 +209,17 @@ export function FamilyCommsModal({
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 18 }}>📡</span>
-              <strong style={{ fontFamily: "Instrument Serif, serif", fontSize: 22, fontWeight: 400 }}>
-                {language === "es" ? "Enlace de Comunicación Familiar" : "Family Communications Uplink"}
+              <strong
+                style={{ fontFamily: "Instrument Serif, serif", fontSize: 22, fontWeight: 400 }}
+              >
+                {language === "es"
+                  ? "Enlace de Comunicación Familiar"
+                  : "Family Communications Uplink"}
               </strong>
             </div>
-            <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#C4B5FD" }}>
+            <span
+              style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#C4B5FD" }}
+            >
               {infoLatency.nombre} · {infoLatency.descripcion}
             </span>
           </div>
@@ -253,8 +260,8 @@ export function FamilyCommsModal({
                 ? "✓ Latencia bidireccional baja: voz directa permitida."
                 : "✓ Low RTT latency: direct audio link supported."
               : language === "es"
-              ? "⚠️ Retardo de 28 min bidireccional: la llamada en tiempo real está inhabilitada. Usa mensaje grabado asíncrono."
-              : "⚠️ 28 min RTT delay: real-time live calls disabled. Use recorded asynchronous messages."}
+                ? "⚠️ Retardo de 28 min bidireccional: la llamada en tiempo real está inhabilitada. Usa mensaje grabado asíncrono."
+                : "⚠️ 28 min RTT delay: real-time live calls disabled. Use recorded asynchronous messages."}
           </span>
           <span
             style={{
@@ -333,8 +340,22 @@ export function FamilyCommsModal({
               }}
             >
               <span>🚀 Transmitiendo a la Red de Espacio Profundo ({progresoTransmision}%)...</span>
-              <div style={{ width: 140, height: 4, background: "#DDD6FE", borderRadius: 2, overflow: "hidden" }}>
-                <div style={{ width: `${progresoTransmision}%`, height: "100%", background: "#7C3AED" }} />
+              <div
+                style={{
+                  width: 140,
+                  height: 4,
+                  background: "#DDD6FE",
+                  borderRadius: 2,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${progresoTransmision}%`,
+                    height: "100%",
+                    background: "#7C3AED",
+                  }}
+                />
               </div>
             </div>
           )}
@@ -405,7 +426,10 @@ export function FamilyCommsModal({
             color: "#6B7280",
           }}
         >
-          ⚠️ {language === "es" ? "Simulación de enlace · No es una llamada real" : "Link simulation · Not a real telephone call"}
+          ⚠️{" "}
+          {language === "es"
+            ? "Simulación de enlace · No es una llamada real"
+            : "Link simulation · Not a real telephone call"}
         </footer>
       </div>
     </div>

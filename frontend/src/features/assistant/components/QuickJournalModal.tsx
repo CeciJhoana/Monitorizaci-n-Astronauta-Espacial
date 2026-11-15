@@ -17,10 +17,13 @@ import type { EntradaBitacoraRow } from "@/data/db/schema";
 
 export type MoodRating = "Muy bien" | "Bien" | "Regular" | "Con dificultad";
 
-export const MOOD_VALUES: Record<MoodRating, { valor: number; es: string; en: string; icon: string }> = {
+export const MOOD_VALUES: Record<
+  MoodRating,
+  { valor: number; es: string; en: string; icon: string }
+> = {
   "Muy bien": { valor: 0.6, es: "Muy bien", en: "Great", icon: "✨" },
-  "Bien": { valor: 0.35, es: "Bien", en: "Good", icon: "🙂" },
-  "Regular": { valor: 0.1, es: "Regular", en: "Fair", icon: "😐" },
+  Bien: { valor: 0.35, es: "Bien", en: "Good", icon: "🙂" },
+  Regular: { valor: 0.1, es: "Regular", en: "Fair", icon: "😐" },
   "Con dificultad": { valor: -0.4, es: "Con dificultad", en: "Struggling", icon: "🌧️" },
 };
 
@@ -58,7 +61,9 @@ export function QuickJournalModal({
       tripulante_id: tripulanteId,
       fecha: new Date().toISOString().slice(0, 10),
       estado_animo: selectedMood,
-      cuerpo: cuerpo.trim() || (language === "es" ? "Registro diario de bienestar." : "Daily wellness check-in."),
+      cuerpo:
+        cuerpo.trim() ||
+        (language === "es" ? "Registro diario de bienestar." : "Daily wellness check-in."),
       pregunta_id: null,
       es_privada: true,
       es_simulated: true,
@@ -128,10 +133,19 @@ export function QuickJournalModal({
       >
         <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div>
-            <strong style={{ fontFamily: "Instrument Serif, serif", fontSize: 24, color: "#1E1035" }}>
+            <strong
+              style={{ fontFamily: "Instrument Serif, serif", fontSize: 24, color: "#1E1035" }}
+            >
               {language === "es" ? "Registro Rápido de Bitácora" : "Quick Journal Check-in"}
             </strong>
-            <p style={{ margin: 0, fontFamily: "Instrument Sans, sans-serif", fontSize: 12, color: "#5A5668" }}>
+            <p
+              style={{
+                margin: 0,
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                color: "#5A5668",
+              }}
+            >
               {language === "es"
                 ? "¿Cómo te sientes en este momento de la misión?"
                 : "How do you feel at this moment of the mission?"}
@@ -152,7 +166,10 @@ export function QuickJournalModal({
           </button>
         </header>
 
-        <form onSubmit={handleGuardar} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <form
+          onSubmit={handleGuardar}
+          style={{ display: "flex", flexDirection: "column", gap: 16 }}
+        >
           {/* 4 Botones de Estado de Ánimo */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }}>
             {(Object.keys(MOOD_VALUES) as MoodRating[]).map((m) => {
@@ -177,10 +194,23 @@ export function QuickJournalModal({
                 >
                   <span style={{ fontSize: 18 }}>{info.icon}</span>
                   <div style={{ textAlign: "left" }}>
-                    <div style={{ fontFamily: "Instrument Sans, sans-serif", fontSize: 13, fontWeight: esActivo ? 700 : 500, color: "#1E1035" }}>
+                    <div
+                      style={{
+                        fontFamily: "Instrument Sans, sans-serif",
+                        fontSize: 13,
+                        fontWeight: esActivo ? 700 : 500,
+                        color: "#1E1035",
+                      }}
+                    >
                       {info[language]}
                     </div>
-                    <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 9, color: "#7C3AED" }}>
+                    <div
+                      style={{
+                        fontFamily: "JetBrains Mono, monospace",
+                        fontSize: 9,
+                        color: "#7C3AED",
+                      }}
+                    >
                       {info.valor > 0 ? `+${info.valor}` : info.valor}
                     </div>
                   </div>
@@ -191,7 +221,9 @@ export function QuickJournalModal({
 
           {/* Campo de notas libres */}
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <label style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#5A5668" }}>
+            <label
+              style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#5A5668" }}
+            >
               {language === "es" ? "NOTAS DEL DÍA (OPCIONAL):" : "DAILY OBSERVATIONS (OPTIONAL):"}
             </label>
             <textarea

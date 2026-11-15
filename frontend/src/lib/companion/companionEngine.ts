@@ -73,13 +73,20 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= 5.5) {
       nivel = 1;
-      motivo = lang === "es" ? `Sueño levemente reducido (${val} h)` : `Slightly reduced sleep (${val} h)`;
+      motivo =
+        lang === "es" ? `Sueño levemente reducido (${val} h)` : `Slightly reduced sleep (${val} h)`;
     } else if (val >= 4.5) {
       nivel = 2;
-      motivo = lang === "es" ? `Déficit moderado de descanso (${val} h)` : `Moderate sleep deficit (${val} h)`;
+      motivo =
+        lang === "es"
+          ? `Déficit moderado de descanso (${val} h)`
+          : `Moderate sleep deficit (${val} h)`;
     } else {
       nivel = 3;
-      motivo = lang === "es" ? `Privación severa de sueño (${val} h)` : `Severe sleep deprivation (${val} h)`;
+      motivo =
+        lang === "es"
+          ? `Privación severa de sueño (${val} h)`
+          : `Severe sleep deprivation (${val} h)`;
     }
 
     vars.sueno = {
@@ -111,13 +118,20 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= 70) {
       nivel = 1;
-      motivo = lang === "es" ? `Eficiencia de sueño al ${val}% (óptimo >= 85%)` : `Sleep efficiency at ${val}% (optimal >= 85%)`;
+      motivo =
+        lang === "es"
+          ? `Eficiencia de sueño al ${val}% (óptimo >= 85%)`
+          : `Sleep efficiency at ${val}% (optimal >= 85%)`;
     } else if (val >= 55) {
       nivel = 2;
-      motivo = lang === "es" ? `Fragmentación del descanso (${val}%)` : `Rest fragmentation (${val}%)`;
+      motivo =
+        lang === "es" ? `Fragmentación del descanso (${val}%)` : `Rest fragmentation (${val}%)`;
     } else {
       nivel = 3;
-      motivo = lang === "es" ? `Eficiencia crítica de descanso (${val}%)` : `Critical rest efficiency (${val}%)`;
+      motivo =
+        lang === "es"
+          ? `Eficiencia crítica de descanso (${val}%)`
+          : `Critical rest efficiency (${val}%)`;
     }
 
     vars.eficiencia = {
@@ -150,13 +164,22 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= -25) {
       nivel = 1;
-      motivo = lang === "es" ? `HRV ${val}% vs base (fatiga incipiente)` : `HRV ${val}% vs baseline (early fatigue)`;
+      motivo =
+        lang === "es"
+          ? `HRV ${val}% vs base (fatiga incipiente)`
+          : `HRV ${val}% vs baseline (early fatigue)`;
     } else if (val >= -40) {
       nivel = 2;
-      motivo = lang === "es" ? `Recuperación autonómica baja: HRV ${val}% vs base` : `Low autonomic recovery: HRV ${val}% vs baseline`;
+      motivo =
+        lang === "es"
+          ? `Recuperación autonómica baja: HRV ${val}% vs base`
+          : `Low autonomic recovery: HRV ${val}% vs baseline`;
     } else {
       nivel = 3;
-      motivo = lang === "es" ? `Desregulación autonómica severa: HRV ${val}% vs base` : `Severe autonomic drop: HRV ${val}% vs baseline`;
+      motivo =
+        lang === "es"
+          ? `Desregulación autonómica severa: HRV ${val}% vs base`
+          : `Severe autonomic drop: HRV ${val}% vs baseline`;
     }
 
     vars.hrv = {
@@ -188,13 +211,20 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= 30) {
       nivel = 1;
-      motivo = lang === "es" ? `Actividad física subóptima (${val} min / obj. 60 min)` : `Suboptimal exercise (${val} min / obj. 60 min)`;
+      motivo =
+        lang === "es"
+          ? `Actividad física subóptima (${val} min / obj. 60 min)`
+          : `Suboptimal exercise (${val} min / obj. 60 min)`;
     } else if (val >= 10) {
       nivel = 2;
-      motivo = lang === "es" ? `Baja actividad física (${val} min)` : `Low physical activity (${val} min)`;
+      motivo =
+        lang === "es" ? `Baja actividad física (${val} min)` : `Low physical activity (${val} min)`;
     } else {
       nivel = 3;
-      motivo = lang === "es" ? `Sedentarismo crítico (< 10 min)` : `Critical physical inactivity (< 10 min)`;
+      motivo =
+        lang === "es"
+          ? `Sedentarismo crítico (< 10 min)`
+          : `Critical physical inactivity (< 10 min)`;
     }
 
     vars.actividad = {
@@ -226,10 +256,16 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= 150) {
       nivel = 1;
-      motivo = lang === "es" ? `Luz ambiental tenue (${val} lux / óptimo >= 250)` : `Dim ambient light (${val} lux / optimal >= 250)`;
+      motivo =
+        lang === "es"
+          ? `Luz ambiental tenue (${val} lux / óptimo >= 250)`
+          : `Dim ambient light (${val} lux / optimal >= 250)`;
     } else {
       nivel = 2;
-      motivo = lang === "es" ? `Iluminación insuficiente para sincronización circadiana (${val} lux)` : `Insufficient circadian lighting (${val} lux)`;
+      motivo =
+        lang === "es"
+          ? `Iluminación insuficiente para sincronización circadiana (${val} lux)`
+          : `Insufficient circadian lighting (${val} lux)`;
     }
 
     vars.luz = {
@@ -261,13 +297,22 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= 20) {
       nivel = 1;
-      motivo = lang === "es" ? `Menor tiempo en áreas comunes (${val}%)` : `Decreased common area time (${val}%)`;
+      motivo =
+        lang === "es"
+          ? `Menor tiempo en áreas comunes (${val}%)`
+          : `Decreased common area time (${val}%)`;
     } else if (val >= 10) {
       nivel = 2;
-      motivo = lang === "es" ? `Aislamiento social moderado (${val}%)` : `Moderate social isolation (${val}%)`;
+      motivo =
+        lang === "es"
+          ? `Aislamiento social moderado (${val}%)`
+          : `Moderate social isolation (${val}%)`;
     } else {
       nivel = 3;
-      motivo = lang === "es" ? `Aislamiento social severo (${val}%)` : `Severe social withdrawal (${val}%)`;
+      motivo =
+        lang === "es"
+          ? `Aislamiento social severo (${val}%)`
+          : `Severe social withdrawal (${val}%)`;
     }
 
     vars.social = {
@@ -299,13 +344,22 @@ export function evaluateBehavior(
       nivel = 0;
     } else if (val >= -0.1) {
       nivel = 1;
-      motivo = lang === "es" ? `Ánimo neutral o neutro en bitácora (${data.animo_texto ?? val})` : `Neutral mood in journal (${data.animo_texto ?? val})`;
+      motivo =
+        lang === "es"
+          ? `Ánimo neutral o neutro en bitácora (${data.animo_texto ?? val})`
+          : `Neutral mood in journal (${data.animo_texto ?? val})`;
     } else if (val > -0.6) {
       nivel = 2;
-      motivo = lang === "es" ? `Ánimo decaído o dificultad reportada (${data.animo_texto ?? val})` : `Low mood or difficulty reported (${data.animo_texto ?? val})`;
+      motivo =
+        lang === "es"
+          ? `Ánimo decaído o dificultad reportada (${data.animo_texto ?? val})`
+          : `Low mood or difficulty reported (${data.animo_texto ?? val})`;
     } else {
       nivel = 3;
-      motivo = lang === "es" ? `Malestar anímico severo en bitácora (${data.animo_texto ?? val})` : `Severe mood distress in journal (${data.animo_texto ?? val})`;
+      motivo =
+        lang === "es"
+          ? `Malestar anímico severo en bitácora (${data.animo_texto ?? val})`
+          : `Severe mood distress in journal (${data.animo_texto ?? val})`;
     }
 
     vars.animo = {
@@ -501,8 +555,12 @@ export function evaluateBehavior(
     });
   }
 
-  const etiqueta = (rulesData.etiquetas as Record<string, { es: string; en: string }>)[String(nivelFinal)][lang];
-  const escalado = (rulesData.escalado as Record<string, { es: string; en: string }>)[String(nivelFinal)][lang];
+  const etiqueta = (rulesData.etiquetas as Record<string, { es: string; en: string }>)[
+    String(nivelFinal)
+  ][lang];
+  const escalado = (rulesData.escalado as Record<string, { es: string; en: string }>)[
+    String(nivelFinal)
+  ][lang];
 
   return {
     nivel: nivelFinal,
@@ -521,10 +579,7 @@ export function evaluateBehavior(
  * Aplica un escenario de demostración en memoria para pruebas del jurado.
  * Nunca persiste ni modifica la base de datos real.
  */
-export function aplicarEscenario(
-  dataBase: CompanionData,
-  escenario: DemoScenario,
-): CompanionData {
+export function aplicarEscenario(dataBase: CompanionData, escenario: DemoScenario): CompanionData {
   switch (escenario) {
     case "sueno_bajo":
     case "sleep_low":

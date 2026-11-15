@@ -4,12 +4,12 @@
    ============================================================ */
 
 :root {
-  --astra-cosmic: #1E1035;
-  --astra-white: #FFFFFF;
-  --astra-violet: #7C3AED;
-  --astra-lav: #C4B5FD;
-  --astra-lila: #F5F3FF;
-  --astra-plomo: #5A5668;
+  --astra-cosmic: #1e1035;
+  --astra-white: #ffffff;
+  --astra-violet: #7c3aed;
+  --astra-lav: #c4b5fd;
+  --astra-lila: #f5f3ff;
+  --astra-plomo: #5a5668;
   --astra-rule: rgba(90, 86, 104, 0.25);
   --astra-r: 14px;
   --astra-pill: 999px;
@@ -17,15 +17,15 @@
 
 /* Tipografías oficiales del brand book */
 .font-astra-serif {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: "Instrument Serif", Georgia, serif;
 }
 
 .font-astra-sans {
-  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-astra-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
 }
 
 /* Contenedor del Widget ASTRA */
@@ -56,12 +56,15 @@
   border-radius: var(--astra-pill);
   padding: 8px 18px 8px 12px;
   box-shadow: 0 8px 24px rgba(30, 16, 53, 0.25);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .astra-pill-button:hover {
@@ -115,7 +118,7 @@
 }
 
 .astra-brand h3 {
-  font-family: 'Instrument Serif', serif;
+  font-family: "Instrument Serif", serif;
   font-size: 26px;
   font-weight: 400;
   line-height: 1;
@@ -125,7 +128,7 @@
 }
 
 .astra-brand span.tagline {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 8px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -146,10 +149,12 @@
   color: var(--astra-lav);
   padding: 4px 8px;
   border-radius: var(--astra-pill);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   cursor: pointer;
-  transition: color 0.15s, background 0.15s;
+  transition:
+    color 0.15s,
+    background 0.15s;
 }
 
 .astra-btn-ghost:hover {
@@ -187,7 +192,7 @@
   display: inline-block;
   border-radius: var(--astra-pill);
   padding: 3px 10px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -210,7 +215,7 @@
 }
 
 .astra-message {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 12px;
   line-height: 1.45;
   color: var(--astra-cosmic);
@@ -221,7 +226,7 @@
   border-left: 3px solid var(--astra-violet);
   padding: 8px 10px;
   border-radius: 4px;
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 11.5px;
   line-height: 1.4;
   color: var(--astra-plomo);
@@ -254,7 +259,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -267,7 +272,7 @@
 }
 
 .astra-acute-text {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 11.5px;
   line-height: 1.35;
   color: #4c0519;
@@ -305,14 +310,14 @@
 }
 
 .astra-action-btn .btn-title {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: "Instrument Sans", sans-serif;
   font-size: 11.5px;
   font-weight: 600;
   color: var(--astra-cosmic);
 }
 
 .astra-action-btn .btn-sub {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 9px;
   color: var(--astra-plomo);
   letter-spacing: 0.03em;
@@ -323,7 +328,7 @@
   padding: 8px 14px;
   background: #ede9fe;
   border-top: 1px solid var(--astra-rule);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 8.5px;
   line-height: 1.4;
   color: var(--astra-plomo);
@@ -336,7 +341,8 @@
 }
 
 @keyframes astraPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.12;
     transform: scale(1);
     transform-origin: 44px 18px;
