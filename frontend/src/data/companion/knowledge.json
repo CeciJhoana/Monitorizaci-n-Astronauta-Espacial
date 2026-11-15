@@ -1,0 +1,266 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "descripcion": "Base de conocimiento del Asistente ASTRA con trazabilidad de fuentes oficiales NASA",
+    "disclaimer": "Prototipo conceptual · No es un dispositivo médico · Por validar con fuentes oficiales de la NASA"
+  },
+  "entradas": [
+    {
+      "id": "ejercicio-ared",
+      "categoria": "ejercicio",
+      "subcategoria": "fuerza",
+      "texto": {
+        "es": "Para mitigar la reducción de densidad mineral ósea y atrofia muscular en microgravedad, se prescribe una sesión diaria en el dispositivo ARED de 40 a 45 minutos.",
+        "en": "To counteract bone mineral density loss and muscle atrophy in microgravity, a daily 40-45 minute session on the Advanced Resistive Exercise Device (ARED) is prescribed."
+      },
+      "duracion_min": 45,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Human Research Program - Bone Countermeasures",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "ejercicio-t2-cevis",
+      "categoria": "ejercicio",
+      "subcategoria": "aerobico",
+      "texto": {
+        "es": "Sesión aeróbica de 30 minutos en cicloergómetro (CEVIS) o cinta con arnés (T2) para mantener la capacidad cardiorrespiratoria y el volumen plasmático.",
+        "en": "30-minute aerobic session on the cycle ergometer (CEVIS) or treadmill with harness (T2) to sustain cardiorespiratory capacity and plasma volume."
+      },
+      "duracion_min": 30,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Human Research Program - Cardiovascular Health",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "ejercicio-estiramientos",
+      "categoria": "ejercicio",
+      "subcategoria": "flexibilidad",
+      "texto": {
+        "es": "Estiramientos suaves de descompresión espinal durante 10 minutos para aliviar la tensión lumbar derivada de la elongación vertebral en microgravedad.",
+        "en": "Gentle 10-minute spinal decompression stretching to relieve lower back tension caused by vertebral elongation in microgravity."
+      },
+      "duracion_min": 10,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": null,
+      "validado": false
+    },
+    {
+      "id": "nutricion-horarios",
+      "categoria": "nutricion",
+      "subcategoria": "horarios",
+      "texto": {
+        "es": "La pauta estándar contempla 3 comidas equilibradas espaciadas cada 5 a 6 horas y una colación ligera antes de actividades de alta exigencia.",
+        "en": "Standard schedule provides 3 balanced meals spaced 5-6 hours apart, supplemented by a light nutrient snack before high-demand tasks."
+      },
+      "duracion_min": 20,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Space Food Systems Laboratory",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "nutricion-hidratacion",
+      "categoria": "nutricion",
+      "subcategoria": "hidratacion",
+      "texto": {
+        "es": "Consume entre 2.0 y 2.5 litros diarios de fluidos. Tras el entrenamiento, ingiere 250 ml con reposición moderada de electrolitos.",
+        "en": "Maintain 2.0 to 2.5 liters of fluid intake daily. Post-exercise, rehydrate with 250 ml of electrolyte-supplemented fluid."
+      },
+      "duracion_min": 5,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Nutritional Biochemistry Laboratory",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "nutricion-sodio",
+      "categoria": "nutricion",
+      "subcategoria": "minerales",
+      "texto": {
+        "es": "Restringe la ingesta de sodio a un máximo de 3000 mg/día para no exacerbar la redistribución cefálica de fluidos ni la presión intracraneal (SANS).",
+        "en": "Moderate sodium intake to no more than 3000 mg/day to avoid exacerbating cephalad fluid shifts and intracranial pressure (SANS)."
+      },
+      "duracion_min": null,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA HRP - Spaceflight Associated Neuro-ocular Syndrome (SANS)",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "presion-protocolo-med01",
+      "categoria": "presion",
+      "subcategoria": "medicion",
+      "texto": {
+        "es": "Protocolo MED-01: reposa sentado durante 5 minutos, coloca el manguito a la altura del corazón en el brazo izquierdo, ajusta firmemente y realiza 2 tomas con 2 minutos de separación.",
+        "en": "Protocol MED-01: rest seated for 5 minutes, align cuff with heart level on left arm, secure firmly, and take 2 readings separated by 2 minutes."
+      },
+      "duracion_min": 10,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": null,
+      "validado": false
+    },
+    {
+      "id": "presion-frecuencia",
+      "categoria": "presion",
+      "subcategoria": "seguimiento",
+      "texto": {
+        "es": "Frecuencia sugerida: registro cada 48 horas durante la ventana de adaptación inicial (primeros 14 días), pasando a control semanal en fase de crucero estable.",
+        "en": "Suggested frequency: record blood pressure every 48 hours during the initial 14-day adaptation window, then weekly during stable cruise."
+      },
+      "duracion_min": 5,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": null,
+      "validado": false
+    },
+    {
+      "id": "soledad-respiracion",
+      "categoria": "soledad",
+      "subcategoria": "regulacion",
+      "texto": {
+        "es": "Respiración 4-4-4-4 (box breathing) durante 1 minuto: inhala en 4 s, mantén 4 s, exhala en 4 s, mantén en vacío 4 s para modular el tono vagal.",
+        "en": "1-minute 4-4-4-4 box breathing: inhale 4s, hold 4s, exhale 4s, hold empty 4s to stabilize autonomic vagal tone."
+      },
+      "duracion_min": 1,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": null,
+      "validado": false
+    },
+    {
+      "id": "soledad-cupula-perspectiva",
+      "categoria": "soledad",
+      "subcategoria": "perspectiva",
+      "texto": {
+        "es": "Dedica 10 minutos a observar la Tierra o el horizonte planetario desde la cúpula para estimular el efecto perspectiva y la regulación emocional.",
+        "en": "Spend 10 minutes observing Earth or the planetary horizon from the cupola to foster the overview effect and psychological restoration."
+      },
+      "duracion_min": 10,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Behavioral Health and Performance",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "soledad-plantas-veggie",
+      "categoria": "soledad",
+      "subcategoria": "biofilia",
+      "texto": {
+        "es": "Visita y atiende las plantas del hábitat (módulo Veggie). La interacción táctil y visual con vegetación reduce marcadores de estrés por confinamiento.",
+        "en": "Tend to habitat crops in the Veggie production module. Active tactile interaction with green plants relieves confinement stress."
+      },
+      "duracion_min": 10,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Veggie Project - Behavioral Impact of Space Gardening",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "soledad-bitacora",
+      "categoria": "soledad",
+      "subcategoria": "desahogo",
+      "texto": {
+        "es": "Abre la bitácora privada y escribe cómo te sientes hoy. Externalizar las dificultades cognitivas y afectivas previene el agotamiento por aislamiento.",
+        "en": "Open your private journal and record how you feel today. Externalizing thoughts helps mitigate isolation burnout."
+      },
+      "duracion_min": 5,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": null,
+      "validado": false
+    },
+    {
+      "id": "familia-retardo-enlace",
+      "categoria": "familia",
+      "subcategoria": "comunicacion",
+      "texto": {
+        "es": "El retardo de enlace varía según tu hábitat: órbita baja terrestre < 1 s (casi instantáneo), base lunar ~1.3 s ida (2.6 s ida y vuelta), Marte entre 3 y 22 min según la conjunción planetaria.",
+        "en": "Uplink latency varies by habitat: low Earth orbit < 1s (near real-time), lunar base ~1.3s one-way, Mars between 3 and 22 min depending on orbital geometry."
+      },
+      "duracion_min": null,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Deep Space Network Latency Model",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "familia-asincrona",
+      "categoria": "familia",
+      "subcategoria": "asincrono",
+      "texto": {
+        "es": "Cuando la latencia supere los 3 segundos (Marte o corte de satélite), opta por videomensajes grabados o notas de voz asíncronas para una comunicación familiar natural.",
+        "en": "When latency exceeds 3 seconds (Mars or relay shadow), use recorded video or asynchronous voice memos for family communication."
+      },
+      "duracion_min": 15,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Behavioral Health - Asynchronous Family Comms",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "descanso-higiene-luz",
+      "categoria": "descanso",
+      "subcategoria": "circadiano",
+      "texto": {
+        "es": "Atenúa la iluminación de cabina 30 minutos antes del sueño, usa el antifaz para bloquear los 16 amaneceres orbitales y evita pantallas azules.",
+        "en": "Dim cabin lighting 30 minutes before sleep, use an eye mask to block 16 orbital sunrises, and restrict blue-light displays."
+      },
+      "duracion_min": 30,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Behavioral Health - Circadian Lighting & Sleep Hygiene",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "descanso-siesta-recuperadora",
+      "categoria": "descanso",
+      "subcategoria": "siesta",
+      "texto": {
+        "es": "Si el descanso nocturno fue inferior a 6 horas, se autoriza una siesta reparadora de 20 a 30 minutos antes de tu sesión de entrenamiento vespertino.",
+        "en": "If nighttime sleep was under 6 hours, a 20-30 minute restorative power nap is authorized prior to evening workouts."
+      },
+      "duracion_min": 30,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA Sleep and Circadian Countermeasures",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    },
+    {
+      "id": "emergencias-protocolo",
+      "categoria": "emergencias",
+      "subcategoria": "seguridad",
+      "texto": {
+        "es": "Ante despresurización, incendio o fuga tóxica: avisa de inmediato a la tripulación por el canal general y activa el protocolo HAB-01. No uses este asistente para emergencias críticas.",
+        "en": "In event of depressurization, fire, or toxic leak: immediately alert crew via emergency comms and initiate HAB-01. Do not use this companion for critical emergencies."
+      },
+      "duracion_min": null,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "NASA ISS Emergency Operations Procedures",
+        "url": "https://www.nasa.gov/hrp"
+      },
+      "validado": false
+    }
+  ]
+}
