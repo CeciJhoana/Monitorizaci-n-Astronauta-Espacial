@@ -204,3 +204,39 @@ export interface ModalRequest {
   alert?: MissionAlert;
   protocolId?: ProtocolId;
 }
+
+/* ------------------------------------------------------------------
+ * Telemetría en vivo (estación ESP32 ➜ Flask ➜ PostgreSQL)
+ * ------------------------------------------------------------------ */
+
+/** Estado del enlace con la estación de telemetría. */
+export type TelemetryStatus = "connecting" | "live" | "offline";
+
+/** Signos vitales en vivo del tripulante monitorizado (campos ausentes = null en origen). */
+export interface LiveVitals {
+  heartRate?: number;
+  oxygenSaturation?: number;
+  bodyTemperatureCelsius?: number;
+  /** Puntaje de salud (0-100) calculado por el firmware de la estación. */
+  healthScore?: number;
+}
+
+/** Lecturas ambientales en vivo de la estación. */
+export interface LiveEnvironment {
+  cabinTemperatureCelsius?: number;
+  humidityPercent?: number;
+  /** Índice de radiación UV medido por el sensor ML8511. */
+  uvIndex?: number;
+}
+
+/** Telemetría ya validada y lista para consumir por la UI. */
+export interface LiveTelemetry {
+  /** Marca de tiempo de la lectura (ISO, generada por el backend). */
+  receivedAt: string;
+  /** Identificador del detector estación (p. ej. `esp32_aht`). */
+  detector: string;
+  /** `true` si el firmware marca los signos vitales como simulados. */
+  simulatedVitals: boolean;
+  vitals: LiveVitals;
+  environment: LiveEnvironment;
+}
