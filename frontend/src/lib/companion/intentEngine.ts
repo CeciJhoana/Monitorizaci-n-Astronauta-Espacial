@@ -34,6 +34,8 @@ export interface IntentResolution {
 
 export interface CompanionResponse {
   intent: CompanionIntent;
+  confidence?: number;
+  tokensDetectados?: string[];
   text: string;
   speechText: string;
   esEmergencia: boolean;
@@ -331,7 +333,12 @@ export class CompanionSession {
     const indiceActual = this.indicesRecomendacion[intencionFinal] ?? 0;
     this.indicesRecomendacion[intencionFinal] = indiceActual + 1;
 
-    return generarRespuesta(intencionFinal, data, lang, indiceActual);
+    const resp = generarRespuesta(intencionFinal, data, lang, indiceActual);
+    return {
+      ...resp,
+      confidence: resolucion.confidence,
+      tokensDetectados: resolucion.tokensDetectados,
+    };
   }
 }
 

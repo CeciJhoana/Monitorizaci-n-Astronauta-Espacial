@@ -36,6 +36,14 @@ export function useSpeech() {
     "",
   );
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("astra.voiceUnlocked") === "true";
+    }
+    return false;
+  });
+  const [lastSpeechEvent, setLastSpeechEvent] = useState<string>("ninguno");
+  const [lastSpeechError, setLastSpeechError] = useState<string | null>(null);
 
   const decayTimerRef = useRef<number | null>(null);
   const proceduralTimerRef = useRef<number | null>(null);
@@ -108,6 +116,7 @@ export function useSpeech() {
 
       utterance.onstart = () => {
         setIsSpeaking(true);
+        setLastSpeechEvent("start");
         setOrbState("speaking");
         setOrbEnergy(0.4);
 
@@ -125,6 +134,7 @@ export function useSpeech() {
       // Modulación basada en eventos boundary
       utterance.onboundary = (event) => {
         hadBoundaryRef.current = true;
+        setLastSpeechEvent("boundary");
         if (proceduralTimerRef.current) {
           clearInterval(proceduralTimerRef.current);
         }
@@ -155,14 +165,17 @@ export function useSpeech() {
         if (decayTimerRef.current) clearInterval(decayTimerRef.current);
         if (proceduralTimerRef.current) clearInterval(proceduralTimerRef.current);
         setIsSpeaking(false);
+        setLastSpeechEvent("end");
         setOrbState("idle");
         setOrbEnergy(0);
       };
 
-      utterance.onerror = () => {
+      utterance.onerror = (ev: SpeechSynthesisErrorEvent) => {
         if (decayTimerRef.current) clearInterval(decayTimerRef.current);
         if (proceduralTimerRef.current) clearInterval(proceduralTimerRef.current);
         setIsSpeaking(false);
+        setLastSpeechEvent("error");
+        setLastSpeechError(ev.error || "error desconocido");
         setOrbState("idle");
         setOrbEnergy(0);
       };
@@ -180,6 +193,27 @@ export function useSpeech() {
     ],
   );
 
+  const unlockVoice = useCallback(() => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      try {
+        const dummy = new SpeechSynthesisUtterance("");
+        dummy.volume = 0.01;
+        window.speechSynthesis.speak(dummy);
+        setIsUnlocked(true);
+        setVoiceEnabled(true);
+        localStorage.setItem("astra.voiceUnlocked", "true");
+      } catch (err) {
+        console.warn("Error unlocking speech:", err);
+      }
+    }
+  }, [setVoiceEnabled]);
+
+  const speechState = {
+    speaking: typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.speaking : false,
+    pending: typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.pending : false,
+    paused: typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.paused : false,
+  };
+
   return {
     voices,
     selectedVoiceURI,
@@ -187,6 +221,11 @@ export function useSpeech() {
     speak,
     cancel,
     isSpeaking,
+    isUnlocked,
+    unlockVoice,
+    speechState,
+    lastSpeechEvent,
+    lastSpeechError,
     voiceEnabled,
     setVoiceEnabled,
   };

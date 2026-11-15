@@ -15,7 +15,7 @@ import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { MOCK_DB } from "@/data/db";
 import { selectCompanionData } from "@/data/companion/companionData";
 import { evaluateBehavior, aplicarEscenario, type SemaphoreLevel } from "@/lib/companion/companionEngine";
-import { CompanionSession } from "@/lib/companion/intentEngine";
+import { CompanionSession, normalizarTexto } from "@/lib/companion/intentEngine";
 import { FamilyCommsModal } from "./components/FamilyCommsModal";
 import { QuickJournalModal, type MoodRating } from "./components/QuickJournalModal";
 import { BreathingGuideModal } from "./components/BreathingGuideModal";
@@ -64,6 +64,11 @@ export function AssistantPage() {
     speak,
     cancel,
     isSpeaking,
+    isUnlocked,
+    unlockVoice,
+    speechState,
+    lastSpeechEvent,
+    lastSpeechError,
     voiceEnabled,
     setVoiceEnabled,
   } = useSpeech();
@@ -72,6 +77,25 @@ export function AssistantPage() {
   const [inputText, setInputText] = useState("");
   const [activeModal, setActiveModal] = useState<"family" | "journal" | "breathing" | null>(null);
   const sessionRef = useRef(new CompanionSession());
+
+  // Estado de diagnóstico en vivo para depuración (?dev=1)
+  const [lastDiagnostic, setLastDiagnostic] = useState<{
+    rawText: string;
+    normalizedText: string;
+    language: "es" | "en";
+    intent: string;
+    confidence: number;
+    threshold: number;
+    source: "micrófono" | "teclado" | "atajo" | "inicio";
+  }>({
+    rawText: "(esperando primera consulta)",
+    normalizedText: "-",
+    language,
+    intent: "ninguna",
+    confidence: 0,
+    threshold: 0.5,
+    source: "inicio",
+  });
 
   // Evaluación dinámica del semáforo conductual
   const rawData = useMemo(
@@ -100,7 +124,17 @@ export function AssistantPage() {
   } = useSpeechRecognition({
     language,
     onFinalTranscript: (txt) => {
+      unlockVoice();
       const resp = sessionRef.current.responder(txt, activeData, language);
+      setLastDiagnostic({
+        rawText: txt,
+        normalizedText: normalizarTexto(txt),
+        language,
+        intent: resp.intent,
+        confidence: resp.confidence ?? (resp.intent === "desconocido" ? 0 : 0.8),
+        threshold: 0.5,
+        source: "micrófono",
+      });
       if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal") {
         openModal({ type: "emergency" });
       } else if (resp.accionSugerida === "open_journal") {
@@ -189,20 +223,58 @@ export function AssistantPage() {
   ];
 
   const handleShortcutClick = (id: string) => {
+    unlockVoice();
     if (id === "familia") {
+      setLastDiagnostic({
+        rawText: "familia",
+        normalizedText: "familia",
+        language,
+        intent: "familia",
+        confidence: 1.0,
+        threshold: 0.5,
+        source: "atajo",
+      });
       setActiveModal("family");
       return;
     }
     if (id === "bitacora") {
+      setLastDiagnostic({
+        rawText: "bitacora",
+        normalizedText: "bitacora",
+        language,
+        intent: "bitacora",
+        confidence: 1.0,
+        threshold: 0.5,
+        source: "atajo",
+      });
       setActiveModal("journal");
       return;
     }
     if (id === "soledad") {
+      setLastDiagnostic({
+        rawText: "soledad",
+        normalizedText: "soledad",
+        language,
+        intent: "soledad",
+        confidence: 1.0,
+        threshold: 0.5,
+        source: "atajo",
+      });
       setActiveModal("breathing");
       return;
     }
 
     const resp = sessionRef.current.responder(id, activeData, language);
+    setLastDiagnostic({
+      rawText: id,
+      normalizedText: normalizarTexto(id),
+      language,
+      intent: resp.intent,
+      confidence: resp.confidence ?? 1.0,
+      threshold: 0.5,
+      source: "atajo",
+    });
+
     if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal" || id === "emergencia") {
       openModal({ type: "emergency" });
     } else if (resp.accionSugerida === "open_journal") {
@@ -219,8 +291,19 @@ export function AssistantPage() {
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputText.trim()) return;
+    unlockVoice();
 
     const resp = sessionRef.current.responder(inputText, activeData, language);
+    setLastDiagnostic({
+      rawText: inputText,
+      normalizedText: normalizarTexto(inputText),
+      language,
+      intent: resp.intent,
+      confidence: resp.confidence ?? (resp.intent === "desconocido" ? 0 : 0.8),
+      threshold: 0.5,
+      source: "teclado",
+    });
+
     if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal") {
       openModal({ type: "emergency" });
     } else if (resp.accionSugerida === "open_journal") {
@@ -1183,6 +1266,99 @@ export function AssistantPage() {
               </select>
             </div>
           )}
+
+          {/* DIAGNÓSTICO EN VIVO PASO 1 (?dev=1) */}
+          <div
+            style={{
+              marginTop: 10,
+              padding: 12,
+              background: "#FFFFFF",
+              borderRadius: 10,
+              border: "1px solid #C4B5FD",
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+              fontSize: 10,
+              fontFamily: "JetBrains Mono, monospace",
+              color: "#1E1035",
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontWeight: 700, color: "#7C3AED" }}>
+                🔍 DIAGNÓSTICO EN VIVO (INTÉRPRETE Y SPEECH SYNTHESIS)
+              </span>
+              <div style={{ display: "flex", gap: 6 }}>
+                <button
+                  type="button"
+                  onClick={unlockVoice}
+                  style={{
+                    background: isUnlocked ? "#ECFDF5" : "#FEF3C7",
+                    border: `1px solid ${isUnlocked ? "#10B981" : "#F59E0B"}`,
+                    color: isUnlocked ? "#065F46" : "#92400E",
+                    borderRadius: 6,
+                    padding: "2px 8px",
+                    cursor: "pointer",
+                    fontSize: 9,
+                  }}
+                >
+                  {isUnlocked ? "✓ Voz Desbloqueada" : "⚡ Pulsa para Desbloquear Voz"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    unlockVoice();
+                    speak(language === "es" ? "Hola, soy Astra" : "Hello, I am Astra");
+                  }}
+                  style={{
+                    background: "#7C3AED",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: 6,
+                    padding: "2px 8px",
+                    cursor: "pointer",
+                    fontSize: 9,
+                  }}
+                >
+                  🔊 Probar Voz
+                </button>
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: 8,
+                background: "#F9FAFB",
+                padding: 8,
+                borderRadius: 6,
+              }}
+            >
+              <div>
+                <strong>Flujo de Entrada / Intérprete:</strong>
+                <div>• Texto crudo: <span style={{ color: "#7C3AED" }}>"{lastDiagnostic.rawText}"</span></div>
+                <div>• Texto normalizado: <span style={{ color: "#5A5668" }}>"{lastDiagnostic.normalizedText}"</span></div>
+                <div>• Idioma activo: <strong>{lastDiagnostic.language.toUpperCase()}</strong></div>
+                <div>
+                  • Intención elegida: <strong style={{ color: "#047857" }}>{lastDiagnostic.intent}</strong> (confianza: {lastDiagnostic.confidence.toFixed(2)} | umbral: {lastDiagnostic.threshold.toFixed(2)})
+                </div>
+                <div>• Origen del flujo: <span style={{ textTransform: "capitalize" }}>{lastDiagnostic.source}</span></div>
+              </div>
+
+              <div>
+                <strong>Motor de Voz (SpeechSynthesis):</strong>
+                <div>• Voces disponibles: <strong>{voices.length}</strong></div>
+                <div>• Voz activa: <span>{voices.find((v) => v.voiceURI === selectedVoiceURI)?.name || "Voz del sistema"}</span></div>
+                <div>• Perfil de voz: <strong>{VOICE_PROFILES[voiceProfile].name[language]}</strong></div>
+                <div>
+                  • Estado síntesis: speaking=<strong>{String(speechState.speaking)}</strong>, pending=<strong>{String(speechState.pending)}</strong>, paused=<strong>{String(speechState.paused)}</strong>
+                </div>
+                <div>• Desbloqueo audio: <strong>{isUnlocked ? "Desbloqueado" : "Bloqueado"}</strong></div>
+                <div>• Último evento: <span style={{ color: "#2563EB" }}>{lastSpeechEvent}</span></div>
+                <div>• Error onerror: <span style={{ color: lastSpeechError ? "#DC2626" : "#059669" }}>{lastSpeechError || "ninguno"}</span></div>
+              </div>
+            </div>
+          </div>
         </section>
       )}
 
