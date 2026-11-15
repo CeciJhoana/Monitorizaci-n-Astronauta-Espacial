@@ -34,6 +34,7 @@ describe("Base de Conocimiento ASTRA (knowledge.json)", () => {
     const DOMINIOS_PERMITIDOS = [
       "https://www.nasa.gov",
       "http://www.nasa.gov",
+      "https://www.youtube.com",
     ];
 
     for (const entrada of entradas) {

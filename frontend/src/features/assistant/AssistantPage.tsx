@@ -25,6 +25,7 @@ import { CompanionSession, normalizarTexto } from "@/lib/companion/intentEngine"
 import { FamilyCommsModal } from "./components/FamilyCommsModal";
 import { QuickJournalModal, type MoodRating } from "./components/QuickJournalModal";
 import { BreathingGuideModal } from "./components/BreathingGuideModal";
+import { ExerciseGamificationModal } from "./components/ExerciseGamificationModal";
 import {
   useCompanion,
   VOICE_PROFILES,
@@ -83,7 +84,7 @@ export function AssistantPage() {
 
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
-  const [activeModal, setActiveModal] = useState<"family" | "journal" | "breathing" | null>(null);
+  const [activeModal, setActiveModal] = useState<"family" | "journal" | "breathing" | "exercise" | null>(null);
   const sessionRef = useRef(new CompanionSession());
 
   // Estado de diagnóstico en vivo para depuración (?dev=1)
@@ -183,6 +184,12 @@ export function AssistantPage() {
         openModal({ type: "emergency" });
       } else if (resp.accionSugerida === "open_journal") {
         setActiveModal("journal");
+      } else if (resp.accionSugerida === "iniciar_respiracion") {
+        setActiveModal("breathing");
+      } else if (resp.accionSugerida === "abrir_familia") {
+        setActiveModal("family");
+      } else if (resp.accionSugerida === "abrir_ejercicio" || resp.intent === "ejercicio") {
+        setActiveModal("exercise");
       }
       setSubtitles(resp.text);
       // Si el usuario habló por micrófono, responder SIEMPRE con voz
@@ -295,6 +302,22 @@ export function AssistantPage() {
       setActiveModal("journal");
       return;
     }
+    if (id === "ejercicio") {
+      const resp = sessionRef.current.responder("ejercicio", activeData, language);
+      setLastDiagnostic({
+        rawText: "ejercicio",
+        normalizedText: "ejercicio",
+        language,
+        intent: "ejercicio",
+        confidence: 1.0,
+        threshold: 0.5,
+        source: "atajo",
+      });
+      setActiveModal("exercise");
+      setSubtitles(resp.text);
+      speak(resp.speechText);
+      return;
+    }
     if (id === "soledad") {
       setLastDiagnostic({
         rawText: "soledad",
@@ -328,6 +351,8 @@ export function AssistantPage() {
       setActiveModal("breathing");
     } else if (resp.accionSugerida === "abrir_familia") {
       setActiveModal("family");
+    } else if (resp.accionSugerida === "abrir_ejercicio" || resp.intent === "ejercicio") {
+      setActiveModal("exercise");
     }
     setSubtitles(resp.text);
     speak(resp.speechText);
@@ -357,6 +382,8 @@ export function AssistantPage() {
       setActiveModal("breathing");
     } else if (resp.accionSugerida === "abrir_familia") {
       setActiveModal("family");
+    } else if (resp.accionSugerida === "abrir_ejercicio" || resp.intent === "ejercicio") {
+      setActiveModal("exercise");
     }
     setSubtitles(resp.text);
     speak(resp.speechText);
@@ -981,6 +1008,55 @@ export function AssistantPage() {
             >
               📡 {language === "es" ? "Canal familiar" : "Family comms"}
             </button>
+          </div>
+        )}
+
+        {/* Opciones interactivas contextuales para Ejercicio / Gamificación */}
+        {lastDiagnostic.intent === "ejercicio" && (
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                setActiveModal("exercise");
+              }}
+              style={{
+                background: "#7C3AED",
+                border: "1px solid #6D28D9",
+                color: "#FFFFFF",
+                borderRadius: 999,
+                padding: "5px 14px",
+                fontSize: 11,
+                fontWeight: 600,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+                boxShadow: "0 2px 6px rgba(124, 58, 237, 0.3)",
+              }}
+            >
+              🏋️‍♂️ {language === "es" ? "Abrir Gamificación y Ejercicios (Ley de Wolff)" : "Open Gamification & Exercises (Wolff's Law)"}
+            </button>
+            <a
+              href="https://www.youtube.com/watch?v=g8w1DbU6owU"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: "#FEE2E2",
+                border: "1px solid #FCA5A5",
+                color: "#DC2626",
+                borderRadius: 999,
+                padding: "5px 14px",
+                fontSize: 11,
+                fontWeight: 600,
+                fontFamily: "Instrument Sans, sans-serif",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                cursor: "pointer",
+              }}
+            >
+              ▶ {language === "es" ? "Ver Video Dr. Sanagustín (YouTube)" : "Watch Dr. Sanagustín Video (YouTube)"}
+            </a>
           </div>
         )}
 
@@ -1727,6 +1803,14 @@ export function AssistantPage() {
             setSubtitles(msgFinal);
             speak(msgFinal);
           }}
+          onClose={() => setActiveModal(null)}
+        />
+      )}
+
+      {activeModal === "exercise" && (
+        <ExerciseGamificationModal
+          language={language}
+          speak={speak}
           onClose={() => setActiveModal(null)}
         />
       )}

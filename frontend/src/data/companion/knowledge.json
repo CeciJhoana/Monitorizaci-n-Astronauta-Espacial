@@ -63,6 +63,26 @@
       "validado": false
     },
     {
+      "id": "ejercicio-wolff-gamificacion",
+      "categoria": "ejercicio",
+      "subcategoria": "fuerza-gamificacion",
+      "texto": {
+        "es": "Sistema de gamificación de contramedidas y fortalecimiento óseo basado en la Ley de Wolff: los huesos se remodelan y fortalecen bajo carga mecánica e impacto simulado. Suma puntos de salud ósea con sentadillas axiales y estiramientos de descompresión espinal.",
+        "en": "Countermeasure gamification and bone strengthening system based on Wolff's Law: bones remodel and strengthen under mechanical load and simulated impact. Earn bone health points through axial squats and spinal decompression stretching."
+      },
+      "texto_hablado": {
+        "es": "Abriendo tu centro de entrenamiento y gamificación. El ejercicio con carga estimula tus huesos según la Ley de Wolff. ¡Vamos a ganar puntos de misión!",
+        "en": "Opening your workout and gamification hub. Resistive load stimulates bone density via Wolff's Law. Let's earn mission points!"
+      },
+      "duracion_min": 15,
+      "entornos_aplicables": ["orbital", "lunar", "marte"],
+      "fuente": {
+        "nombre": "Dr. Alberto Sanagustín · Cómo los astronautas fortalecen sus huesos (Ley de Wolff)",
+        "url": "https://www.youtube.com/watch?v=g8w1DbU6owU"
+      },
+      "validado": false
+    },
+    {
       "id": "nutricion-horarios",
       "categoria": "nutricion",
       "subcategoria": "horarios",
