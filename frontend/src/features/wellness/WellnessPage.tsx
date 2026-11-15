@@ -1,3 +1,4 @@
+import { SHOW_EXTRAS } from "@/config/features";
 import { Badge, Icon } from "@/components/ui";
 import { MISSION } from "@/config/mission";
 import { MOCK_ROUTINE, getWellnessHints } from "@/data/mockData";
@@ -16,9 +17,9 @@ export function WellnessPage() {
           <Icon name="moon" size={55} />
         </span>
         <div>
-          <span className="eyebrow">EL LADO HUMANO DE LA EXPLORACIÓN</span>
-          <h2>El descanso también te lleva más lejos.</h2>
-          <p>Observa las tendencias de recuperación, movimiento y conexión de tu tripulación.</p>
+          <span className="eyebrow">RECUPERACIÓN Y DESCANSO</span>
+          <h2>Seguimiento de fatiga y sueño</h2>
+          <p>Monitoreo circadiano, actividad física y recuperación fisiológica.</p>
         </div>
         <button className="button secondary" onClick={() => navigate("journal")}>
           Mi bitácora
@@ -49,23 +50,27 @@ export function WellnessPage() {
                 </Badge>
               </div>
               <div className="habit-line">
-                <span>Recuperación HRV</span>
+                <span>
+                  Recuperación HRV <span className="astra-sim-badge">SIMULADO</span>
+                </span>
                 <strong>{hints.hrv}</strong>
               </div>
               <div className="progress-track">
                 <i style={{ width: `${member.wellnessScore - 10}%` }} />
               </div>
               <div className="habit-line">
-                <span>Ejercicio diario</span>
+                <span>Ejercicio diario (ARED/T2)</span>
                 <strong>{hints.exercise}</strong>
               </div>
               <div className="progress-track">
                 <i style={{ width: `${hints.exercisePercent}%` }} />
               </div>
-              <div className="habit-line">
-                <span>Hidratación registrada</span>
-                <strong>{hints.hydration}</strong>
-              </div>
+              {SHOW_EXTRAS && (
+                <div className="habit-line">
+                  <span>Hidratación registrada</span>
+                  <strong>{hints.hydration}</strong>
+                </div>
+              )}
               <div className="habit-line">
                 <span>Exposición a luz</span>
                 <strong>{hints.light}</strong>
@@ -98,7 +103,7 @@ export function WellnessPage() {
                 <p>{item.note}</p>
               </div>
               <Badge tone={item.done ? "green" : "purple"}>
-                {item.done ? "Completado" : "Programado"}
+                {item.done ? "Completado" : "Pendiente"}
               </Badge>
             </div>
           ))}

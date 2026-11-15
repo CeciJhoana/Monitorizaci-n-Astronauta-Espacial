@@ -186,11 +186,25 @@ const DICCIONARIO_INTENCIONES: Record<Exclude<CompanionIntent, "desconocido">, s
     "musculo",
     "muscular",
     "fuerza",
+    "huesos",
+    "densidad osea",
+    "ley de wolff",
+    "calistenia",
+    "wolff",
+    "gamificacion",
+    "puntos",
+    "xp",
+    "flexibilidad",
+    "descompresion",
+    "columna",
     "exercise",
     "workout",
     "training",
     "stretching",
     "stretch",
+    "bones",
+    "bone density",
+    "spine",
   ],
   comer: [
     "comer",
@@ -823,22 +837,26 @@ export function generarRespuesta(
       const seleccionada = candidatos[varianteIndice % candidatos.length];
       const minutos = data.actividad_min ?? 0;
 
-      const textoEs = `Llevas ${minutos} minutos de actividad hoy. ${seleccionada.texto.es} ¿Te gustaría que preparemos el cronómetro de sesión?`;
+      const textoEs = `Llevas ${minutos} minutos de actividad hoy. ${seleccionada.texto.es} Accede a tu centro de gamificación de contramedidas (Ley de Wolff) para sumar puntos y registrar estiramientos.`;
       const speechEs =
-        lang === "es"
-          ? `Llevas ${minutos} minutos de ejercicio. ${seleccionada.texto_hablado?.es ?? seleccionada.texto.es}`
-          : `You have logged ${minutos} minutes of exercise. ${seleccionada.texto_hablado?.en ?? seleccionada.texto.en}`;
+        seleccionada.texto_hablado?.es ??
+        `Abriendo tu centro de entrenamiento y gamificación. El ejercicio con carga estimula tus huesos según la Ley de Wolff. ¡Vamos a ganar puntos de misión!`;
 
-      const textoEn = `You have logged ${minutos} minutes of activity today. ${seleccionada.texto.en} Would you like me to set the workout timer?`;
-      const speechEn = `You have logged ${minutos} minutes of exercise. ${seleccionada.texto_hablado?.en ?? seleccionada.texto.en}`;
+      const textoEn = `You have logged ${minutos} minutes of activity today. ${seleccionada.texto.en} Access your countermeasures gamification hub (Wolff's Law) to earn points and log stretches.`;
+      const speechEn =
+        seleccionada.texto_hablado?.en ??
+        `Opening your workout and gamification hub. Resistive load stimulates bone density via Wolff's Law. Let's earn mission points!`;
 
       return {
         intent: "ejercicio",
         text: lang === "es" ? textoEs : textoEn,
         speechText: lang === "es" ? speechEs : speechEn,
         esEmergencia: false,
-        fuenteNombre: seleccionada.fuente?.nombre ?? null,
-        fuenteUrl: seleccionada.fuente?.url ?? null,
+        accionSugerida: "abrir_ejercicio",
+        fuenteNombre:
+          seleccionada.fuente?.nombre ??
+          "Dr. Alberto Sanagustín · Cómo los astronautas fortalecen sus huesos (Ley de Wolff)",
+        fuenteUrl: seleccionada.fuente?.url ?? "https://www.youtube.com/watch?v=g8w1DbU6owU",
       };
     }
 

@@ -1,3 +1,4 @@
+import { SHOW_EXTRAS } from "@/config/features";
 import { TrendPanel } from "@/components/panels";
 import { Badge, EmptyState, Icon, Panel, PanelTitle, Sparkline } from "@/components/ui";
 import { computeCrewMetrics } from "@/lib/metrics";
@@ -5,7 +6,7 @@ import { useMissionData } from "@/store/MissionDataContext";
 import { useUi } from "@/store/UiContext";
 import { AstronautModel } from "./AstronautModel";
 
-/** Tarjetas resumen con los promedios simulados de la tripulación. */
+/** Tarjetas resumen de los 5 signos vitales del reto. */
 function VitalSummaryCards() {
   const { crew } = useMissionData();
   const metrics = computeCrewMetrics(crew);
@@ -17,27 +18,47 @@ function VitalSummaryCards() {
       value: String(metrics.averageHeartRate),
       unit: "lpm",
       icon: "pulse" as const,
+      simulado: false,
     },
-    { name: "Saturación de oxígeno", value: "98", unit: "%", icon: "wind" as const },
+    {
+      name: "Saturación de oxígeno",
+      value: String(reference.oxygenSaturation),
+      unit: "%",
+      icon: "wind" as const,
+      simulado: false,
+    },
     {
       name: "Temperatura corporal",
       value: reference.temperatureCelsius.toFixed(1),
       unit: "°C",
       icon: "temp" as const,
+      simulado: false,
     },
     {
       name: "Presión arterial",
       value: reference.bloodPressure,
       unit: "mmHg",
       icon: "heart" as const,
+      simulado: true,
     },
     {
+      name: "Glucosa en ayunas",
+      value: "85",
+      unit: "mg/dL",
+      icon: "activity" as const,
+      simulado: true,
+    },
+  ];
+
+  if (SHOW_EXTRAS) {
+    cards.push({
       name: "Frecuencia respiratoria",
       value: String(reference.respiratoryRate),
       unit: "rpm",
       icon: "activity" as const,
-    },
-  ];
+      simulado: true,
+    });
+  }
 
   return (
     <div className="vitals-cards">
@@ -51,8 +72,12 @@ function VitalSummaryCards() {
             {card.value}
             <small>{card.unit}</small>
           </strong>
-          <Sparkline variant={index} />
-          <Badge>Promedio simulado</Badge>
+          <Sparkline variant={index % 4} />
+          {card.simulado ? (
+            <span className="astra-sim-badge">SIMULADO</span>
+          ) : (
+            <Badge tone="green">Nominal</Badge>
+          )}
         </div>
       ))}
     </div>
@@ -69,7 +94,7 @@ function SessionMeasurements() {
 
   return (
     <Panel className="readings-panel">
-      <PanelTitle title="Mediciones de esta sesión">
+      <PanelTitle title="Mediciones manuales de la sesión">
         <button className="text-link" onClick={() => openModal({ type: "measurement" })}>
           Nueva medición
           <Icon name="plus" size={16} />
@@ -99,22 +124,24 @@ function SessionMeasurements() {
           </table>
         </div>
       ) : (
-        <EmptyState icon="pulse" title="Listos para la siguiente lectura">
-          Registra una medición manual. Los registros se conservan en este dispositivo.
+        <EmptyState title="Sin mediciones adicionales">
+          Las lecturas manuales que ingreses en cabina aparecerán en este registro local.
         </EmptyState>
       )}
     </Panel>
   );
 }
 
-/** Página de signos vitales: modelo corporal, promedios y registros. */
+/** Página de signos vitales: modelo corporal, tarjetas de vitales y registro. */
 export function VitalsPage() {
   return (
     <>
-      <AstronautModel />
       <VitalSummaryCards />
-      <TrendPanel />
-      <SessionMeasurements />
+      <AstronautModel />
+      <div className="vitals-bottom-grid">
+        <TrendPanel />
+        <SessionMeasurements />
+      </div>
     </>
   );
 }

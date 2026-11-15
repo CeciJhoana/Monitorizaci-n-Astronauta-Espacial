@@ -1,0 +1,7562 @@
+{
+  "_meta": {
+    "fuente": "NASA RR-1 · ISS vs Ground (histórico)",
+    "origen": "Experimento Rodent Research 1 (NASA Life Sciences Data Archive)",
+    "procedencia": "Dataset EDA histórico NASA (origen por confirmar)",
+    "nota": "Experimento con roedores: sus datos de ambiente son contexto de cabina, NO salud humana.",
+    "regla_co2": "Tendencia de revisión, no umbral clínico validado.",
+    "ventana_horas": 48,
+    "pico_co2_iss": {
+      "timestamp": "2014-10-07T15:31:00Z",
+      "co2": 4667,
+      "temp": 22.8,
+      "hum": 50
+    },
+    "unidades": {
+      "temperatura_c": "grados Celsius (°C)",
+      "humedad_pct": "porcentaje de humedad relativa (%)",
+      "co2_ppm": "partes por millón de dióxido de carbono (ppm)"
+    }
+  },
+  "estadisticas_globales": {
+    "iss": {
+      "total_lecturas": 12087,
+      "co2_ppm": {
+        "min": 1862,
+        "max": 4667,
+        "media": 3197.3
+      },
+      "temperatura_c": {
+        "min": 18.5,
+        "max": 26.8,
+        "media": 22.8
+      },
+      "humedad_pct": {
+        "min": 31,
+        "max": 76,
+        "media": 44
+      }
+    },
+    "ground": {
+      "total_lecturas": 12087,
+      "co2_ppm": {
+        "min": 438,
+        "max": 4690,
+        "media": 2853.7
+      },
+      "temperatura_c": {
+        "min": 18.3,
+        "max": 27.1,
+        "media": 22.8
+      },
+      "humedad_pct": {
+        "min": 32,
+        "max": 75,
+        "media": 44.1
+      }
+    }
+  },
+  "ventana_48h": [
+    {
+      "timestamp": "2014-10-06T15:31:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4116
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T15:36:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 53,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T15:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 55,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 53,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T15:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 56,
+        "co2_ppm": 4162
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 53,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T15:51:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 58,
+        "co2_ppm": 4144
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 55,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-06T15:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 58,
+        "co2_ppm": 4334
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 55,
+        "co2_ppm": 4346
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 58,
+        "co2_ppm": 4252
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 56,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:06:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 57,
+        "co2_ppm": 4104
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 56,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:11:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 56,
+        "co2_ppm": 4132
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 56,
+        "co2_ppm": 4190
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:16:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 55,
+        "co2_ppm": 4270
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4263
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:21:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 54,
+        "co2_ppm": 4330
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4346
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:26:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 53,
+        "co2_ppm": 4300
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4305
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:31:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 53,
+        "co2_ppm": 4144
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:36:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 52,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 56,
+        "co2_ppm": 4326
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:41:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 52,
+        "co2_ppm": 4370
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 56,
+        "co2_ppm": 4430
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:46:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 52,
+        "co2_ppm": 4442
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 56,
+        "co2_ppm": 4482
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:51:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 51,
+        "co2_ppm": 4504
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4462
+      }
+    },
+    {
+      "timestamp": "2014-10-06T16:56:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 51,
+        "co2_ppm": 4418
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4431
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:01:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 51,
+        "co2_ppm": 4418
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 55,
+        "co2_ppm": 4284
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:06:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 50,
+        "co2_ppm": 4252
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:11:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 50,
+        "co2_ppm": 4160
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:16:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 50,
+        "co2_ppm": 4182
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:21:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 50,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:26:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 50,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:31:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 50,
+        "co2_ppm": 4180
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:36:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 50,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:41:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 50,
+        "co2_ppm": 4176
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:46:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 51,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 53,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:51:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 53,
+        "co2_ppm": 4108
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 53,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-06T17:56:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 54,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:01:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 54,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 53,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:06:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 55,
+        "co2_ppm": 4180
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 53,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:11:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 56,
+        "co2_ppm": 4110
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 53,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 57,
+        "co2_ppm": 4180
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 53,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 58,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 53,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 55,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 53,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 55,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 54,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 55,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 53,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:41:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 53,
+        "co2_ppm": 4148
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 53,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 52,
+        "co2_ppm": 4168
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 53,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:51:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T18:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 50,
+        "co2_ppm": 4166
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:01:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4156
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:06:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4132
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4160
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:21:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4168
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:26:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4128
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 50,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:36:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 52,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:41:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 54,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:46:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 55,
+        "co2_ppm": 4116
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:51:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 55,
+        "co2_ppm": 4138
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T19:56:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 56,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:01:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 56,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 55,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4172
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4172
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 52,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 49,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:26:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 48,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:31:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 51,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:36:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 51,
+        "co2_ppm": 4148
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:41:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 54,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:46:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4176
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 57,
+        "co2_ppm": 4170
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4172
+      }
+    },
+    {
+      "timestamp": "2014-10-06T20:56:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4264
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4266
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 50,
+        "co2_ppm": 4204
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4172
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:06:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 53,
+        "co2_ppm": 4160
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 52,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 53,
+        "co2_ppm": 4150
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 49,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:26:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 51,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 54,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 52,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:36:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 52,
+        "co2_ppm": 4176
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4150
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 51,
+        "co2_ppm": 4174
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 50,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4154
+      }
+    },
+    {
+      "timestamp": "2014-10-06T21:56:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 55,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:01:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 49,
+        "co2_ppm": 4118
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:06:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4182
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:11:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 52,
+        "co2_ppm": 4132
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:16:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 52,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 51,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:21:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 54,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 51,
+        "co2_ppm": 4165
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:26:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 49,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 51,
+        "co2_ppm": 4165
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4150
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 51,
+        "co2_ppm": 4165
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 57,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 51,
+        "co2_ppm": 4134
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 48,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 50,
+        "co2_ppm": 4166
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:46:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 50,
+        "co2_ppm": 4116
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 50,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:51:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 48,
+        "co2_ppm": 4162
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4167
+      }
+    },
+    {
+      "timestamp": "2014-10-06T22:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 47,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4167
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 51,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4167
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:06:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4144
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4147
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 50,
+        "co2_ppm": 4116
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4157
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:16:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4168
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:21:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 53,
+        "co2_ppm": 4190
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4157
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:26:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 46,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4168
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:31:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 47,
+        "co2_ppm": 4157
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:36:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4157
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:41:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 47,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4157
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:46:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4168
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:51:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4168
+      }
+    },
+    {
+      "timestamp": "2014-10-06T23:56:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 50,
+        "co2_ppm": 4162
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4147
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:01:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 49,
+        "co2_ppm": 4138
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4158
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:06:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 44,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4169
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4158
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:16:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4169
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:21:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:26:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4160
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:31:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 4092
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:36:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:41:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 48,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:46:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 46,
+        "co2_ppm": 4156
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-07T00:56:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 44,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:01:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:06:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4169
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:16:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 4100
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:21:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4169
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:26:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 49,
+        "co2_ppm": 4144
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:31:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 45,
+        "co2_ppm": 4196
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:36:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 4192
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4170
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 4168
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:51:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4156
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T01:56:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 42,
+        "co2_ppm": 4162
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:06:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 49,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:11:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 45,
+        "co2_ppm": 4150
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:16:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4171
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:21:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 48,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:26:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4140
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:31:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 4128
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4156
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:46:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 4148
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:51:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T02:56:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4168
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:01:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:06:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4140
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:16:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 42,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:21:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4132
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:31:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 49,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4172
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:36:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 42,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4162
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4162
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4162
+      }
+    },
+    {
+      "timestamp": "2014-10-07T03:56:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 4182
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4141
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:01:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 43,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4122
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4141
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:11:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 47,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4130
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 4102
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4141
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:21:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 43,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4141
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:26:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 45,
+        "co2_ppm": 4176
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:31:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4141
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:36:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 43,
+        "co2_ppm": 4104
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:41:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4141
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:46:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T04:56:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:06:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 44,
+        "co2_ppm": 4116
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4101
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:11:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 47,
+        "co2_ppm": 4090
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4101
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 4096
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4122
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:31:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 4144
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 4090
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 46,
+        "co2_ppm": 4106
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:46:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:51:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 41,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T05:56:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 46,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 4128
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 4082
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4090
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:11:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 3974
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4007
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 4036
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4017
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 4014
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4017
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:26:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 4046
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4039
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:31:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3982
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3997
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3992
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3976
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:41:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 43,
+        "co2_ppm": 4020
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4018
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4110
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4123
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:51:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 47,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4112
+      }
+    },
+    {
+      "timestamp": "2014-10-07T06:56:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4088
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4038
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:01:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 41,
+        "co2_ppm": 3980
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4028
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:06:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 44,
+        "co2_ppm": 4008
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 3892
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:11:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 3876
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 3881
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:16:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 50,
+        "co2_ppm": 3888
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 3902
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:21:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3918
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:26:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 42,
+        "co2_ppm": 3864
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:31:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 43,
+        "co2_ppm": 3870
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3839
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:36:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3692
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 44,
+        "co2_ppm": 3682
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:41:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 3820
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 44,
+        "co2_ppm": 3881
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 3884
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:51:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 43,
+        "co2_ppm": 3886
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T07:56:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 43,
+        "co2_ppm": 3900
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3892
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:01:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 45,
+        "co2_ppm": 3874
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 44,
+        "co2_ppm": 3861
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:06:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 49,
+        "co2_ppm": 3736
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3662
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 3674
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 3672
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:16:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 43,
+        "co2_ppm": 3736
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3850
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:21:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 42,
+        "co2_ppm": 3874
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 3880
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:31:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 47,
+        "co2_ppm": 3882
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3881
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:36:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 49,
+        "co2_ppm": 3826
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:41:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3872
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:46:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 3880
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3880
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:51:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 43,
+        "co2_ppm": 3912
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 3891
+      }
+    },
+    {
+      "timestamp": "2014-10-07T08:56:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 3892
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 3901
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:01:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 3906
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 3912
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 3910
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 3943
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:11:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 3976
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 3985
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:16:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 43,
+        "co2_ppm": 3970
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 4016
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 3994
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4026
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:26:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 50,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 47,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:31:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 53,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4534
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4435
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:41:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 45,
+        "co2_ppm": 4318
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:46:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:51:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T09:56:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 52,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:01:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 51,
+        "co2_ppm": 4180
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4163
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:06:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 47,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:11:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 45,
+        "co2_ppm": 4162
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:16:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 45,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:21:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:26:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 51,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:31:00Z",
+      "ground": {
+        "temperatura_c": 23.4,
+        "humedad_pct": 52,
+        "co2_ppm": 4084
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4068
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:36:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 47,
+        "co2_ppm": 4046
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4079
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:41:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 4064
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4079
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:46:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 46,
+        "co2_ppm": 4042
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 49,
+        "co2_ppm": 4111
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:51:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 46,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 48,
+        "co2_ppm": 4152
+      }
+    },
+    {
+      "timestamp": "2014-10-07T10:56:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4052
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4027
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:01:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 53,
+        "co2_ppm": 3980
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 50,
+        "co2_ppm": 4017
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:06:00Z",
+      "ground": {
+        "temperatura_c": 23.3,
+        "humedad_pct": 54,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 50,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 4132
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:16:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4144
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4143
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4143
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4108
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:31:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 52,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4164
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:36:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4143
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:41:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:51:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4096
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T11:56:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4114
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:16:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4182
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4174
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4162
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4332
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:26:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4434
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4447
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:31:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4428
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4469
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:36:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4488
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4510
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:41:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 53,
+        "co2_ppm": 4526
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4657
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:46:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 47,
+        "co2_ppm": 4592
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4490
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4440
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4427
+      }
+    },
+    {
+      "timestamp": "2014-10-07T12:56:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4358
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4395
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 50,
+        "co2_ppm": 4390
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4406
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4406
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4395
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:11:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 45,
+        "co2_ppm": 4386
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4385
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4354
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4333
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 4362
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4385
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 50,
+        "co2_ppm": 4308
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4385
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:31:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4374
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4395
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:36:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 44,
+        "co2_ppm": 4376
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4395
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4384
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4395
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 47,
+        "co2_ppm": 4358
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4395
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4342
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4343
+      }
+    },
+    {
+      "timestamp": "2014-10-07T13:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4324
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4364
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 47,
+        "co2_ppm": 4350
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4365
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:06:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 50,
+        "co2_ppm": 4394
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4385
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:11:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4394
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4396
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:16:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4386
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4416
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:21:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4420
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4416
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4448
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4458
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:31:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4496
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 51,
+        "co2_ppm": 4521
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 54,
+        "co2_ppm": 4650
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4656
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 55,
+        "co2_ppm": 4608
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4656
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:46:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 55,
+        "co2_ppm": 4686
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 51,
+        "co2_ppm": 4666
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:51:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 55,
+        "co2_ppm": 4652
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 51,
+        "co2_ppm": 4656
+      }
+    },
+    {
+      "timestamp": "2014-10-07T14:56:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 51,
+        "co2_ppm": 4644
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4666
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:01:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4646
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4635
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4530
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4552
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:11:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4518
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4531
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:16:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 50,
+        "co2_ppm": 4520
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4531
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 52,
+        "co2_ppm": 4498
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4531
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:26:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 55,
+        "co2_ppm": 4520
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4531
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:31:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4690
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4667
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:36:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4640
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 51,
+        "co2_ppm": 4646
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4620
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 51,
+        "co2_ppm": 4656
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4672
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4645
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 52,
+        "co2_ppm": 4644
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4656
+      }
+    },
+    {
+      "timestamp": "2014-10-07T15:56:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 51,
+        "co2_ppm": 4634
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4656
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4546
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4509
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4548
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4478
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:11:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 46,
+        "co2_ppm": 4520
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 49,
+        "co2_ppm": 4509
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:16:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 4480
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4509
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:21:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 50,
+        "co2_ppm": 4492
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4457
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:26:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 52,
+        "co2_ppm": 4450
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4488
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:31:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 46,
+        "co2_ppm": 4474
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4426
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4348
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4384
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:41:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 45,
+        "co2_ppm": 4254
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4248
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:46:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4344
+      },
+      "iss": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4394
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:51:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 51,
+        "co2_ppm": 4470
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4446
+      }
+    },
+    {
+      "timestamp": "2014-10-07T16:56:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 51,
+        "co2_ppm": 4518
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4478
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:01:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4458
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 48,
+        "co2_ppm": 4499
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:06:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4462
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4416
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:11:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4450
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4448
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4394
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4447
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:21:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 51,
+        "co2_ppm": 4430
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4468
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:26:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 50,
+        "co2_ppm": 4412
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4426
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:31:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 46,
+        "co2_ppm": 4376
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4384
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4332
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 4269
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:41:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4302
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 50,
+        "co2_ppm": 4405
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:46:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 49,
+        "co2_ppm": 4438
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 4457
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:51:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4430
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 4467
+      }
+    },
+    {
+      "timestamp": "2014-10-07T17:56:00Z",
+      "ground": {
+        "temperatura_c": 23.2,
+        "humedad_pct": 53,
+        "co2_ppm": 4454
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 4488
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:01:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 52,
+        "co2_ppm": 4460
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 49,
+        "co2_ppm": 4458
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:06:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4390
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4416
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 4468
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4437
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4484
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 49,
+        "co2_ppm": 4448
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:21:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 51,
+        "co2_ppm": 4462
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4469
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 53,
+        "co2_ppm": 4482
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 49,
+        "co2_ppm": 4490
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:31:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 49,
+        "co2_ppm": 4454
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4470
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:36:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 45,
+        "co2_ppm": 4402
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4417
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4392
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 48,
+        "co2_ppm": 4397
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:46:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 51,
+        "co2_ppm": 4406
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4417
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:51:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 52,
+        "co2_ppm": 4422
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4480
+      }
+    },
+    {
+      "timestamp": "2014-10-07T18:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 49,
+        "co2_ppm": 4442
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4480
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:01:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4422
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4470
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4472
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4438
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 4448
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4470
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 51,
+        "co2_ppm": 4420
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4459
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:21:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 51,
+        "co2_ppm": 4474
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4470
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:26:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4432
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4439
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:31:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 4428
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 48,
+        "co2_ppm": 4418
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:36:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 46,
+        "co2_ppm": 4344
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4167
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:41:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:46:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 50,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4230
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4292
+      }
+    },
+    {
+      "timestamp": "2014-10-07T19:56:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4370
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4366
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:01:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4338
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4313
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4164
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:11:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 50,
+        "co2_ppm": 4276
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4303
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4244
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4261
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4254
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4198
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:26:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 45,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4167
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:31:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 48,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:36:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 50,
+        "co2_ppm": 4170
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:41:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:46:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 4148
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4156
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4070
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      }
+    },
+    {
+      "timestamp": "2014-10-07T20:56:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:01:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4134
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:06:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 48,
+        "co2_ppm": 4138
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 4098
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4147
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:21:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 47,
+        "co2_ppm": 4128
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4157
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:26:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 49,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4158
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:31:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 4180
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:46:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:51:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 49,
+        "co2_ppm": 4118
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T21:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4192
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:01:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 42,
+        "co2_ppm": 4108
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:11:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4138
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 48,
+        "co2_ppm": 4100
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:21:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 4148
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4159
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4174
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:31:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 43,
+        "co2_ppm": 4150
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 44,
+        "co2_ppm": 4136
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4149
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 47,
+        "co2_ppm": 4118
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4154
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4160
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:51:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 43,
+        "co2_ppm": 4126
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T22:56:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 47,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4161
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 47,
+        "co2_ppm": 4150
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4150
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:11:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 50,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:16:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:21:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 4142
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:26:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4148
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 4146
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:41:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 4151
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:46:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 44,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4142
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:51:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 42,
+        "co2_ppm": 4152
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-07T23:56:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4153
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 49,
+        "co2_ppm": 4124
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4132
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:06:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 4102
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4133
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:11:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 41,
+        "co2_ppm": 4120
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4133
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 4158
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 44,
+        "co2_ppm": 4108
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:26:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 48,
+        "co2_ppm": 4130
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4155
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:31:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 4140
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4060
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:36:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 41,
+        "co2_ppm": 3962
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 4008
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 42,
+        "co2_ppm": 3932
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3967
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:46:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 3958
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3988
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 49,
+        "co2_ppm": 3970
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3998
+      }
+    },
+    {
+      "timestamp": "2014-10-08T00:56:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 3974
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3998
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:01:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 41,
+        "co2_ppm": 3948
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3925
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:06:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 42,
+        "co2_ppm": 3868
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3893
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 3898
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3904
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 3914
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3904
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:21:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 3892
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 44,
+        "co2_ppm": 3904
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:26:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 42,
+        "co2_ppm": 3898
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3914
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 46,
+        "co2_ppm": 3870
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3894
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:36:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 3826
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3736
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 41,
+        "co2_ppm": 3670
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3663
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 3632
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3705
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:51:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 3792
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3821
+      }
+    },
+    {
+      "timestamp": "2014-10-08T01:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3834
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3874
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:01:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 40,
+        "co2_ppm": 3830
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3706
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 3686
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3653
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:11:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 46,
+        "co2_ppm": 3652
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3654
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:16:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 39,
+        "co2_ppm": 3696
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3696
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:21:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3652
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3727
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 47,
+        "co2_ppm": 3768
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3706
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:31:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 3598
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3654
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3648
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3654
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 3670
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 3665
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:46:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 41,
+        "co2_ppm": 3648
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3665
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3624
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3644
+      }
+    },
+    {
+      "timestamp": "2014-10-08T02:56:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3614
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3644
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 3598
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3644
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 3644
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 3655
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 39,
+        "co2_ppm": 3620
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3645
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3636
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3645
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 45,
+        "co2_ppm": 3616
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3656
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:26:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 3646
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3656
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:31:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 3648
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3645
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:36:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 3632
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3645
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:41:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 38,
+        "co2_ppm": 3574
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3603
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:46:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 40,
+        "co2_ppm": 3596
+      },
+      "iss": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 41,
+        "co2_ppm": 3624
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:51:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 45,
+        "co2_ppm": 3616
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3645
+      }
+    },
+    {
+      "timestamp": "2014-10-08T03:56:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3642
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3645
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 3664
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3603
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:06:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 45,
+        "co2_ppm": 3504
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3529
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 39,
+        "co2_ppm": 3528
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3529
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3568
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3551
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:21:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 43,
+        "co2_ppm": 3576
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 42,
+        "co2_ppm": 3572
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3604
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3604
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 41,
+        "co2_ppm": 3556
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3520
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:36:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3514
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3520
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 39,
+        "co2_ppm": 3484
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3499
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:46:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 3482
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3510
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3510
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3499
+      }
+    },
+    {
+      "timestamp": "2014-10-08T04:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 39,
+        "co2_ppm": 3496
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3510
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:01:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 3526
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3521
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:06:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 46,
+        "co2_ppm": 3496
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3500
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3464
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3521
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:16:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 43,
+        "co2_ppm": 3480
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 3521
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:21:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3508
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3510
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3508
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3510
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:31:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 38,
+        "co2_ppm": 3518
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3510
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:37:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3352
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3384
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 42,
+        "co2_ppm": 3348
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3374
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:46:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 40,
+        "co2_ppm": 3364
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3374
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3348
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3384
+      }
+    },
+    {
+      "timestamp": "2014-10-08T05:56:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 3380
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3384
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:01:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 40,
+        "co2_ppm": 3376
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3384
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:06:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 39,
+        "co2_ppm": 3370
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3363
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:11:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 44,
+        "co2_ppm": 3352
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3374
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:16:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3346
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3374
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:21:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 3340
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3395
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:26:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 38,
+        "co2_ppm": 3386
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3384
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:31:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 39,
+        "co2_ppm": 3348
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3311
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:36:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 41,
+        "co2_ppm": 3230
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 3227
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 40,
+        "co2_ppm": 3170
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 3185
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:46:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 39,
+        "co2_ppm": 3192
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 3195
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 43,
+        "co2_ppm": 3316
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 3332
+      }
+    },
+    {
+      "timestamp": "2014-10-08T06:56:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 39,
+        "co2_ppm": 3370
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3374
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:01:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 41,
+        "co2_ppm": 3354
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3364
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 3386
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 42,
+        "co2_ppm": 3374
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:11:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 43,
+        "co2_ppm": 3336
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 3322
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 38,
+        "co2_ppm": 3226
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3280
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3214
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 3207
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 37,
+        "co2_ppm": 3206
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3217
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:31:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3176
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3207
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:36:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 44,
+        "co2_ppm": 3110
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:41:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3110
+      },
+      "iss": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:46:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3130
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 45,
+        "co2_ppm": 3148
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T07:56:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 38,
+        "co2_ppm": 3126
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:01:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 38,
+        "co2_ppm": 3132
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3112
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:06:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 3020
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3028
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:11:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 38,
+        "co2_ppm": 2982
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3018
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 38,
+        "co2_ppm": 3020
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3018
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:21:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 43,
+        "co2_ppm": 3014
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3018
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:26:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 39,
+        "co2_ppm": 2972
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 3018
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:31:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 38,
+        "co2_ppm": 2996
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:36:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 40,
+        "co2_ppm": 2876
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2880
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:41:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 40,
+        "co2_ppm": 2910
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2859
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:46:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 39,
+        "co2_ppm": 2830
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2838
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:51:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 38,
+        "co2_ppm": 2874
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2870
+      }
+    },
+    {
+      "timestamp": "2014-10-08T08:56:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 2888
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2870
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:01:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 39,
+        "co2_ppm": 2846
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2880
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:06:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 44,
+        "co2_ppm": 2836
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2859
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:11:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 40,
+        "co2_ppm": 2868
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 2870
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:16:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 38,
+        "co2_ppm": 2880
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 40,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:21:00Z",
+      "ground": {
+        "temperatura_c": 22.7,
+        "humedad_pct": 42,
+        "co2_ppm": 2832
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 40,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:26:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 37,
+        "co2_ppm": 2860
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 40,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:31:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 39,
+        "co2_ppm": 2884
+      },
+      "iss": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 40,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:36:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 45,
+        "co2_ppm": 2876
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 2765
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:41:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 42,
+        "co2_ppm": 2854
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 2871
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:46:00Z",
+      "ground": {
+        "temperatura_c": 23.1,
+        "humedad_pct": 44,
+        "co2_ppm": 2876
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:51:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 39,
+        "co2_ppm": 2834
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T09:56:00Z",
+      "ground": {
+        "temperatura_c": 22.9,
+        "humedad_pct": 42,
+        "co2_ppm": 2880
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:01:00Z",
+      "ground": {
+        "temperatura_c": 23,
+        "humedad_pct": 44,
+        "co2_ppm": 2896
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 42,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:06:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 39,
+        "co2_ppm": 2854
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 41,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:11:00Z",
+      "ground": {
+        "temperatura_c": 22.5,
+        "humedad_pct": 40,
+        "co2_ppm": 2866
+      },
+      "iss": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 41,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:16:00Z",
+      "ground": {
+        "temperatura_c": 22.8,
+        "humedad_pct": 46,
+        "co2_ppm": 2884
+      },
+      "iss": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 41,
+        "co2_ppm": 2933
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:21:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 38,
+        "co2_ppm": 2934
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 41,
+        "co2_ppm": 2902
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:26:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 40,
+        "co2_ppm": 2874
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:31:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 46,
+        "co2_ppm": 2892
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 41,
+        "co2_ppm": 2892
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:36:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 38,
+        "co2_ppm": 2864
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 2828
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:41:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 39,
+        "co2_ppm": 2808
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 41,
+        "co2_ppm": 2807
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:46:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 2868
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 2870
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:51:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2894
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2849
+      }
+    },
+    {
+      "timestamp": "2014-10-08T10:56:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 46,
+        "co2_ppm": 2842
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2850
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:01:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 40,
+        "co2_ppm": 2826
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2860
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:06:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 2838
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2860
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:11:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 46,
+        "co2_ppm": 2850
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2860
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:16:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 39,
+        "co2_ppm": 2842
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:20:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 43,
+        "co2_ppm": 2912
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:25:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 41,
+        "co2_ppm": 2850
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 2880
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:30:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 46,
+        "co2_ppm": 2940
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2923
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:35:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 41,
+        "co2_ppm": 2882
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:40:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 40,
+        "co2_ppm": 2876
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2870
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:45:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 2870
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:50:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 2876
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2891
+      }
+    },
+    {
+      "timestamp": "2014-10-08T11:55:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 46,
+        "co2_ppm": 2860
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2923
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:00:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 40,
+        "co2_ppm": 2912
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:05:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 40,
+        "co2_ppm": 2906
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2902
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:10:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 44,
+        "co2_ppm": 2870
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2913
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:15:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 42,
+        "co2_ppm": 2898
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2924
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:20:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 41,
+        "co2_ppm": 2878
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 42,
+        "co2_ppm": 2955
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:25:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 46,
+        "co2_ppm": 2904
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2955
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:30:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 41,
+        "co2_ppm": 2920
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 42,
+        "co2_ppm": 2934
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:35:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 41,
+        "co2_ppm": 2944
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2924
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:40:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 48,
+        "co2_ppm": 2466
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2924
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:45:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 41,
+        "co2_ppm": 3260
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2924
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:50:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 41,
+        "co2_ppm": 3114
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2924
+      }
+    },
+    {
+      "timestamp": "2014-10-08T12:55:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 40,
+        "co2_ppm": 3014
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2924
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:00:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 43,
+        "co2_ppm": 3224
+      },
+      "iss": {
+        "temperatura_c": 22,
+        "humedad_pct": 46,
+        "co2_ppm": 3134
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:05:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 45,
+        "co2_ppm": 3114
+      },
+      "iss": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 45,
+        "co2_ppm": 3007
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:10:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 43,
+        "co2_ppm": 3024
+      },
+      "iss": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 44,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:15:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 48,
+        "co2_ppm": 2910
+      },
+      "iss": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 44,
+        "co2_ppm": 2892
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:20:00Z",
+      "ground": {
+        "temperatura_c": 21.7,
+        "humedad_pct": 42,
+        "co2_ppm": 2878
+      },
+      "iss": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 44,
+        "co2_ppm": 2881
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:25:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 42,
+        "co2_ppm": 2880
+      },
+      "iss": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 44,
+        "co2_ppm": 2892
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:30:00Z",
+      "ground": {
+        "temperatura_c": 21.8,
+        "humedad_pct": 43,
+        "co2_ppm": 2914
+      },
+      "iss": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 46,
+        "co2_ppm": 2986
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:35:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 48,
+        "co2_ppm": 2942
+      },
+      "iss": {
+        "temperatura_c": 22,
+        "humedad_pct": 48,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:40:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 51,
+        "co2_ppm": 3000
+      },
+      "iss": {
+        "temperatura_c": 22,
+        "humedad_pct": 50,
+        "co2_ppm": 3028
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:45:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 51,
+        "co2_ppm": 3144
+      },
+      "iss": {
+        "temperatura_c": 22,
+        "humedad_pct": 48,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:50:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 52,
+        "co2_ppm": 3136
+      },
+      "iss": {
+        "temperatura_c": 22,
+        "humedad_pct": 47,
+        "co2_ppm": 3154
+      }
+    },
+    {
+      "timestamp": "2014-10-08T13:55:00Z",
+      "ground": {
+        "temperatura_c": 21.7,
+        "humedad_pct": 44,
+        "co2_ppm": 3128
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 46,
+        "co2_ppm": 3154
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:00:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 3148
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 46,
+        "co2_ppm": 3144
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:05:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 44,
+        "co2_ppm": 3112
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 45,
+        "co2_ppm": 3060
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:10:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 44,
+        "co2_ppm": 3006
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 45,
+        "co2_ppm": 3008
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:15:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 47,
+        "co2_ppm": 2958
+      },
+      "iss": {
+        "temperatura_c": 22,
+        "humedad_pct": 44,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:20:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 43,
+        "co2_ppm": 2954
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 44,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:25:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 42,
+        "co2_ppm": 2932
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 44,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:30:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 42,
+        "co2_ppm": 2950
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 44,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:35:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 44,
+        "co2_ppm": 2944
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 44,
+        "co2_ppm": 2965
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:40:00Z",
+      "ground": {
+        "temperatura_c": 22,
+        "humedad_pct": 48,
+        "co2_ppm": 2926
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2871
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:45:00Z",
+      "ground": {
+        "temperatura_c": 21.9,
+        "humedad_pct": 41,
+        "co2_ppm": 2822
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2850
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:50:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 41,
+        "co2_ppm": 2834
+      },
+      "iss": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2818
+      }
+    },
+    {
+      "timestamp": "2014-10-08T14:55:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 45,
+        "co2_ppm": 2850
+      },
+      "iss": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 2871
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:00:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2882
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 43,
+        "co2_ppm": 2871
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:05:00Z",
+      "ground": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 41,
+        "co2_ppm": 2890
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 43,
+        "co2_ppm": 2882
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:10:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 44,
+        "co2_ppm": 2862
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 44,
+        "co2_ppm": 2945
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:15:00Z",
+      "ground": {
+        "temperatura_c": 22.6,
+        "humedad_pct": 48,
+        "co2_ppm": 2930
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 44,
+        "co2_ppm": 2977
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:20:00Z",
+      "ground": {
+        "temperatura_c": 22.1,
+        "humedad_pct": 43,
+        "co2_ppm": 2996
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 45,
+        "co2_ppm": 3040
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:25:00Z",
+      "ground": {
+        "temperatura_c": 22.2,
+        "humedad_pct": 43,
+        "co2_ppm": 3126
+      },
+      "iss": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 46,
+        "co2_ppm": 3145
+      }
+    },
+    {
+      "timestamp": "2014-10-08T15:30:00Z",
+      "ground": {
+        "temperatura_c": 22.3,
+        "humedad_pct": 43,
+        "co2_ppm": 3202
+      },
+      "iss": {
+        "temperatura_c": 22.4,
+        "humedad_pct": 47,
+        "co2_ppm": 3155
+      }
+    }
+  ]
+}

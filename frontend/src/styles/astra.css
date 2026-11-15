@@ -353,3 +353,122 @@
     transform-origin: 44px 18px;
   }
 }
+
+/* ============================================================
+   Píldora SIMULADO y detalles explicativos en estilo ASTRA
+   ============================================================ */
+
+.astra-sim-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: var(--astra-pill, 999px);
+  background: rgba(124, 58, 237, 0.1);
+  color: #7C3AED;
+  border: 1px solid rgba(196, 181, 253, 0.45);
+  line-height: 1.2;
+}
+
+.astra-sim-badge::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7C3AED;
+}
+
+/* Desplegables explicativos colapsables "¿Por qué?" */
+.astra-details {
+  margin-top: 6px;
+  border-top: 1px dashed var(--astra-rule, rgba(90, 86, 104, 0.25));
+  padding-top: 4px;
+  font-size: 11.5px;
+  color: var(--astra-plomo, #5A5668);
+}
+
+.astra-details summary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--astra-violet, #7C3AED);
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.astra-details summary:hover {
+  text-decoration: underline;
+}
+
+.astra-details[open] summary {
+  margin-bottom: 4px;
+}
+
+.astra-details-content {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #4b4657;
+  padding: 4px 6px;
+  background: rgba(245, 243, 255, 0.5);
+  border-radius: 6px;
+}
+
+/* Semáforo conductual en el Dashboard */
+.astra-semaphore-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: var(--astra-r, 14px);
+  background: var(--astra-white, #FFFFFF);
+  border: 1px solid var(--astra-rule, rgba(90, 86, 104, 0.25));
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.astra-semaphore-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--astra-pill, 999px);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.astra-semaphore-pill.level-0 {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.astra-semaphore-pill.level-1 {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.astra-semaphore-pill.level-2 {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.astra-semaphore-pill.level-3 {
+  background: rgba(124, 58, 237, 0.15);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+}
+

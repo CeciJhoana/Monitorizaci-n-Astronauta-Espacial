@@ -60,12 +60,17 @@
     }
   },
   "vitales_agudos": {
-    "spo2_min_pct": 90,
-    "fc_max_bpm": 120,
+    "spo2_min_pct": 95,
+    "spo2_regla_existente": "SpO2 menor a 95 %",
+    "fc_max_bpm": 130,
+    "fc_max_nota": "propuesta del equipo, por validar",
     "fc_min_bpm": 45,
     "temp_max_c": 38.0,
+    "temp_max_nota": "propuesta del equipo, por validar",
     "temp_min_c": 35.0,
-    "radiacion_max_msv_h": 20.0
+    "radiacion_max_msv_h": 20.0,
+    "ventana_deteccion_captura_lecturas": 3,
+    "ventana_deteccion_nota": "Para la captura (lecturas cada 4 a 6 s) la ventana de 15 minutos se sustituye por 3 lecturas consecutivas; adaptacion de la demo."
   },
   "etiquetas": {
     "0": { "es": "Óptimo", "en": "Optimal" },

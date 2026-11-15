@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -25,12 +26,23 @@ import type {
   TrendPeriod,
   TrendSeries,
 } from "@/types";
+import {
+  loadEsp32Capture,
+  loadRr1Environment,
+  loadRr1Radiation,
+  applyDataSourceToCrew,
+  buildEnvironmentReadingsForSource,
+  type DataSourceId,
+  type Esp32Reading,
+  type Rr1EnvironmentData,
+  type Rr1RadiationData,
+} from "@/data/telemetry/dataSources";
+import { evaluateConsecutiveAcuteAlerts } from "@/lib/companion/companionEngine";
 import { useToast } from "./ToastContext";
 
 interface MissionDataValue {
   crew: CrewMember[];
   alerts: MissionAlert[];
-  /** Alertas aún no revisadas en esta sesión. */
   activeAlerts: MissionAlert[];
   measurements: Measurement[];
   journal: JournalEntry[];
@@ -49,6 +61,19 @@ interface MissionDataValue {
   addJournalEntry: (input: JournalEntryInput) => Promise<void>;
   acknowledgeAlert: (id: number) => void;
   restoreDemoAlerts: () => void;
+
+  // Control de Fuentes de Telemetría (MODO DEMO)
+  dataSource: DataSourceId;
+  setDataSource: (source: DataSourceId) => void;
+  esp32Readings: Esp32Reading[];
+  esp32Index: number;
+  setEsp32Index: (index: number) => void;
+  isPlayingEsp32: boolean;
+  setIsPlayingEsp32: (playing: boolean) => void;
+  playbackSpeed: 1 | 2 | 5;
+  setPlaybackSpeed: (speed: 1 | 2 | 5) => void;
+  rr1EnvData: Rr1EnvironmentData | null;
+  rr1RadData: Rr1RadiationData | null;
 }
 
 const MissionDataContext = createContext<MissionDataValue | null>(null);
@@ -90,6 +115,20 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
   );
   const [offline, setOfflineState] = usePersistentState<boolean>("orbita.offline", false);
 
+  // Estado de Fuentes de Telemetría
+  const [dataSource, setDataSourceState] = usePersistentState<DataSourceId>(
+    "orbita.dataSource",
+    "simulado",
+  );
+  const [esp32Readings, setEsp32Readings] = useState<Esp32Reading[]>([]);
+  const [esp32Index, setEsp32Index] = useState<number>(0);
+  const [isPlayingEsp32, setIsPlayingEsp32] = useState<boolean>(false);
+  const [playbackSpeed, setPlaybackSpeed] = useState<1 | 2 | 5>(1);
+
+  const [rr1EnvData, setRr1EnvData] = useState<Rr1EnvironmentData | null>(null);
+  const [rr1RadData, setRr1RadData] = useState<Rr1RadiationData | null>(null);
+
+  // Carga inicial de snapshot
   useEffect(() => {
     let cancelled = false;
     healthApi
@@ -107,6 +146,54 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
       cancelled = true;
     };
   }, [notify]);
+
+  // Carga diferida de datos según la fuente activa
+  useEffect(() => {
+    if (dataSource === "esp32" && esp32Readings.length === 0) {
+      loadEsp32Capture().then((readings) => {
+        setEsp32Readings(readings);
+      });
+    } else if (dataSource === "rr1") {
+      if (!rr1EnvData) {
+        loadRr1Environment().then(setRr1EnvData);
+      }
+      if (!rr1RadData) {
+        loadRr1Radiation().then(setRr1RadData);
+      }
+    }
+  }, [dataSource, esp32Readings.length, rr1EnvData, rr1RadData]);
+
+  // Timer de reproducción para ESP32
+  useEffect(() => {
+    if (!isPlayingEsp32 || dataSource !== "esp32" || esp32Readings.length === 0) {
+      return;
+    }
+
+    const currentReading = esp32Readings[esp32Index];
+    // Duración simulada basada en el intervalo del archivo (por defecto 4s, escalada por velocidad)
+    const baseIntervalMs = (currentReading?.interval_seconds && currentReading.interval_seconds > 0)
+      ? currentReading.interval_seconds * 1000
+      : 4000;
+    const intervalMs = Math.max(500, Math.round(baseIntervalMs / playbackSpeed));
+
+    const timer = setTimeout(() => {
+      setEsp32Index((prev) => (prev + 1) % esp32Readings.length);
+    }, intervalMs);
+
+    return () => clearTimeout(timer);
+  }, [isPlayingEsp32, dataSource, esp32Index, esp32Readings, playbackSpeed]);
+
+  const setDataSource = useCallback(
+    (source: DataSourceId) => {
+      setDataSourceState(source);
+      if (source === "esp32") {
+        setIsPlayingEsp32(true);
+      } else {
+        setIsPlayingEsp32(false);
+      }
+    },
+    [setDataSourceState],
+  );
 
   const setEnvironment = useCallback(
     (id: EnvironmentId) => setEnvironmentState(id),
@@ -148,21 +235,80 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
     [setAcknowledgedAlertIds],
   );
 
-  // Fusión de telemetría real sobre la base simulada (funciones puras).
-  const crew = useMemo(
-    () => applyLiveVitals(snapshot.crew, liveTelemetry),
-    [snapshot.crew, liveTelemetry],
-  );
-  const environmentReadings = useMemo(
-    () => applyLiveEnvironment(snapshot.environmentReadings, liveTelemetry),
-    [snapshot.environmentReadings, liveTelemetry],
-  );
+  // Lectura activa actual de ESP32 (reproducción grabada)
+  const currentEsp32Reading = esp32Readings[esp32Index];
+
+  // Tripulación adaptada según la fuente o telemetría en vivo
+  const crew = useMemo(() => {
+    let baseCrew = snapshot.crew;
+    if (telemetryStatus === "live" && liveTelemetry) {
+      baseCrew = applyLiveVitals(baseCrew, liveTelemetry);
+    }
+    return applyDataSourceToCrew(baseCrew, dataSource, "tripulante-01", currentEsp32Reading);
+  }, [snapshot.crew, dataSource, currentEsp32Reading, telemetryStatus, liveTelemetry]);
+
+  // Lecturas ambientales adaptadas según la fuente o telemetría en vivo
+  const environmentReadings = useMemo(() => {
+    let baseEnv = snapshot.environmentReadings;
+    if (telemetryStatus === "live" && liveTelemetry) {
+      baseEnv = applyLiveEnvironment(baseEnv, liveTelemetry);
+    }
+    return buildEnvironmentReadingsForSource(
+      dataSource,
+      baseEnv,
+      currentEsp32Reading,
+      rr1EnvData ?? undefined,
+    );
+  }, [dataSource, snapshot.environmentReadings, currentEsp32Reading, rr1EnvData, telemetryStatus, liveTelemetry]);
+
+  // Alertas adaptadas según la telemetría activa
+  const alerts = useMemo(() => {
+    let list = [...snapshot.alerts];
+    if (dataSource === "rr1") {
+      const rr1Alert: MissionAlert = {
+        id: 991,
+        title: "Pico de CO₂ en hábitat ISS",
+        subject: "Módulo ISS (RR-1)",
+        category: "Entorno",
+        relativeTime: "Ventana 48h",
+        detail:
+          "Concentración máxima de 4,667 ppm en ISS (media 3,197 ppm). Ventilación en revisión.",
+        recommendedAction: "Verificar recirculación forzada y comparar con controles en Tierra.",
+        level: "Revisión",
+        tone: "amber",
+        icon: "wind",
+      };
+      list = [rr1Alert, ...list];
+    } else if (
+      dataSource === "esp32" &&
+      currentEsp32Reading &&
+      (currentEsp32Reading.spo2_pct < 95 || currentEsp32Reading.pulso_bpm >= 130)
+    ) {
+      const espAlert: MissionAlert = {
+        id: 992,
+        title:
+          currentEsp32Reading.spo2_pct < 95
+            ? "Saturación de O₂ baja sostenida"
+            : "Frecuencia cardíaca elevada",
+        subject: "Elena Martínez (ESP32)",
+        category: "Vitales",
+        relativeTime: currentEsp32Reading.time,
+        detail: `SpO₂ en ${currentEsp32Reading.spo2_pct}% y pulso en ${Math.round(currentEsp32Reading.pulso_bpm)} lpm.`,
+        recommendedAction: "Repetir medición de inmediato, verificar sensor y avisar a tripulación.",
+        level: "Crítica",
+        tone: "rose",
+        icon: "pulse",
+      };
+      list = [espAlert, ...list];
+    }
+    return list;
+  }, [snapshot.alerts, dataSource, currentEsp32Reading]);
 
   const value = useMemo<MissionDataValue>(
     () => ({
       crew,
-      alerts: snapshot.alerts,
-      activeAlerts: snapshot.alerts.filter((alert) => !acknowledgedAlertIds.includes(alert.id)),
+      alerts,
+      activeAlerts: alerts.filter((alert) => !acknowledgedAlertIds.includes(alert.id)),
       measurements,
       journal,
       environmentReadings,
@@ -178,10 +324,23 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
       addJournalEntry,
       acknowledgeAlert,
       restoreDemoAlerts,
+
+      dataSource,
+      setDataSource,
+      esp32Readings,
+      esp32Index,
+      setEsp32Index,
+      isPlayingEsp32,
+      setIsPlayingEsp32,
+      playbackSpeed,
+      setPlaybackSpeed,
+      rr1EnvData,
+      rr1RadData,
     }),
     [
       crew,
-      snapshot,
+      alerts,
+      snapshot.trends,
       acknowledgedAlertIds,
       measurements,
       journal,
@@ -197,6 +356,15 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
       addJournalEntry,
       acknowledgeAlert,
       restoreDemoAlerts,
+
+      dataSource,
+      setDataSource,
+      esp32Readings,
+      esp32Index,
+      isPlayingEsp32,
+      playbackSpeed,
+      rr1EnvData,
+      rr1RadData,
     ],
   );
 

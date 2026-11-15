@@ -1,0 +1,332 @@
+{
+  "_meta": {
+    "fuente": "NASA RR-1 · Dosimetría ISS",
+    "origen": "Experimento Rodent Research 1 (NASA Life Sciences Data Archive)",
+    "procedencia": "Dataset EDA histórico NASA (origen por confirmar)",
+    "unidad": "mGy (dosis absorbida en miligray)",
+    "nota": "Los datos están en mGy (dosis absorbida). No convertir ni sumar con mSv (dosis equivalente).",
+    "total_dias": 39,
+    "columnas": {
+      "dia_mision": "Día relativo de misión (1 a 39)",
+      "fecha_utc": "Fecha UTC de la medición (AAAA-MM-DD)",
+      "gcr_mgy_dia": "Dosis por radiación cósmica galáctica (mGy/día)",
+      "saa_mgy_dia": "Dosis por Anomalía del Atlántico Sur (mGy/día)",
+      "total_mgy_dia": "Tasa de dosis total diaria absorbida (mGy/día)",
+      "acumulada_mgy": "Dosis acumulada absorbida reportada (mGy)"
+    }
+  },
+  "series": [
+    {
+      "dia_mision": 1,
+      "fecha_utc": "2014-09-21",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 0.21
+    },
+    {
+      "dia_mision": 2,
+      "fecha_utc": "2014-09-22",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.1,
+      "total_mgy_dia": 0.23,
+      "acumulada_mgy": 0.44
+    },
+    {
+      "dia_mision": 3,
+      "fecha_utc": "2014-09-23",
+      "gcr_mgy_dia": 0.14,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 0.64
+    },
+    {
+      "dia_mision": 4,
+      "fecha_utc": "2014-09-24",
+      "gcr_mgy_dia": 0.14,
+      "saa_mgy_dia": 0.09,
+      "total_mgy_dia": 0.22,
+      "acumulada_mgy": 0.86
+    },
+    {
+      "dia_mision": 5,
+      "fecha_utc": "2014-09-25",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 1.07
+    },
+    {
+      "dia_mision": 6,
+      "fecha_utc": "2014-09-26",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 1.28
+    },
+    {
+      "dia_mision": 7,
+      "fecha_utc": "2014-09-27",
+      "gcr_mgy_dia": 0.14,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 1.49
+    },
+    {
+      "dia_mision": 8,
+      "fecha_utc": "2014-09-28",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 1.69
+    },
+    {
+      "dia_mision": 9,
+      "fecha_utc": "2014-09-29",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 1.89
+    },
+    {
+      "dia_mision": 10,
+      "fecha_utc": "2014-09-30",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 2.09
+    },
+    {
+      "dia_mision": 11,
+      "fecha_utc": "2014-10-01",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 2.3
+    },
+    {
+      "dia_mision": 12,
+      "fecha_utc": "2014-10-02",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 2.51
+    },
+    {
+      "dia_mision": 13,
+      "fecha_utc": "2014-10-03",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.09,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 2.72
+    },
+    {
+      "dia_mision": 14,
+      "fecha_utc": "2014-10-04",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 2.93
+    },
+    {
+      "dia_mision": 15,
+      "fecha_utc": "2014-10-05",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.09,
+      "total_mgy_dia": 0.22,
+      "acumulada_mgy": 3.15
+    },
+    {
+      "dia_mision": 16,
+      "fecha_utc": "2014-10-06",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.09,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 3.36
+    },
+    {
+      "dia_mision": 17,
+      "fecha_utc": "2014-10-07",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 3.56
+    },
+    {
+      "dia_mision": 18,
+      "fecha_utc": "2014-10-08",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 3.77
+    },
+    {
+      "dia_mision": 19,
+      "fecha_utc": "2014-10-09",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.19,
+      "acumulada_mgy": 3.96
+    },
+    {
+      "dia_mision": 20,
+      "fecha_utc": "2014-10-10",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 4.16
+    },
+    {
+      "dia_mision": 21,
+      "fecha_utc": "2014-10-11",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 4.37
+    },
+    {
+      "dia_mision": 22,
+      "fecha_utc": "2014-10-12",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 4.57
+    },
+    {
+      "dia_mision": 23,
+      "fecha_utc": "2014-10-13",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 4.78
+    },
+    {
+      "dia_mision": 24,
+      "fecha_utc": "2014-10-14",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 4.98
+    },
+    {
+      "dia_mision": 25,
+      "fecha_utc": "2014-10-15",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 5.18
+    },
+    {
+      "dia_mision": 26,
+      "fecha_utc": "2014-10-16",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 5.38
+    },
+    {
+      "dia_mision": 27,
+      "fecha_utc": "2014-10-17",
+      "gcr_mgy_dia": 0.14,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 5.59
+    },
+    {
+      "dia_mision": 28,
+      "fecha_utc": "2014-10-18",
+      "gcr_mgy_dia": 0.14,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.21,
+      "acumulada_mgy": 5.8
+    },
+    {
+      "dia_mision": 29,
+      "fecha_utc": "2014-10-19",
+      "gcr_mgy_dia": 0.14,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 5.99
+    },
+    {
+      "dia_mision": 30,
+      "fecha_utc": "2014-10-20",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.19,
+      "acumulada_mgy": 6.19
+    },
+    {
+      "dia_mision": 31,
+      "fecha_utc": "2014-10-21",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.19,
+      "acumulada_mgy": 6.38
+    },
+    {
+      "dia_mision": 32,
+      "fecha_utc": "2014-10-22",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 6.58
+    },
+    {
+      "dia_mision": 33,
+      "fecha_utc": "2014-10-23",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 6.77
+    },
+    {
+      "dia_mision": 34,
+      "fecha_utc": "2014-10-24",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 6.97
+    },
+    {
+      "dia_mision": 35,
+      "fecha_utc": "2014-10-25",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 7.17
+    },
+    {
+      "dia_mision": 36,
+      "fecha_utc": "2014-10-26",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 7.37
+    },
+    {
+      "dia_mision": 37,
+      "fecha_utc": "2014-10-27",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.08,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 7.57
+    },
+    {
+      "dia_mision": 38,
+      "fecha_utc": "2014-10-28",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.07,
+      "total_mgy_dia": 0.2,
+      "acumulada_mgy": 7.77
+    },
+    {
+      "dia_mision": 39,
+      "fecha_utc": "2014-10-29",
+      "gcr_mgy_dia": 0.13,
+      "saa_mgy_dia": 0.06,
+      "total_mgy_dia": 0.19,
+      "acumulada_mgy": 7.96
+    }
+  ]
+}

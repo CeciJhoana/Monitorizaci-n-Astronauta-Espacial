@@ -26,7 +26,7 @@ import { usePersistentState } from "@/hooks/usePersistentState";
 import { MissionClock, ReminderManager, type ReminderItem } from "@/lib/companion/reminderEngine";
 
 export type CompanionLanguage = "es" | "en";
-export type OrbState = "idle" | "listening" | "speaking" | "thinking";
+export type OrbState = "idle" | "listening" | "speaking" | "thinking" | "alert";
 export type VoiceProfileId = "calma" | "clara" | "energique";
 export type ScenarioId =
   | "normal"

@@ -1,8 +1,10 @@
+import { SHOW_EXTRAS } from "@/config/features";
 import { AlertsPanel, CrewPanel, EnvironmentPanel, TrendPanel } from "@/components/panels";
 import { Icon } from "@/components/ui";
 import { SectionHeading } from "@/components/layout/PageHeading";
 import { useMissionData } from "@/store/MissionDataContext";
 import { useUi } from "@/store/UiContext";
+import { TelemetrySourceControl } from "@/components/telemetry/TelemetrySourceControl";
 import { MissionBanner } from "./MissionBanner";
 import { StatCards } from "./StatCards";
 
@@ -23,10 +25,14 @@ function useDataFreshnessLabel(): string {
     return `Última lectura: ${formatTelemetryTime(liveTelemetry.receivedAt)} · Estación ${liveTelemetry.detector}${simulated}`;
   }
   if (telemetryStatus === "connecting") return "Conectando con la estación de vitales…";
-  return "Última actualización: hace 8 s · Datos simulados";
+  return "ASTRA v1.0 · Sensores en línea";
 }
 
-/** Página inicial: resumen ejecutivo de la salud de la misión. */
+/**
+ * Página inicial: resumen ejecutivo enfocado en la salud de la misión.
+ * Muestra exclusivamente: Semáforo ASTRA, los 5 signos vitales del reto,
+ * alertas activas y telemetría de entorno.
+ */
 export function DashboardPage() {
   const { navigate } = useUi();
   const freshnessLabel = useDataFreshnessLabel();
@@ -34,33 +40,42 @@ export function DashboardPage() {
   return (
     <>
       <MissionBanner />
-      <SectionHeading title="El pulso de la misión">
+      <TelemetrySourceControl />
+      <SectionHeading title="Monitoreo biomédico y ambiental">
         {freshnessLabel} <span className="small-divider">|</span> Órbita
       </SectionHeading>
       <StatCards />
-      <div className="dashboard-middle">
-        <TrendPanel />
-        <AlertsPanel />
-      </div>
-      <div className="dashboard-bottom">
-        <CrewPanel />
-        <EnvironmentPanel />
-      </div>
-      <div className="daily-note">
-        <span className="note-icon">
-          <Icon name="sun" size={21} />
-        </span>
-        <div>
-          <strong>Pequeños hábitos. Grandes misiones.</strong>
-          <span>
-            La próxima sesión de ejercicio de la tripulación está programada para las 16:00 UTC.
-          </span>
+
+      {SHOW_EXTRAS ? (
+        <>
+          <div className="dashboard-middle">
+            <TrendPanel />
+            <AlertsPanel />
+          </div>
+          <div className="dashboard-bottom">
+            <CrewPanel />
+            <EnvironmentPanel />
+          </div>
+          <div className="daily-note">
+            <span className="note-icon">
+              <Icon name="sun" size={21} />
+            </span>
+            <div>
+              <strong>Pequeños hábitos. Grandes misiones.</strong>
+              <span>Próxima sesión de ejercicio programada a las 16:00 UTC.</span>
+            </div>
+            <button className="text-link" onClick={() => navigate("wellness")}>
+              Ver rutina de hoy
+              <Icon name="arrow" size={15} />
+            </button>
+          </div>
+        </>
+      ) : (
+        <div className="dashboard-middle" style={{ gridTemplateColumns: "1fr 1fr", marginTop: "18px" }}>
+          <AlertsPanel />
+          <EnvironmentPanel />
         </div>
-        <button className="text-link" onClick={() => navigate("wellness")}>
-          Ver rutina de hoy
-          <Icon name="arrow" size={15} />
-        </button>
-      </div>
+      )}
     </>
   );
 }

@@ -14,15 +14,18 @@ import { useSpeech } from "@/hooks/useSpeech";
 import { useSpeechRecognition } from "@/hooks/useSpeechRecognition";
 import { MOCK_DB } from "@/data/db";
 import { selectCompanionData } from "@/data/companion/companionData";
+import { getCompanionDataForSource } from "@/data/telemetry/dataSources";
 import {
   evaluateBehavior,
   aplicarEscenario,
+  evaluateConsecutiveAcuteAlerts,
   type SemaphoreLevel,
 } from "@/lib/companion/companionEngine";
 import { CompanionSession, normalizarTexto } from "@/lib/companion/intentEngine";
 import { FamilyCommsModal } from "./components/FamilyCommsModal";
 import { QuickJournalModal, type MoodRating } from "./components/QuickJournalModal";
 import { BreathingGuideModal } from "./components/BreathingGuideModal";
+import { ExerciseGamificationModal } from "./components/ExerciseGamificationModal";
 import {
   useCompanion,
   VOICE_PROFILES,
@@ -31,6 +34,8 @@ import {
   type ScenarioId,
 } from "@/store/CompanionContext";
 import { useUi } from "@/store/UiContext";
+import { useMissionData } from "@/store/MissionDataContext";
+import { TelemetrySourceControl } from "@/components/telemetry/TelemetrySourceControl";
 
 export function AssistantPage() {
   const {
@@ -79,7 +84,7 @@ export function AssistantPage() {
 
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
-  const [activeModal, setActiveModal] = useState<"family" | "journal" | "breathing" | null>(null);
+  const [activeModal, setActiveModal] = useState<"family" | "journal" | "breathing" | "exercise" | null>(null);
   const sessionRef = useRef(new CompanionSession());
 
   // Estado de diagnóstico en vivo para depuración (?dev=1)
@@ -101,15 +106,51 @@ export function AssistantPage() {
     source: "inicio",
   });
 
-  // Evaluación dinámica del semáforo conductual
+  const { dataSource, esp32Readings, esp32Index } = useMissionData();
+  const currentEsp32 = esp32Readings[esp32Index];
+
+  // Evaluación dinámica del semáforo conductual a través del adaptador DataSource
   const rawData = useMemo(
-    () => selectCompanionData(MOCK_DB, activeAstronautId),
-    [activeAstronautId],
+    () => getCompanionDataForSource(activeAstronautId, dataSource, currentEsp32),
+    [activeAstronautId, dataSource, currentEsp32],
   );
 
   const activeData = useMemo(() => aplicarEscenario(rawData, scenario), [rawData, scenario]);
 
   const evaluation = useMemo(() => evaluateBehavior(activeData, language), [activeData, language]);
+
+  // Detección de avisos agudos en ventana de 3 lecturas consecutivas (reproducción ESP32)
+  const esp32HistoryRef = useRef<Array<{ spo2_pct: number; pulso_bpm: number; temperatura_corporal_c: number }>>([]);
+  const lastAlertMetricRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (dataSource !== "esp32" || !currentEsp32) {
+      esp32HistoryRef.current = [];
+      lastAlertMetricRef.current = null;
+      return;
+    }
+
+    esp32HistoryRef.current.push({
+      spo2_pct: currentEsp32.spo2_pct,
+      pulso_bpm: currentEsp32.pulso_bpm,
+      temperatura_corporal_c: currentEsp32.temperatura_corporal_c,
+    });
+    if (esp32HistoryRef.current.length > 5) {
+      esp32HistoryRef.current.shift();
+    }
+
+    const { hasAcuteAlert, message, metric } = evaluateConsecutiveAcuteAlerts(esp32HistoryRef.current, 3);
+    if (hasAcuteAlert && metric && lastAlertMetricRef.current !== metric) {
+      lastAlertMetricRef.current = metric;
+      setOrbState("alert");
+      const fullText = `${message} (por validar)`;
+      setSubtitles(`⚠️ ${fullText}`);
+      speak(message);
+    } else if (!hasAcuteAlert && lastAlertMetricRef.current) {
+      lastAlertMetricRef.current = null;
+      setOrbState("idle");
+    }
+  }, [dataSource, currentEsp32, setOrbState, setSubtitles, speak]);
 
   // Reconocimiento de voz con push-to-talk
   const {
@@ -137,6 +178,12 @@ export function AssistantPage() {
         openModal({ type: "emergency" });
       } else if (resp.accionSugerida === "open_journal") {
         setActiveModal("journal");
+      } else if (resp.accionSugerida === "iniciar_respiracion") {
+        setActiveModal("breathing");
+      } else if (resp.accionSugerida === "abrir_familia") {
+        setActiveModal("family");
+      } else if (resp.accionSugerida === "abrir_ejercicio" || resp.intent === "ejercicio") {
+        setActiveModal("exercise");
       }
       setSubtitles(resp.text);
       // Si el usuario habló por micrófono, responder SIEMPRE con voz
@@ -258,6 +305,22 @@ export function AssistantPage() {
       setActiveModal("journal");
       return;
     }
+    if (id === "ejercicio") {
+      const resp = sessionRef.current.responder("ejercicio", activeData, language);
+      setLastDiagnostic({
+        rawText: "ejercicio",
+        normalizedText: "ejercicio",
+        language,
+        intent: "ejercicio",
+        confidence: 1.0,
+        threshold: 0.5,
+        source: "atajo",
+      });
+      setActiveModal("exercise");
+      setSubtitles(resp.text);
+      speak(resp.speechText);
+      return;
+    }
     if (id === "soledad") {
       setLastDiagnostic({
         rawText: "soledad",
@@ -295,6 +358,8 @@ export function AssistantPage() {
       setActiveModal("breathing");
     } else if (resp.accionSugerida === "abrir_familia") {
       setActiveModal("family");
+    } else if (resp.accionSugerida === "abrir_ejercicio" || resp.intent === "ejercicio") {
+      setActiveModal("exercise");
     }
     setSubtitles(resp.text);
     speak(resp.speechText);
@@ -324,6 +389,8 @@ export function AssistantPage() {
       setActiveModal("breathing");
     } else if (resp.accionSugerida === "abrir_familia") {
       setActiveModal("family");
+    } else if (resp.accionSugerida === "abrir_ejercicio" || resp.intent === "ejercicio") {
+      setActiveModal("exercise");
     }
     setSubtitles(resp.text);
     speak(resp.speechText);
@@ -548,6 +615,9 @@ export function AssistantPage() {
           </button>
         </div>
       </header>
+
+      {/* Control de Fuentes de Telemetría (MODO DEMO) */}
+      <TelemetrySourceControl />
 
       {/* Aviso si el navegador no tiene voces disponibles */}
       {voices.length === 0 && (
@@ -955,6 +1025,55 @@ export function AssistantPage() {
             >
               📡 {language === "es" ? "Canal familiar" : "Family comms"}
             </button>
+          </div>
+        )}
+
+        {/* Opciones interactivas contextuales para Ejercicio / Gamificación */}
+        {lastDiagnostic.intent === "ejercicio" && (
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+            <button
+              type="button"
+              onClick={() => {
+                unlockVoice();
+                setActiveModal("exercise");
+              }}
+              style={{
+                background: "#7C3AED",
+                border: "1px solid #6D28D9",
+                color: "#FFFFFF",
+                borderRadius: 999,
+                padding: "5px 14px",
+                fontSize: 11,
+                fontWeight: 600,
+                fontFamily: "Instrument Sans, sans-serif",
+                cursor: "pointer",
+                boxShadow: "0 2px 6px rgba(124, 58, 237, 0.3)",
+              }}
+            >
+              🏋️‍♂️ {language === "es" ? "Abrir Gamificación y Ejercicios (Ley de Wolff)" : "Open Gamification & Exercises (Wolff's Law)"}
+            </button>
+            <a
+              href="https://www.youtube.com/watch?v=g8w1DbU6owU"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: "#FEE2E2",
+                border: "1px solid #FCA5A5",
+                color: "#DC2626",
+                borderRadius: 999,
+                padding: "5px 14px",
+                fontSize: 11,
+                fontWeight: 600,
+                fontFamily: "Instrument Sans, sans-serif",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                cursor: "pointer",
+              }}
+            >
+              ▶ {language === "es" ? "Ver Video Dr. Sanagustín (YouTube)" : "Watch Dr. Sanagustín Video (YouTube)"}
+            </a>
           </div>
         )}
 
@@ -1787,6 +1906,14 @@ export function AssistantPage() {
             setSubtitles(msgFinal);
             speak(msgFinal);
           }}
+          onClose={() => setActiveModal(null)}
+        />
+      )}
+
+      {activeModal === "exercise" && (
+        <ExerciseGamificationModal
+          language={language}
+          speak={speak}
           onClose={() => setActiveModal(null)}
         />
       )}

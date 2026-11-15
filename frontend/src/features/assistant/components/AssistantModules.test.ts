@@ -2,6 +2,11 @@ import { describe, it, expect } from "vitest";
 import { calcularRetardoHabitat } from "./FamilyCommsModal";
 import { MOOD_VALUES } from "./QuickJournalModal";
 import { FASES_RESPIRACION } from "./BreathingGuideModal";
+import {
+  EXERCISE_CATALOG,
+  calculateLevelInfo,
+  BADGE_DEFINITIONS,
+} from "./ExerciseGamificationModal";
 
 describe("Módulos del Asistente ASTRA (AssistantModules)", () => {
   describe("FamilyCommsModal · Retardo por Entorno", () => {
@@ -70,6 +75,60 @@ describe("Módulos del Asistente ASTRA (AssistantModules)", () => {
 
       const duracionTotal = duracionCiclo * 4;
       expect(duracionTotal).toBe(64);
+    });
+  });
+
+  describe("ExerciseGamificationModal · Ley de Wolff y Gamificación", () => {
+    it("incluye catálogo balanceado de fuerza (Ley de Wolff) y estiramientos Zero-G", () => {
+      expect(EXERCISE_CATALOG.length).toBeGreaterThanOrEqual(5);
+
+      const fuerzaWolff = EXERCISE_CATALOG.filter((e) => e.category === "fuerza_wolff");
+      const estiramientos = EXERCISE_CATALOG.filter((e) => e.category === "estiramientos");
+
+      expect(fuerzaWolff.length).toBeGreaterThanOrEqual(2);
+      expect(estiramientos.length).toBeGreaterThanOrEqual(2);
+
+      // Sentadillas de carga axial para estimular densidad ósea
+      const sentadilla = EXERCISE_CATALOG.find((e) => e.id === "sentadilla_wolff");
+      expect(sentadilla).toBeDefined();
+      expect(sentadilla!.title.es).toContain("Ley de Wolff");
+      expect(sentadilla!.durationSeconds).toBe(45);
+      expect(sentadilla!.xpPoints).toBe(40);
+      expect(sentadilla!.scientificLaw.es).toContain("Ley de Wolff");
+
+      // Descompresión espinal para contrarrestar elongación en microgravedad
+      const descompresion = EXERCISE_CATALOG.find((e) => e.id === "descompresion_columna");
+      expect(descompresion).toBeDefined();
+      expect(descompresion!.clinicalRationale.es).toContain("alarga hasta 7 cm");
+      expect(descompresion!.durationSeconds).toBe(30);
+      expect(descompresion!.xpPoints).toBe(25);
+    });
+
+    it("calcula niveles de gamificación y progresión de XP coherentemente", () => {
+      const cadete = calculateLevelInfo(50);
+      expect(cadete.level).toBe(1);
+      expect(cadete.title.es).toBe("Cadete Orbital");
+      expect(cadete.progressPercent).toBe(50);
+
+      const guardian = calculateLevelInfo(150);
+      expect(guardian.level).toBe(2);
+      expect(guardian.title.es).toBe("Guardián de Wolff");
+      expect(guardian.progressPercent).toBeCloseTo(33.33, 1);
+
+      const especialista = calculateLevelInfo(300);
+      expect(especialista.level).toBe(3);
+      expect(especialista.title.es).toBe("Especialista Musculoesquelético");
+
+      const comandante = calculateLevelInfo(550);
+      expect(comandante.level).toBe(4);
+      expect(comandante.title.es).toBe("Comandante Gravitacional");
+    });
+
+    it("posee medallas para hitos de carga ósea y descompresión espinal", () => {
+      expect(BADGE_DEFINITIONS.badge_wolff_master).toBeDefined();
+      expect(BADGE_DEFINITIONS.badge_wolff_master.name.es).toBe("Guardián de Wolff");
+      expect(BADGE_DEFINITIONS.badge_spine_relief).toBeDefined();
+      expect(BADGE_DEFINITIONS.badge_spine_relief.name.es).toBe("Columna Zero-G");
     });
   });
 });

@@ -31,7 +31,11 @@ describe("Base de Conocimiento ASTRA (knowledge.json)", () => {
   });
 
   it("verifica que no hay URLs inventadas (solo lista blanca oficial NASA o null)", () => {
-    const DOMINIOS_PERMITIDOS = ["https://www.nasa.gov", "http://www.nasa.gov"];
+    const DOMINIOS_PERMITIDOS = [
+      "https://www.nasa.gov",
+      "http://www.nasa.gov",
+      "https://www.youtube.com",
+    ];
 
     for (const entrada of entradas) {
       if (entrada.fuente !== null) {

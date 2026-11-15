@@ -86,11 +86,11 @@ export function Orb({
         // 2. Anillo exterior graduado (r: 27)
         const ring = svg.querySelector<SVGCircleElement>("#astra-orb-ring");
         if (ring) {
-          if (level === 3) {
-            const ringPulse = 27 + Math.sin(t * 4) * 1.5;
+          if (state === "alert" || level === 3) {
+            const ringPulse = 27 + Math.sin(t * 5) * 2;
             ring.setAttribute("r", String(ringPulse));
-            ring.setAttribute("stroke-width", "1.8");
-            ring.setAttribute("stroke", "#e11d48"); // Alerta roja
+            ring.setAttribute("stroke-width", "2.0");
+            ring.setAttribute("stroke", "#dc2626"); // Alerta aguda
           } else {
             ring.setAttribute("r", "27");
             ring.setAttribute("stroke-width", "1.2");

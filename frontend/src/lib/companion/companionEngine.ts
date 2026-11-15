@@ -483,33 +483,33 @@ export function evaluateBehavior(
   const avisos_agudos: AcuteAlert[] = [];
   const { vitales } = data;
 
-  if (vitales.spo2_pct !== undefined && vitales.spo2_pct < 90) {
+  if (vitales.spo2_pct !== undefined && vitales.spo2_pct < 95) {
     avisos_agudos.push({
       metrica: "spo2",
-      titulo: lang === "es" ? "Saturación de O₂ crítica" : "Critical O₂ saturation",
+      titulo: lang === "es" ? "Saturación de O₂ baja" : "Low O₂ saturation",
       detalle:
         lang === "es"
-          ? `SpO₂ en ${vitales.spo2_pct}% (< 90%). Comprueba ajuste del sensor y flujo de soporte vital.`
-          : `SpO₂ at ${vitales.spo2_pct}% (< 90%). Verify sensor placement and life-support O₂ flow.`,
+          ? `SpO₂ en ${vitales.spo2_pct}% (< 95%). Repite la medición y avisa a la tripulación. (por validar)`
+          : `SpO₂ at ${vitales.spo2_pct}% (< 95%). Repeat measurement and notify crew. (to be validated)`,
       nivel: "critica",
     });
   }
 
   if (vitales.frecuencia_cardiaca_bpm !== undefined) {
-    if (vitales.frecuencia_cardiaca_bpm > 120) {
+    if (vitales.frecuencia_cardiaca_bpm >= 130) {
       avisos_agudos.push({
         metrica: "fc",
-        titulo: lang === "es" ? "Taquicardia en reposo" : "Resting tachycardia",
+        titulo: lang === "es" ? "Frecuencia cardíaca elevada" : "Elevated heart rate",
         detalle:
           lang === "es"
-            ? `Pulso en ${vitales.frecuencia_cardiaca_bpm} lpm (> 120 lpm). Guarda reposo y verifica sensor.`
-            : `Heart rate at ${vitales.frecuencia_cardiaca_bpm} bpm (> 120 bpm). Cease exertion and verify sensor.`,
+            ? `Pulso en ${vitales.frecuencia_cardiaca_bpm} lpm (≥ 130 lpm). Guarda reposo y verifica sensor. (por validar)`
+            : `Heart rate at ${vitales.frecuencia_cardiaca_bpm} bpm (≥ 130 bpm). Cease exertion and verify sensor. (to be validated)`,
         nivel: "critica",
       });
     } else if (vitales.frecuencia_cardiaca_bpm < 45) {
       avisos_agudos.push({
         metrica: "fc",
-        titulo: lang === "es" ? "Bradicardia severa" : "Severe bradycardia",
+        titulo: lang === "es" ? "Frecuencia cardíaca baja" : "Low heart rate",
         detalle:
           lang === "es"
             ? `Pulso en ${vitales.frecuencia_cardiaca_bpm} lpm (< 45 lpm). Consulta al oficial médico.`
@@ -520,15 +520,15 @@ export function evaluateBehavior(
   }
 
   if (vitales.temperatura_corporal_c !== undefined) {
-    if (vitales.temperatura_corporal_c > 38.0) {
+    if (vitales.temperatura_corporal_c >= 38.0) {
       avisos_agudos.push({
         metrica: "temp",
         titulo: lang === "es" ? "Temperatura corporal elevada" : "Elevated core body temperature",
         detalle:
           lang === "es"
-            ? `Temperatura en ${vitales.temperatura_corporal_c} °C (> 38.0 °C). Posible cuadro febril.`
-            : `Temperature at ${vitales.temperatura_corporal_c} °C (> 38.0 °C). Possible febrile state.`,
-        nivel: "revision",
+            ? `Temperatura en ${vitales.temperatura_corporal_c} °C (≥ 38.0 °C). Reposa e hidrátate. (por validar)`
+            : `Temperature at ${vitales.temperatura_corporal_c} °C (≥ 38.0 °C). Rest and hydrate. (to be validated)`,
+        nivel: "critica",
       });
     } else if (vitales.temperatura_corporal_c < 35.0) {
       avisos_agudos.push({
@@ -536,8 +536,8 @@ export function evaluateBehavior(
         titulo: lang === "es" ? "Temperatura corporal baja" : "Low core body temperature",
         detalle:
           lang === "es"
-            ? `Temperatura en ${vitales.temperatura_corporal_c} °C (< 35.0 °C). Riesgo de hipotermia.`
-            : `Temperature at ${vitales.temperatura_corporal_c} °C (< 35.0 °C). Hypothermia warning.`,
+            ? `Temperatura en ${vitales.temperatura_corporal_c} °C (< 35.0 °C). Riesgo térmico.`
+            : `Temperature at ${vitales.temperatura_corporal_c} °C (< 35.0 °C). Thermal risk warning.`,
         nivel: "revision",
       });
     }
@@ -549,8 +549,8 @@ export function evaluateBehavior(
       titulo: lang === "es" ? "Alerta de radiación ambiental" : "Environmental radiation warning",
       detalle:
         lang === "es"
-          ? `Tasa de radiación en ${vitales.radiacion_mSv_h} mSv/h (> 20 mSv/h). Evento de tormenta solar o incremento anómalo en cabina.`
-          : `Radiation rate at ${vitales.radiacion_mSv_h} mSv/h (> 20 mSv/h). Solar particle event or cabin anomaly detected.`,
+          ? `Tasa de radiación en ${vitales.radiacion_mSv_h} mSv/h (> 20 mSv/h). Evento de partículas solares o incremento anómalo.`
+          : `Radiation rate at ${vitales.radiacion_mSv_h} mSv/h (> 20 mSv/h). Solar particle event detected.`,
       nivel: "critica",
     });
   }
@@ -625,4 +625,55 @@ export function aplicarEscenario(dataBase: CompanionData, escenario: DemoScenari
     default:
       return dataBase;
   }
+}
+
+/**
+ * Evalúa una serie temporal de lecturas de captura ESP32.
+ * Aplica la regla de adaptación de la demo:
+ * Si un signo vital agudo supera el umbral crítico durante al menos
+ * 3 lecturas consecutivas, se confirma el aviso agudo crítico sostenido.
+ *
+ * El estado de esfuerzo (pulso 97-126 lpm con SpO2 >= 95%) NO debe disparar alerta.
+ */
+export function evaluateConsecutiveAcuteAlerts(
+  history: Array<{ spo2_pct: number; pulso_bpm: number; temperatura_corporal_c: number }>,
+  consecutiveThreshold = 3,
+): { hasAcuteAlert: boolean; message: string; metric?: string } {
+  if (history.length < consecutiveThreshold) {
+    return { hasAcuteAlert: false, message: "" };
+  }
+
+  const lastN = history.slice(-consecutiveThreshold);
+
+  // SpO2 < 95% en 3 lecturas consecutivas
+  const spo2Critical = lastN.every((h) => h.spo2_pct < 95);
+  if (spo2Critical) {
+    return {
+      hasAcuteAlert: true,
+      metric: "spo2",
+      message: "Veo que tu oxígeno está bajo. Repite la medición y avisa a la tripulación.",
+    };
+  }
+
+  // Pulso >= 130 lpm en 3 lecturas consecutivas
+  const hrCritical = lastN.every((h) => h.pulso_bpm >= 130);
+  if (hrCritical) {
+    return {
+      hasAcuteAlert: true,
+      metric: "fc",
+      message: "Veo que tu pulso está alto. Repite la medición y avisa a la tripulación.",
+    };
+  }
+
+  // Temperatura corporal >= 38.0°C en 3 lecturas consecutivas
+  const tempCritical = lastN.every((h) => h.temperatura_corporal_c >= 38.0);
+  if (tempCritical) {
+    return {
+      hasAcuteAlert: true,
+      metric: "temp",
+      message: "Veo que tu temperatura corporal está elevada. Repite la medición y avisa a la tripulación.",
+    };
+  }
+
+  return { hasAcuteAlert: false, message: "" };
 }
