@@ -99,17 +99,37 @@ estacion-signos-vitales/
 ## ▶️ Puesta en marcha
 
 ### 1. Servidor (PC o Raspberry Pi)
+
+> En Ubuntu 24.04+ `pip install` global lanza el error `externally-managed-environment`
+> (PEP 668). Los scripts de abajo usan un entorno virtual en `servidor/.venv` y lo crean
+> automáticamente la primera vez.
+
 ```bash
-# dependencias
-pip install -r servidor/requirements.txt    # o python3-flask python3-psycopg2 del sistema
+cd servidor
+
+# a) base de datos (crea usuario + base + esquema; pide tu contraseña sudo)
+./setup_db.sh
+
+# b) correr el servidor (crea el venv e instala dependencias si faltan)
+./run.sh
+# servidor en http://localhost:5000
+```
+
+Pasos equivalentes manuales, si los prefieres:
+
+```bash
+# entorno virtual
+cd servidor
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 
 # base de datos (ver db/README.md)
 sudo -u postgres psql -c "CREATE USER ble_user WITH PASSWORD 'cambia_esta_clave';"
 sudo -u postgres psql -c "CREATE DATABASE ble OWNER ble_user;"
-PGPASSWORD=cambia_esta_clave psql -h localhost -U ble_user -d ble -f db/dump_completo.sql
+PGPASSWORD=cambia_esta_clave psql -h localhost -U ble_user -d ble -f ../db/schema.sql
 
 # correr
-PGPASSWORD=cambia_esta_clave python3 servidor/servidor_ble_postgres.py
+.venv/bin/python servidor_ble_postgres.py
 # o instalar como servicio: copiar servidor/ble.service a /etc/systemd/system/ y
 #   sudo systemctl enable --now ble.service
 ```
