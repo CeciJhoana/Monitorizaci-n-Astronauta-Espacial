@@ -9,15 +9,19 @@ import {
   type ReactNode,
 } from "react";
 import { MOCK_SNAPSHOT } from "@/data/mockData";
+import { useLiveTelemetry } from "@/hooks/useLiveTelemetry";
 import { usePersistentState } from "@/hooks/usePersistentState";
 import { healthApi, type JournalEntryInput, type MeasurementInput } from "@/services";
+import { applyLiveEnvironment, applyLiveVitals } from "@/services/telemetryMapper";
 import type {
   CrewMember,
   EnvironmentId,
   EnvironmentReading,
   JournalEntry,
+  LiveTelemetry,
   Measurement,
   MissionAlert,
+  TelemetryStatus,
   TrendMetric,
   TrendPeriod,
   TrendSeries,
@@ -47,6 +51,10 @@ interface MissionDataValue {
   environment: EnvironmentId;
   offline: boolean;
   isLoading: boolean;
+  /** Estado del enlace con la estación de telemetría real. */
+  telemetryStatus: TelemetryStatus;
+  /** Última telemetría válida recibida de la estación (si hay). */
+  liveTelemetry: LiveTelemetry | null;
   setEnvironment: (id: EnvironmentId) => void;
   setOffline: (offline: boolean) => void;
   addMeasurement: (input: MeasurementInput) => Promise<void>;
@@ -76,8 +84,19 @@ export function useMissionData(): MissionDataValue {
   return context;
 }
 
+/**
+ * Datos de la misión: tripulación, alertas, mediciones y bitácora.
+ *
+ * Las lecturas iniciales pasan por `healthApi` (mock o HTTP según haya
+ * backend configurado). La telemetría real de la estación ESP32 llega por
+ * `useLiveTelemetry` (sondeo REST) y se fusiona con los datos simulados:
+ * solo se sobrescriben los valores que el hardware entrega de verdad.
+ * Los registros de la sesión se persisten en `localStorage` para que la
+ * app siga siendo útil sin conexión.
+ */
 export function MissionDataProvider({ children }: { children: ReactNode }) {
   const { notify } = useToast();
+  const { status: telemetryStatus, latest: liveTelemetry } = useLiveTelemetry();
 
   const [snapshot, setSnapshot] = useState(MOCK_SNAPSHOT);
   const [isLoading, setIsLoading] = useState(true);
@@ -216,23 +235,31 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
     [setAcknowledgedAlertIds],
   );
 
-  // Lectura activa actual de ESP32
+  // Lectura activa actual de ESP32 (reproducción grabada)
   const currentEsp32Reading = esp32Readings[esp32Index];
 
-  // Tripulación adaptada según la fuente (alimenta a Elena en ESP32)
+  // Tripulación adaptada según la fuente o telemetría en vivo
   const crew = useMemo(() => {
-    return applyDataSourceToCrew(snapshot.crew, dataSource, "tripulante-01", currentEsp32Reading);
-  }, [snapshot.crew, dataSource, currentEsp32Reading]);
+    let baseCrew = snapshot.crew;
+    if (telemetryStatus === "live" && liveTelemetry) {
+      baseCrew = applyLiveVitals(baseCrew, liveTelemetry);
+    }
+    return applyDataSourceToCrew(baseCrew, dataSource, "tripulante-01", currentEsp32Reading);
+  }, [snapshot.crew, dataSource, currentEsp32Reading, telemetryStatus, liveTelemetry]);
 
-  // Lecturas ambientales adaptadas según la fuente
+  // Lecturas ambientales adaptadas según la fuente o telemetría en vivo
   const environmentReadings = useMemo(() => {
+    let baseEnv = snapshot.environmentReadings;
+    if (telemetryStatus === "live" && liveTelemetry) {
+      baseEnv = applyLiveEnvironment(baseEnv, liveTelemetry);
+    }
     return buildEnvironmentReadingsForSource(
       dataSource,
-      snapshot.environmentReadings,
+      baseEnv,
       currentEsp32Reading,
       rr1EnvData ?? undefined,
     );
-  }, [dataSource, snapshot.environmentReadings, currentEsp32Reading, rr1EnvData]);
+  }, [dataSource, snapshot.environmentReadings, currentEsp32Reading, rr1EnvData, telemetryStatus, liveTelemetry]);
 
   // Alertas adaptadas según la telemetría activa
   const alerts = useMemo(() => {
@@ -289,6 +316,8 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
       environment,
       offline,
       isLoading,
+      telemetryStatus,
+      liveTelemetry,
       setEnvironment,
       setOffline,
       addMeasurement,
@@ -319,6 +348,8 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
       environment,
       offline,
       isLoading,
+      telemetryStatus,
+      liveTelemetry,
       setEnvironment,
       setOffline,
       addMeasurement,

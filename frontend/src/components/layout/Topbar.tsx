@@ -9,10 +9,18 @@ function pageLabel(pageId: string): string {
   return NAV_ITEMS.find((item) => item.id === pageId)?.label ?? pageId;
 }
 
+/** Etiqueta de conexión según el estado de la estación de telemetría. */
+function connectionLabel(offline: boolean, telemetryStatus: string): string {
+  if (offline) return "Modo local";
+  if (telemetryStatus === "live") return "Estación de vitales en vivo";
+  if (telemetryStatus === "connecting") return "Conectando con la estación…";
+  return "Datos de demostración";
+}
+
 /** Cabecera con ruta actual, estado del enlace, reloj UTC y notificaciones. */
 export function Topbar() {
   const { page, openModal } = useUi();
-  const { activeAlerts, offline, crew } = useMissionData();
+  const { activeAlerts, offline, crew, telemetryStatus } = useMissionData();
   const utcTime = useUtcClock();
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const commander = crew[0];
@@ -25,9 +33,9 @@ export function Topbar() {
           <span>{pageLabel(page)}</span>
         </div>
         <div className="topbar-right">
-          <span className="connection">
+          <span className="connection" title={connectionLabel(offline, telemetryStatus)}>
             <span className="status-dot" />
-            {offline ? "Modo local" : "Enlace con Tierra estable"}
+            {connectionLabel(offline, telemetryStatus)}
           </span>
           <span className="utc-time">
             {utcTime} <span>UTC</span>

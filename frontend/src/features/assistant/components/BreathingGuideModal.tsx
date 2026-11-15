@@ -44,7 +44,10 @@ export const FASES_RESPIRACION: PhaseInfo[] = [
     fase: "exhala",
     segundos: 4,
     label: { es: "Exhala suavemente", en: "Exhale gently" },
-    indicacion: { es: "Libera todo el aire por la boca...", en: "Release all air through mouth..." },
+    indicacion: {
+      es: "Libera todo el aire por la boca...",
+      en: "Release all air through mouth...",
+    },
     escalaOrbe: 0.8,
     energia: 0.4,
   },
@@ -52,7 +55,10 @@ export const FASES_RESPIRACION: PhaseInfo[] = [
     fase: "pausa",
     segundos: 4,
     label: { es: "Pausa en vacío", en: "Rest empty" },
-    indicacion: { es: "Permanece en calma antes de inhalar...", en: "Stay calm before inhaling..." },
+    indicacion: {
+      es: "Permanece en calma antes de inhalar...",
+      en: "Stay calm before inhaling...",
+    },
     escalaOrbe: 0.8,
     energia: 0.1,
   },
@@ -158,12 +164,28 @@ export function BreathingGuideModal({
           textAlign: "center",
         }}
       >
-        <header style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <header
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div>
-            <strong style={{ fontFamily: "Instrument Serif, serif", fontSize: 22, color: "#1E1035" }}>
+            <strong
+              style={{ fontFamily: "Instrument Serif, serif", fontSize: 22, color: "#1E1035" }}
+            >
               {language === "es" ? "Respiración 4-4-4-4" : "Box Breathing 4-4-4-4"}
             </strong>
-            <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: "#7C3AED", display: "block" }}>
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 10,
+                color: "#7C3AED",
+                display: "block",
+              }}
+            >
               {language === "es"
                 ? `Ciclo ${cicloActual} de ${TOTAL_CICLOS} (60 s)`
                 : `Cycle ${cicloActual} of ${TOTAL_CICLOS} (60 s)`}
@@ -192,12 +214,7 @@ export function BreathingGuideModal({
             padding: 20,
           }}
         >
-          <Orb
-            size={160}
-            state="thinking"
-            energy={faseActual.energia}
-            level={0}
-          />
+          <Orb size={160} state="thinking" energy={faseActual.energia} level={0} />
         </div>
 
         {/* Textos de la fase actual */}
@@ -212,7 +229,9 @@ export function BreathingGuideModal({
           >
             {faseActual.label[language]}
           </strong>
-          <span style={{ fontFamily: "Instrument Sans, sans-serif", fontSize: 13, color: "#5A5668" }}>
+          <span
+            style={{ fontFamily: "Instrument Sans, sans-serif", fontSize: 13, color: "#5A5668" }}
+          >
             {faseActual.indicacion[language]}
           </span>
           <span
@@ -248,8 +267,8 @@ export function BreathingGuideModal({
               ? "Finalizar"
               : "Complete"
             : language === "es"
-            ? "Salir de la pausa"
-            : "Exit session"}
+              ? "Salir de la pausa"
+              : "Exit session"}
         </button>
       </div>
     </div>

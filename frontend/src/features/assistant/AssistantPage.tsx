@@ -115,15 +115,9 @@ export function AssistantPage() {
     [activeAstronautId, dataSource, currentEsp32],
   );
 
-  const activeData = useMemo(
-    () => aplicarEscenario(rawData, scenario),
-    [rawData, scenario],
-  );
+  const activeData = useMemo(() => aplicarEscenario(rawData, scenario), [rawData, scenario]);
 
-  const evaluation = useMemo(
-    () => evaluateBehavior(activeData, language),
-    [activeData, language],
-  );
+  const evaluation = useMemo(() => evaluateBehavior(activeData, language), [activeData, language]);
 
   // Detección de avisos agudos en ventana de 3 lecturas consecutivas (reproducción ESP32)
   const esp32HistoryRef = useRef<Array<{ spo2_pct: number; pulso_bpm: number; temperatura_corporal_c: number }>>([]);
@@ -249,12 +243,21 @@ export function AssistantPage() {
     { id: "normal", label: { es: "Normal (datos reales)", en: "Normal (real DB data)" } },
     { id: "sleep_low", label: { es: "Sueño bajo (Nivel 2)", en: "Low sleep (Level 2)" } },
     { id: "isolation", label: { es: "Aislamiento (Nivel 2-3)", en: "Isolation (Level 2-3)" } },
-    { id: "burnout_critical", label: { es: "Fatiga crítica (Nivel 3)", en: "Critical burnout (Level 3)" } },
-    { id: "solar_radiation", label: { es: "Radiación solar (Aviso agudo)", en: "Solar event (Acute alert)" } },
+    {
+      id: "burnout_critical",
+      label: { es: "Fatiga crítica (Nivel 3)", en: "Critical burnout (Level 3)" },
+    },
+    {
+      id: "solar_radiation",
+      label: { es: "Radiación solar (Aviso agudo)", en: "Solar event (Acute alert)" },
+    },
   ];
 
   // Colores por nivel de semáforo
-  const LEVEL_COLORS: Record<SemaphoreLevel, { bg: string; border: string; text: string; badge: string }> = {
+  const LEVEL_COLORS: Record<
+    SemaphoreLevel,
+    { bg: string; border: string; text: string; badge: string }
+  > = {
     0: { bg: "#ECFDF5", border: "#A7F3D0", text: "#065F46", badge: "#10B981" },
     1: { bg: "#FFFBEB", border: "#FDE68A", text: "#92400E", badge: "#F59E0B" },
     2: { bg: "#F5F3FF", border: "#DDD6FE", text: "#5B21B6", badge: "#8B5CF6" },
@@ -343,7 +346,11 @@ export function AssistantPage() {
       source: "atajo",
     });
 
-    if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal" || id === "emergencia") {
+    if (
+      resp.esEmergencia ||
+      resp.accionSugerida === "open_emergency_modal" ||
+      id === "emergencia"
+    ) {
       openModal({ type: "emergency" });
     } else if (resp.accionSugerida === "open_journal") {
       setActiveModal("journal");
@@ -538,8 +545,8 @@ export function AssistantPage() {
                   ? "Voz activada"
                   : "Voice active"
                 : language === "es"
-                ? "Pulsa para activar la voz"
-                : "Click to enable voice"}
+                  ? "Pulsa para activar la voz"
+                  : "Click to enable voice"}
             </span>
           </button>
 
@@ -853,7 +860,9 @@ export function AssistantPage() {
                 textTransform: "uppercase",
               }}
             >
-              {language === "es" ? "AVISOS DE VITALES Y ENTORNO" : "ACUTE VITALS & ENVIRONMENT ALERTS"}
+              {language === "es"
+                ? "AVISOS DE VITALES Y ENTORNO"
+                : "ACUTE VITALS & ENVIRONMENT ALERTS"}
             </strong>
           </div>
           {evaluation.avisos_agudos.map((a, i) => (
@@ -950,7 +959,15 @@ export function AssistantPage() {
 
         {/* Opciones interactivas contextuales para Soledad */}
         {lastDiagnostic.intent === "soledad" && (
-          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: 4,
+            }}
+          >
             <button
               type="button"
               onClick={() => {
@@ -1062,7 +1079,15 @@ export function AssistantPage() {
 
         {/* Opciones interactivas contextuales para Desconocido (Fallback) */}
         {lastDiagnostic.intent === "desconocido" && (
-          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: 4,
+            }}
+          >
             <button
               type="button"
               onClick={() => {
@@ -1125,7 +1150,15 @@ export function AssistantPage() {
 
         {/* Opciones interactivas contextuales para Dolor */}
         {lastDiagnostic.intent === "dolor" && (
-          <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginTop: 4 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: 4,
+            }}
+          >
             <button
               type="button"
               onClick={() => {
@@ -1144,7 +1177,10 @@ export function AssistantPage() {
                 cursor: "pointer",
               }}
             >
-              🚨 {language === "es" ? "Pecho / Falta de aire (Emergencia)" : "Chest / Short of breath (Emergency)"}
+              🚨{" "}
+              {language === "es"
+                ? "Pecho / Falta de aire (Emergencia)"
+                : "Chest / Short of breath (Emergency)"}
             </button>
             <button
               type="button"
@@ -1174,7 +1210,10 @@ export function AssistantPage() {
                 cursor: "pointer",
               }}
             >
-              🩺 {language === "es" ? "Cabeza / Espalda (Médico de vuelo)" : "Head / Back (Flight surgeon)"}
+              🩺{" "}
+              {language === "es"
+                ? "Cabeza / Espalda (Médico de vuelo)"
+                : "Head / Back (Flight surgeon)"}
             </button>
           </div>
         )}
@@ -1193,7 +1232,15 @@ export function AssistantPage() {
         }}
         aria-label="Semáforo de salud y bienestar"
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 8,
+          }}
+        >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span
               style={{
@@ -1215,7 +1262,9 @@ export function AssistantPage() {
                 textTransform: "uppercase",
               }}
             >
-              {language === "es" ? `SEMÁFORO: NIVEL ${evaluation.nivel} · ${evaluation.etiqueta}` : `SEMAPHORE: LEVEL ${evaluation.nivel} · ${evaluation.etiqueta}`}
+              {language === "es"
+                ? `SEMÁFORO: NIVEL ${evaluation.nivel} · ${evaluation.etiqueta}`
+                : `SEMAPHORE: LEVEL ${evaluation.nivel} · ${evaluation.etiqueta}`}
             </span>
           </div>
 
@@ -1236,7 +1285,13 @@ export function AssistantPage() {
         </div>
 
         {/* Recomendación "Qué hacer" */}
-        <div style={{ fontFamily: "Instrument Sans, sans-serif", fontSize: 13, color: currentLevelStyle.text }}>
+        <div
+          style={{
+            fontFamily: "Instrument Sans, sans-serif",
+            fontSize: 13,
+            color: currentLevelStyle.text,
+          }}
+        >
           <strong>{language === "es" ? "Acción sugerida: " : "Suggested action: "}</strong>
           <span>{evaluation.que_hacer}</span>
         </div>
@@ -1255,7 +1310,15 @@ export function AssistantPage() {
             >
               {language === "es" ? "MOTIVOS DE EVALUACIÓN:" : "EVALUATION DRIVERS:"}
             </span>
-            <ul style={{ margin: 0, paddingLeft: 18, fontFamily: "Instrument Sans, sans-serif", fontSize: 12, color: "#1E1035" }}>
+            <ul
+              style={{
+                margin: 0,
+                paddingLeft: 18,
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                color: "#1E1035",
+              }}
+            >
               {evaluation.por_que.map((razon, idx) => (
                 <li key={idx}>{razon}</li>
               ))}
@@ -1285,7 +1348,12 @@ export function AssistantPage() {
               }}
             >
               <div style={{ color: "#5A5668" }}>{v.nombre}</div>
-              <div style={{ fontWeight: 700, color: v.nivel > 0 ? LEVEL_COLORS[v.nivel].text : "#1E1035" }}>
+              <div
+                style={{
+                  fontWeight: 700,
+                  color: v.nivel > 0 ? LEVEL_COLORS[v.nivel].text : "#1E1035",
+                }}
+              >
                 {v.valorTexto} {v.disponible ? `(N${v.nivel})` : ""}
               </div>
             </div>
@@ -1294,7 +1362,10 @@ export function AssistantPage() {
 
         {evaluation.datos_parciales && (
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 9, color: "#5A5668" }}>
-            ℹ️ {language === "es" ? "Datos parciales: eficiencia o vida social sin sensor directo en cabina." : "Partial data: social or efficiency metrics uninstrumented."}
+            ℹ️{" "}
+            {language === "es"
+              ? "Datos parciales: eficiencia o vida social sin sensor directo en cabina."
+              : "Partial data: social or efficiency metrics uninstrumented."}
           </span>
         )}
       </section>
@@ -1336,12 +1407,12 @@ export function AssistantPage() {
                   ? "Micrófono no disponible, usa el teclado o los atajos. El reconocimiento suele requerir Chrome o Edge con internet."
                   : "Microphone not supported, use keyboard or shortcuts. Recognition typically requires Chrome or Edge with internet."
                 : isListening
-                ? language === "es"
-                  ? "Escuchando... pulsa para enviar (o presiona M)"
-                  : "Listening... click to send (or press M)"
-                : language === "es"
-                ? "Hablar a ASTRA (M o pulsar)"
-                : "Speak to ASTRA (M or click)"
+                  ? language === "es"
+                    ? "Escuchando... pulsa para enviar (o presiona M)"
+                    : "Listening... click to send (or press M)"
+                  : language === "es"
+                    ? "Hablar a ASTRA (M o pulsar)"
+                    : "Speak to ASTRA (M or click)"
             }
           >
             <span style={{ fontSize: 18 }}>{isListening ? "🔴" : "🎙️"}</span>
@@ -1438,9 +1509,7 @@ export function AssistantPage() {
               style={{
                 background: s.id === "emergencia" ? "#ffe4e6" : "#FFFFFF",
                 border:
-                  s.id === "emergencia"
-                    ? "1px solid #fda4af"
-                    : "1px solid rgba(90, 86, 104, 0.25)",
+                  s.id === "emergencia" ? "1px solid #fda4af" : "1px solid rgba(90, 86, 104, 0.25)",
                 color: s.id === "emergencia" ? "#9f1239" : "#1E1035",
                 borderRadius: 999,
                 padding: "8px 14px",
@@ -1746,26 +1815,60 @@ export function AssistantPage() {
             >
               <div>
                 <strong>Flujo de Entrada / Intérprete:</strong>
-                <div>• Texto crudo: <span style={{ color: "#7C3AED" }}>"{lastDiagnostic.rawText}"</span></div>
-                <div>• Texto normalizado: <span style={{ color: "#5A5668" }}>"{lastDiagnostic.normalizedText}"</span></div>
-                <div>• Idioma activo: <strong>{lastDiagnostic.language.toUpperCase()}</strong></div>
                 <div>
-                  • Intención elegida: <strong style={{ color: "#047857" }}>{lastDiagnostic.intent}</strong> (confianza: {lastDiagnostic.confidence.toFixed(2)} | umbral: {lastDiagnostic.threshold.toFixed(2)})
+                  • Texto crudo:{" "}
+                  <span style={{ color: "#7C3AED" }}>"{lastDiagnostic.rawText}"</span>
                 </div>
-                <div>• Origen del flujo: <span style={{ textTransform: "capitalize" }}>{lastDiagnostic.source}</span></div>
+                <div>
+                  • Texto normalizado:{" "}
+                  <span style={{ color: "#5A5668" }}>"{lastDiagnostic.normalizedText}"</span>
+                </div>
+                <div>
+                  • Idioma activo: <strong>{lastDiagnostic.language.toUpperCase()}</strong>
+                </div>
+                <div>
+                  • Intención elegida:{" "}
+                  <strong style={{ color: "#047857" }}>{lastDiagnostic.intent}</strong> (confianza:{" "}
+                  {lastDiagnostic.confidence.toFixed(2)} | umbral:{" "}
+                  {lastDiagnostic.threshold.toFixed(2)})
+                </div>
+                <div>
+                  • Origen del flujo:{" "}
+                  <span style={{ textTransform: "capitalize" }}>{lastDiagnostic.source}</span>
+                </div>
               </div>
 
               <div>
                 <strong>Motor de Voz (SpeechSynthesis):</strong>
-                <div>• Voces disponibles: <strong>{voices.length}</strong></div>
-                <div>• Voz activa: <span>{voices.find((v) => v.voiceURI === selectedVoiceURI)?.name || "Voz del sistema"}</span></div>
-                <div>• Perfil de voz: <strong>{VOICE_PROFILES[voiceProfile].name[language]}</strong></div>
                 <div>
-                  • Estado síntesis: speaking=<strong>{String(speechState.speaking)}</strong>, pending=<strong>{String(speechState.pending)}</strong>, paused=<strong>{String(speechState.paused)}</strong>
+                  • Voces disponibles: <strong>{voices.length}</strong>
                 </div>
-                <div>• Desbloqueo audio: <strong>{isUnlocked ? "Desbloqueado" : "Bloqueado"}</strong></div>
-                <div>• Último evento: <span style={{ color: "#2563EB" }}>{lastSpeechEvent}</span></div>
-                <div>• Error onerror: <span style={{ color: lastSpeechError ? "#DC2626" : "#059669" }}>{lastSpeechError || "ninguno"}</span></div>
+                <div>
+                  • Voz activa:{" "}
+                  <span>
+                    {voices.find((v) => v.voiceURI === selectedVoiceURI)?.name || "Voz del sistema"}
+                  </span>
+                </div>
+                <div>
+                  • Perfil de voz: <strong>{VOICE_PROFILES[voiceProfile].name[language]}</strong>
+                </div>
+                <div>
+                  • Estado síntesis: speaking=<strong>{String(speechState.speaking)}</strong>,
+                  pending=<strong>{String(speechState.pending)}</strong>, paused=
+                  <strong>{String(speechState.paused)}</strong>
+                </div>
+                <div>
+                  • Desbloqueo audio: <strong>{isUnlocked ? "Desbloqueado" : "Bloqueado"}</strong>
+                </div>
+                <div>
+                  • Último evento: <span style={{ color: "#2563EB" }}>{lastSpeechEvent}</span>
+                </div>
+                <div>
+                  • Error onerror:{" "}
+                  <span style={{ color: lastSpeechError ? "#DC2626" : "#059669" }}>
+                    {lastSpeechError || "ninguno"}
+                  </span>
+                </div>
               </div>
             </div>
           </div>

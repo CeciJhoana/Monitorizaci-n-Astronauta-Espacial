@@ -1,8 +1,9 @@
 /**
- * Cliente HTTP mínimo para hablar con el backend.
+ * Cliente HTTP mínimo para hablar con los backends.
  *
- * Todas las rutas son relativas a `API_BASE_URL`, que puede ser una URL
- * absoluta o `/api` (el proxy de Vite la reenvía al backend en desarrollo).
+ * Todas las rutas son relativas a una base URL, que puede ser una URL
+ * absoluta o una ruta (el proxy de Vite la reenvía en desarrollo).
+ * Por defecto se usa la base del backend de misión (`API_BASE_URL`).
  */
 
 import { API_BASE_URL } from "@/config/env";
@@ -17,15 +18,15 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+async function request<T>(path: string, baseUrl: string, init?: RequestInit): Promise<T> {
   let response: Response;
   try {
-    response = await fetch(`${API_BASE_URL}${path}`, {
+    response = await fetch(`${baseUrl}${path}`, {
       headers: { "Content-Type": "application/json" },
       ...init,
     });
   } catch {
-    throw new ApiError(0, "No se pudo conectar con el servidor de la misión.");
+    throw new ApiError(0, "No se pudo conectar con el servidor.");
   }
 
   if (!response.ok) {
@@ -35,7 +36,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const apiClient = {
-  get: <T>(path: string) => request<T>(path),
-  post: <T>(path: string, body: unknown) =>
-    request<T>(path, { method: "POST", body: JSON.stringify(body) }),
+  get: <T>(path: string, baseUrl: string = API_BASE_URL) => request<T>(path, baseUrl),
+  post: <T>(path: string, body: unknown, baseUrl: string = API_BASE_URL) =>
+    request<T>(path, baseUrl, { method: "POST", body: JSON.stringify(body) }),
 };

@@ -49,7 +49,8 @@ export function mapearAnimo(texto: string | null | undefined): { valor?: number;
   if (t.includes("muy bien")) return { valor: 0.6, texto: "Muy bien" };
   if (t.includes("bien")) return { valor: 0.35, texto: "Bien" };
   if (t.includes("regular")) return { valor: 0.1, texto: "Regular" };
-  if (t.includes("dificultad") || t.includes("mal")) return { valor: -0.4, texto: "Con dificultad" };
+  if (t.includes("dificultad") || t.includes("mal"))
+    return { valor: -0.4, texto: "Con dificultad" };
   return { valor: 0.1, texto };
 }
 
@@ -82,9 +83,10 @@ function resolverLineaBaseHrv(db: MockDatabase, tripulanteId: string): number {
  * Selecciona los datos relevantes para ASTRA desde la base de datos simulada.
  */
 export function selectCompanionData(db: MockDatabase, tripulanteIdOrCode: string): CompanionData {
-  const tripulante = db.tripulante.find(
-    (t: TripulanteRow) => t.id === tripulanteIdOrCode || t.codigo === tripulanteIdOrCode,
-  ) ?? db.tripulante[0];
+  const tripulante =
+    db.tripulante.find(
+      (t: TripulanteRow) => t.id === tripulanteIdOrCode || t.codigo === tripulanteIdOrCode,
+    ) ?? db.tripulante[0];
 
   const tid = tripulante.id;
 

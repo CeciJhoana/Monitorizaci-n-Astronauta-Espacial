@@ -23,11 +23,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePersistentState } from "@/hooks/usePersistentState";
-import {
-  MissionClock,
-  ReminderManager,
-  type ReminderItem,
-} from "@/lib/companion/reminderEngine";
+import { MissionClock, ReminderManager, type ReminderItem } from "@/lib/companion/reminderEngine";
 
 export type CompanionLanguage = "es" | "en";
 export type OrbState = "idle" | "listening" | "speaking" | "thinking" | "alert";
@@ -158,11 +154,11 @@ export function CompanionProvider({ children }: { children: ReactNode }) {
   const [missionDay, setMissionDay] = useState(42);
   const [clockSpeed, setClockSpeedState] = useState<1 | 60 | 600>(1);
   const [activeNotification, setActiveNotification] = useState<ReminderItem | null>(null);
-  const [pendingRemindersCount, setPendingRemindersCount] = useState<number>(
-    () => reminderManagerRef.current.contarPendientes(),
+  const [pendingRemindersCount, setPendingRemindersCount] = useState<number>(() =>
+    reminderManagerRef.current.contarPendientes(),
   );
-  const [recordatorios, setRecordatorios] = useState<ReminderItem[]>(
-    () => reminderManagerRef.current.getRecordatorios(),
+  const [recordatorios, setRecordatorios] = useState<ReminderItem[]>(() =>
+    reminderManagerRef.current.getRecordatorios(),
   );
 
   // Intervalo del reloj de misión (avanza 1 segundo real en cada iteración)
