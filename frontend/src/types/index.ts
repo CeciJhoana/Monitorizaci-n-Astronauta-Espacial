@@ -66,14 +66,14 @@ export interface CrewMember {
   requiresReview: boolean;
 }
 
-export type AlertLevel = "Preventiva" | "Revisión";
+export type AlertLevel = "Preventiva" | "Revisión" | "Crítica";
 
 export interface MissionAlert {
   id: number;
   title: string;
   /** Tripulante o módulo al que apunta la alerta. */
   subject: string;
-  category: "Bienestar" | "Entorno";
+  category: "Bienestar" | "Entorno" | "Vitales" | "Hábitat" | "Sistema";
   relativeTime: string;
   /** Explicación del motivo de la señal. */
   detail: string;
