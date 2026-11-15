@@ -7,7 +7,7 @@
  * fila de 9 atajos de bienestar, selector de idioma (ES/EN) y panel de modo demo.
  */
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { Icon } from "@/components/ui";
 import { Orb } from "@/components/companion/Orb";
 import { useSpeech } from "@/hooks/useSpeech";
@@ -18,6 +18,7 @@ import {
   aplicarEscenario,
   type SemaphoreLevel,
 } from "@/lib/companion/companionEngine";
+import { CompanionSession } from "@/lib/companion/intentEngine";
 import {
   useCompanion,
   VOICE_PROFILES,
@@ -60,6 +61,7 @@ export function AssistantPage() {
 
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
+  const sessionRef = useRef(new CompanionSession());
 
   // Evaluación dinámica del semáforo conductual
   const rawData = useMemo(
@@ -116,81 +118,28 @@ export function AssistantPage() {
   ];
 
   const handleShortcutClick = (id: string) => {
-    switch (id) {
-      case "emergencia":
-        openModal({ type: "emergency" });
-        speak(
-          language === "es"
-            ? "Protocolo de emergencia activado. Avisa de inmediato a la tripulación."
-            : "Emergency protocol initiated. Alert the crew immediately.",
-        );
-        break;
-      case "bitacora":
-        navigate("journal");
-        break;
-      case "estado":
-        speak(
-          language === "es"
-            ? `Estado de salud para ${activeData.nombreTripulante}: Semáforo Nivel ${evaluation.nivel}, ${evaluation.etiqueta}. ${evaluation.que_hacer}`
-            : `Health status for ${activeData.nombreTripulante}: Semaphore Level ${evaluation.nivel}, ${evaluation.etiqueta}. ${evaluation.que_hacer}`,
-        );
-        break;
-      case "ejercicio":
-        speak(
-          language === "es"
-            ? "Para mitigar la pérdida ósea y muscular, se recomienda la rutina ARED de 40 a 60 min."
-            : "To mitigate bone and muscle deconditioning, 40 to 60 min ARED protocol is advised.",
-        );
-        break;
-      case "comer":
-        speak(
-          language === "es"
-            ? "Próxima ventana de nutrición en 45 min. Recuerda hidratarte con 250 ml de electrolitos."
-            : "Next nutrition window in 45 min. Remember to hydrate with 250 ml electrolytes.",
-        );
-        break;
-      case "presion":
-        speak(
-          language === "es"
-            ? "Coloca el manguito en el brazo izquierdo en reposo siguiendo el protocolo MED-01."
-            : "Place the cuff on left arm at rest following protocol MED-01.",
-        );
-        break;
-      case "soledad":
-        speak(
-          language === "es"
-            ? "Estar lejos no significa estar solo. Tomemos 1 minuto de respiración consciente 4-4-4-4."
-            : "Distance does not mean being alone. Let us take 1 minute for 4-4-4-4 box breathing.",
-        );
-        break;
-      case "familia":
-        speak(
-          language === "es"
-            ? `Entorno actual: ${activeData.entorno.nombre}. Canal familiar disponible con retardo simulado.`
-            : `Current habitat: ${activeData.entorno.nombre}. Family channel ready with link latency.`,
-        );
-        break;
-      case "dormir":
-        speak(
-          language === "es"
-            ? "Atenúa la iluminación de cabina 30 minutos antes del ciclo de descanso para facilitar melatonina."
-            : "Dim cabin illumination 30 minutes before your sleep cycle to facilitate melatonin release.",
-        );
-        break;
-      default:
-        break;
+    const resp = sessionRef.current.responder(id, activeData, language);
+    if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal" || id === "emergencia") {
+      openModal({ type: "emergency" });
+    } else if (resp.accionSugerida === "open_journal" || id === "bitacora") {
+      navigate("journal");
     }
+    setSubtitles(resp.text);
+    speak(resp.speechText);
   };
 
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputText.trim()) return;
 
-    speak(
-      language === "es"
-        ? `Recibido: "${inputText}". Evaluando requerimiento con datos de misión...`
-        : `Received: "${inputText}". Evaluating query with mission telemetry...`,
-    );
+    const resp = sessionRef.current.responder(inputText, activeData, language);
+    if (resp.esEmergencia || resp.accionSugerida === "open_emergency_modal") {
+      openModal({ type: "emergency" });
+    } else if (resp.accionSugerida === "open_journal") {
+      navigate("journal");
+    }
+    setSubtitles(resp.text);
+    speak(resp.speechText);
     setInputText("");
   };
 
