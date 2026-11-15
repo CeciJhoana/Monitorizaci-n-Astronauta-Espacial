@@ -6,6 +6,7 @@ import type { PageId } from "@/types";
 
 const PAGE_ICONS: Record<PageId, Parameters<typeof Icon>[0]["name"]> = {
   dashboard: "grid",
+  assistant: "radio",
   crew: "crew",
   vitals: "pulse",
   wellness: "heart",

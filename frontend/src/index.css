@@ -1,6 +1,9 @@
-/* Punto de entrada de estilos.
-   Orden obligatorio: primero los @import externos y luego los locales. */
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap");
+/* Fuentes autohospedadas para funcionamiento 100% offline (ASTRA) */
+@import "@fontsource/instrument-serif/index.css";
+@import "@fontsource/instrument-serif/400-italic.css";
+@import "@fontsource/instrument-sans/index.css";
+@import "@fontsource/instrument-sans/700.css";
+@import "@fontsource/jetbrains-mono/index.css";
 @import "tailwindcss";
 
 /* Tokens, capa base y componentes compartidos (botones, paneles, tablas...). */
@@ -11,3 +14,5 @@
 @import "./styles/responsive.css";
 /* Modelo corporal del astronauta (página Signos vitales). */
 @import "./styles/astronaut-vitals.css";
+/* Variables y tema visual ASTRA (Brand Book v3) */
+@import "./styles/astra.css";

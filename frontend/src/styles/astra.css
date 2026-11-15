@@ -1,0 +1,349 @@
+/* ============================================================
+   astra.css — Manual de Identidad Visual ASTRA (Propuesta 03)
+   NASA Space Apps Cochabamba 2026
+   ============================================================ */
+
+:root {
+  --astra-cosmic: #1E1035;
+  --astra-white: #FFFFFF;
+  --astra-violet: #7C3AED;
+  --astra-lav: #C4B5FD;
+  --astra-lila: #F5F3FF;
+  --astra-plomo: #5A5668;
+  --astra-rule: rgba(90, 86, 104, 0.25);
+  --astra-r: 14px;
+  --astra-pill: 999px;
+}
+
+/* Tipografías oficiales del brand book */
+.font-astra-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-astra-sans {
+  font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-astra-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Contenedor del Widget ASTRA */
+.astra-widget-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 990;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.astra-widget-container > * {
+  pointer-events: auto;
+}
+
+/* Botón flotante minimizado de ASTRA */
+.astra-pill-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--astra-cosmic);
+  color: var(--astra-white);
+  border: 1px solid var(--astra-lav);
+  border-radius: var(--astra-pill);
+  padding: 8px 18px 8px 12px;
+  box-shadow: 0 8px 24px rgba(30, 16, 53, 0.25);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.astra-pill-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.35);
+  background: #2a174a;
+}
+
+/* Panel expandido de ASTRA */
+.astra-card {
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 120px);
+  background: var(--astra-lila);
+  color: var(--astra-cosmic);
+  border: 1px solid var(--astra-rule);
+  border-radius: var(--astra-r);
+  box-shadow: 0 16px 40px rgba(30, 16, 53, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: astraSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes astraSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Cabecera del widget */
+.astra-header {
+  background: var(--astra-cosmic);
+  color: var(--astra-white);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(196, 181, 253, 0.25);
+}
+
+.astra-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.astra-brand h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: var(--astra-white);
+}
+
+.astra-brand span.tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--astra-lav);
+  display: block;
+  margin-top: 2px;
+}
+
+.astra-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.astra-btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--astra-lav);
+  padding: 4px 8px;
+  border-radius: var(--astra-pill);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+
+.astra-btn-ghost:hover {
+  background: rgba(196, 181, 253, 0.15);
+  color: #fff;
+}
+
+/* Contenido scrolleable de ASTRA */
+.astra-body {
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Tarjeta del Semáforo Conductual */
+.astra-semaphore-card {
+  background: var(--astra-white);
+  border: 1px solid var(--astra-rule);
+  border-radius: var(--astra-r);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.astra-semaphore-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.astra-pill {
+  display: inline-block;
+  border-radius: var(--astra-pill);
+  padding: 3px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.astra-pill.green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.astra-pill.amber {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.astra-pill.rose {
+  background: #ffe4e6;
+  color: #9f1239;
+}
+
+.astra-message {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--astra-cosmic);
+}
+
+.astra-action-box {
+  background: #fdfcff;
+  border-left: 3px solid var(--astra-violet);
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--astra-plomo);
+}
+
+.astra-action-box strong {
+  color: var(--astra-violet);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Alertas agudas separadas */
+.astra-acute-box {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: var(--astra-r);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.astra-acute-box.warning {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.astra-acute-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #9f1239;
+  text-transform: uppercase;
+}
+
+.astra-acute-box.warning .astra-acute-title {
+  color: #92400e;
+}
+
+.astra-acute-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #4c0519;
+}
+
+.astra-acute-box.warning .astra-acute-text {
+  color: #78350f;
+}
+
+/* Grid de Botones de Acción ASTRA */
+.astra-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.astra-action-btn {
+  background: var(--astra-white);
+  border: 1px solid var(--astra-rule);
+  border-radius: var(--astra-r);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.astra-action-btn:hover {
+  background: #fff;
+  border-color: var(--astra-violet);
+  transform: translateY(-1px);
+}
+
+.astra-action-btn .btn-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--astra-cosmic);
+}
+
+.astra-action-btn .btn-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--astra-plomo);
+  letter-spacing: 0.03em;
+}
+
+/* Pie y descargo */
+.astra-footer {
+  padding: 8px 14px;
+  background: #ede9fe;
+  border-top: 1px solid var(--astra-rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  line-height: 1.4;
+  color: var(--astra-plomo);
+  text-align: center;
+}
+
+/* Constelación animada en SVG */
+.astra-constellation-halo {
+  animation: astraPulse 3s infinite ease-in-out;
+}
+
+@keyframes astraPulse {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1);
+    transform-origin: 44px 18px;
+  }
+  50% {
+    opacity: 0.28;
+    transform: scale(1.15);
+    transform-origin: 44px 18px;
+  }
+}

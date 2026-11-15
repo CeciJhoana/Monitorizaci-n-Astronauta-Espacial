@@ -13,6 +13,7 @@ export const MISSION = {
 
 export const NAV_ITEMS: { id: PageId; label: string }[] = [
   { id: "dashboard", label: "Resumen de misión" },
+  { id: "assistant", label: "Asistente ASTRA" },
   { id: "crew", label: "Tripulación" },
   { id: "vitals", label: "Signos vitales" },
   { id: "wellness", label: "Bienestar y hábitos" },
@@ -26,6 +27,10 @@ export const PAGE_HEADINGS: Record<PageId, { title: string; subtitle: string }> 
   dashboard: {
     title: "Cada latido cuenta. Incluso aquí.",
     subtitle: "Una misión extraordinaria empieza con una tripulación saludable.",
+  },
+  assistant: {
+    title: "ASTRA · Acompañamiento en órbita",
+    subtitle: "Voz, bienestar, recordatorios y calma para misiones de larga duración.",
   },
   crew: {
     title: "Tripulación",
