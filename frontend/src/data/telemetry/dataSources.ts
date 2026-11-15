@@ -155,7 +155,11 @@ export function applyDataSourceToCrew(
 
   return baseCrew.map((member) => {
     // Alimenta únicamente al tripulante activo (Elena Vega)
-    if (member.id === activeAstronautId || member.id === "tripulante-01") {
+    if (
+      member.id === activeAstronautId ||
+      member.id === "tripulante-01" ||
+      member.id === "01"
+    ) {
       return {
         ...member,
         heartRate: Math.round(esp32Reading.pulso_bpm),
@@ -282,7 +286,14 @@ export function getCompanionDataForSource(
 ): CompanionData {
   const baseData = selectCompanionData(MOCK_DB, tripulanteId);
 
-  if (sourceId === "esp32" && esp32Reading && (tripulanteId === "tripulante-01" || tripulanteId === baseData.tripulanteId)) {
+  if (
+    sourceId === "esp32" &&
+    esp32Reading &&
+    (tripulanteId === "tripulante-01" ||
+      tripulanteId === "01" ||
+      tripulanteId === baseData.tripulanteId ||
+      tripulanteId === baseData.codigoTripulante)
+  ) {
     return {
       ...baseData,
       vitales: {
