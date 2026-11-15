@@ -3,6 +3,7 @@ import { AlertsPanel, CrewPanel, EnvironmentPanel, TrendPanel } from "@/componen
 import { Icon } from "@/components/ui";
 import { SectionHeading } from "@/components/layout/PageHeading";
 import { useUi } from "@/store/UiContext";
+import { TelemetrySourceControl } from "@/components/telemetry/TelemetrySourceControl";
 import { MissionBanner } from "./MissionBanner";
 import { StatCards } from "./StatCards";
 
@@ -17,6 +18,7 @@ export function DashboardPage() {
   return (
     <>
       <MissionBanner />
+      <TelemetrySourceControl />
       <SectionHeading title="Monitoreo biomédico y ambiental">
         ASTRA v1.0 <span className="small-divider">|</span> Sensores en línea
       </SectionHeading>

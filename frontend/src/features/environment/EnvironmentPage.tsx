@@ -3,12 +3,16 @@ import { Icon, Sparkline } from "@/components/ui";
 import { getEnvironmentOption } from "@/config/mission";
 import { useMissionData } from "@/store/MissionDataContext";
 import { useUi } from "@/store/UiContext";
+import { TelemetrySourceControl } from "@/components/telemetry/TelemetrySourceControl";
 
 /** Página de entorno: hábitat, radiación y soporte vital. */
 export function EnvironmentPage() {
-  const { environment } = useMissionData();
+  const { environment, dataSource, rr1RadData } = useMissionData();
   const { openModal } = useUi();
   const option = getEnvironmentOption(environment);
+
+  const isRr1 = dataSource === "rr1";
+  const lastRadDay = rr1RadData?.series[rr1RadData.series.length - 1];
 
   return (
     <>
@@ -27,37 +31,69 @@ export function EnvironmentPage() {
         </button>
       </div>
 
+      <TelemetrySourceControl />
+
       <EnvironmentPanel variant="full" />
 
       <div className="two-columns">
+        {/* Panel de Radiación: rigurosa separación de mGy vs mSv */}
         <section className="panel">
           <div className="panel-title">
             <div>
               <h3>Exposición a radiación</h3>
-              <p>Acumulada en hábitat · Dosis equivalente</p>
+              <p>
+                {isRr1
+                  ? "Dosis absorbida · NASA RR-1 Dosimetría ISS"
+                  : "Acumulada en hábitat · Dosis equivalente"}
+              </p>
             </div>
+            {isRr1 && <span className="astra-sim-badge">NASA RR-1 · ISS</span>}
           </div>
+
           <div className="radiation-number">
-            52.8 <span>mSv</span>
+            {isRr1 ? (
+              <>
+                {lastRadDay?.acumulada_mgy ?? 7.96} <span>mGy</span>
+              </>
+            ) : (
+              <>
+                52.8 <span>mSv</span>
+              </>
+            )}
             <Sparkline color="#ae92d5" />
           </div>
+
           <div className="exposure-bars">
             {Array.from({ length: 28 }, (_, index) => (
               <span key={index} style={{ height: `${25 + ((index * 17) % 65)}%` }} />
             ))}
           </div>
+
           <p className="muted">
-            Día 101 <span className="float-right">Día 128</span>
+            {isRr1 ? "Día 01 (2014-09-21)" : "Día 101"}{" "}
+            <span className="float-right">{isRr1 ? "Día 39 (2014-10-29)" : "Día 128"}</span>
           </p>
+
           <details className="astra-details">
             <summary>¿Por qué?</summary>
             <div className="astra-details-content">
-              La radiación espacial proviene de rayos cósmicos galácticos (GCR) y eventos solares. Se
-              registra en mSv para evaluar el riesgo biológico acumulado en misiones prolongadas.
+              {isRr1 ? (
+                <>
+                  Datos del dosímetro en el experimento Rodent Research 1 (ISS). Registra dosis
+                  absorbida en <strong>mGy</strong> (GCR + Anomalía del Atlántico Sur).{" "}
+                  <em>No se debe convertir ni sumar con mSv (dosis equivalente).</em>
+                </>
+              ) : (
+                <>
+                  La radiación espacial proviene de rayos cósmicos galácticos (GCR) y eventos solares. Se
+                  registra en mSv para evaluar el riesgo biológico acumulado en misiones prolongadas.
+                </>
+              )}
             </div>
           </details>
         </section>
 
+        {/* Calidad ambiental */}
         <section className="panel">
           <div className="panel-title">
             <div>
