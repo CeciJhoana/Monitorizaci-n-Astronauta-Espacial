@@ -10,7 +10,7 @@ import { Orb } from "./Orb";
 
 export function MiniOrbLauncher() {
   const { page, navigate } = useUi();
-  const { orbState, orbEnergy, voiceProfile } = useCompanion();
+  const { orbState, orbEnergy, voiceProfile, pendingRemindersCount } = useCompanion();
 
   // No se muestra si ya estamos en la página del asistente
   if (page === "assistant") return null;
@@ -78,6 +78,23 @@ export function MiniOrbLauncher() {
             EN LÍNEA
           </span>
         </div>
+
+        {pendingRemindersCount > 0 && (
+          <span
+            style={{
+              background: "#EF4444",
+              color: "#FFFFFF",
+              borderRadius: 999,
+              padding: "1px 6px",
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 9,
+              fontWeight: 700,
+              boxShadow: "0 0 8px rgba(239, 68, 68, 0.6)",
+            }}
+          >
+            {pendingRemindersCount}
+          </span>
+        )}
       </button>
     </aside>
   );

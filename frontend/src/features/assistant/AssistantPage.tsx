@@ -47,6 +47,15 @@ export function AssistantPage() {
     setSubtitles,
     isDevMode,
     setIsDevMode,
+    clockTime,
+    missionDay,
+    clockSpeed,
+    setClockSpeed,
+    saltarAlProximoAviso,
+    activeNotification,
+    handleReminderAction,
+    recordatorios,
+    pendingRemindersCount,
   } = useCompanion();
 
   const {
@@ -63,6 +72,22 @@ export function AssistantPage() {
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
   const sessionRef = useRef(new CompanionSession());
+
+  // Evaluación dinámica del semáforo conductual
+  const rawData = useMemo(
+    () => selectCompanionData(MOCK_DB, activeAstronautId),
+    [activeAstronautId],
+  );
+
+  const activeData = useMemo(
+    () => aplicarEscenario(rawData, scenario),
+    [rawData, scenario],
+  );
+
+  const evaluation = useMemo(
+    () => evaluateBehavior(activeData, language),
+    [activeData, language],
+  );
 
   // Reconocimiento de voz con push-to-talk
   const {
@@ -107,21 +132,23 @@ export function AssistantPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [toggleListening]);
 
-  // Evaluación dinámica del semáforo conductual
-  const rawData = useMemo(
-    () => selectCompanionData(MOCK_DB, activeAstronautId),
-    [activeAstronautId],
-  );
+  // Anunciar de forma proactiva cuando salta un recordatorio
+  const lastSpokenNotificationIdRef = useRef<string | null>(null);
 
-  const activeData = useMemo(
-    () => aplicarEscenario(rawData, scenario),
-    [rawData, scenario],
-  );
+  useEffect(() => {
+    if (activeNotification && activeNotification.id !== lastSpokenNotificationIdRef.current) {
+      lastSpokenNotificationIdRef.current = activeNotification.id;
+      const titulo = activeNotification.titulo[language];
+      const hora = activeNotification.hora_programada;
+      const texto =
+        language === "es"
+          ? `${activeData.nombreTripulante}, son las ${hora}. Recordatorio de rutina: ${titulo}.`
+          : `${activeData.nombreTripulante}, it is ${hora}. Routine reminder: ${titulo}.`;
 
-  const evaluation = useMemo(
-    () => evaluateBehavior(activeData, language),
-    [activeData, language],
-  );
+      setSubtitles(`⏰ ${texto}`);
+      speak(texto);
+    }
+  }, [activeNotification, language, activeData.nombreTripulante, speak, setSubtitles]);
 
   // Lista de tripulantes disponibles para el modo demo
   const CREW_OPTIONS = [
@@ -328,6 +355,197 @@ export function AssistantPage() {
           </button>
         </div>
       </header>
+
+      {/* Reloj de Misión Simulado con Control de Velocidad */}
+      <section
+        style={{
+          background: "#FFFFFF",
+          border: "1px solid rgba(90, 86, 104, 0.2)",
+          borderRadius: 12,
+          padding: "10px 16px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: 10,
+        }}
+        aria-label="Reloj de misión y control de velocidad"
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 16 }}>⏱️</span>
+          <span
+            style={{
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 12,
+              fontWeight: 700,
+              color: "#1E1035",
+            }}
+          >
+            MET Día {missionDay} · {clockTime} UTC
+          </span>
+          {pendingRemindersCount > 0 && (
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 9,
+                background: "#EDE9FE",
+                color: "#7C3AED",
+                padding: "2px 8px",
+                borderRadius: 999,
+                fontWeight: 600,
+              }}
+            >
+              {pendingRemindersCount} {language === "es" ? "avisos hoy" : "alerts today"}
+            </span>
+          )}
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span
+            style={{
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 10,
+              color: "#5A5668",
+            }}
+          >
+            {language === "es" ? "Velocidad:" : "Speed:"}
+          </span>
+          {([1, 60, 600] as const).map((vel) => (
+            <button
+              key={vel}
+              onClick={() => setClockSpeed(vel)}
+              style={{
+                background: clockSpeed === vel ? "#7C3AED" : "transparent",
+                color: clockSpeed === vel ? "#FFFFFF" : "#1E1035",
+                border: "1px solid #7C3AED",
+                borderRadius: 6,
+                padding: "2px 8px",
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 10,
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              {vel}x
+            </button>
+          ))}
+
+          <button
+            onClick={() => saltarAlProximoAviso()}
+            style={{
+              background: "#F5F3FF",
+              color: "#7C3AED",
+              border: "1px solid #C4B5FD",
+              borderRadius: 6,
+              padding: "2px 10px",
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 10,
+              fontWeight: 600,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: 4,
+            }}
+            title="Avanzar reloj directamente al próximo recordatorio"
+          >
+            <span>⏭️</span>
+            <span>{language === "es" ? "Próximo aviso" : "Next alert"}</span>
+          </button>
+        </div>
+      </section>
+
+      {/* Tarjeta de Notificación Activa de Recordatorio */}
+      {activeNotification && (
+        <section
+          style={{
+            background: "#EFF6FF",
+            border: "1px solid #93C5FD",
+            borderRadius: 12,
+            padding: "14px 18px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 12,
+            boxShadow: "0 4px 14px rgba(59, 130, 246, 0.15)",
+          }}
+          aria-label="Aviso de rutina activo"
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, flex: 1, minWidth: 240 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 16 }}>⏰</span>
+              <strong
+                style={{
+                  fontFamily: "Instrument Sans, sans-serif",
+                  fontSize: 14,
+                  color: "#1E3A8A",
+                }}
+              >
+                {activeNotification.hora_programada} · {activeNotification.titulo[language]}
+              </strong>
+            </div>
+            <p
+              style={{
+                margin: 0,
+                paddingLeft: 24,
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                color: "#1E40AF",
+              }}
+            >
+              {activeNotification.descripcion[language]}
+            </p>
+          </div>
+
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            <button
+              onClick={() => handleReminderAction(activeNotification.id, "hecho")}
+              style={{
+                background: "#10B981",
+                color: "#FFFFFF",
+                border: "none",
+                borderRadius: 8,
+                padding: "6px 14px",
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              ✓ {language === "es" ? "Hecho" : "Done"}
+            </button>
+            <button
+              onClick={() => handleReminderAction(activeNotification.id, "posponer")}
+              style={{
+                background: "#FFFFFF",
+                color: "#1E40AF",
+                border: "1px solid #93C5FD",
+                borderRadius: 8,
+                padding: "6px 12px",
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                cursor: "pointer",
+              }}
+            >
+              ⏱️ {language === "es" ? "Posponer 10 min" : "Snooze 10m"}
+            </button>
+            <button
+              onClick={() => handleReminderAction(activeNotification.id, "omitir")}
+              style={{
+                background: "transparent",
+                color: "#6B7280",
+                border: "none",
+                padding: "6px 8px",
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                cursor: "pointer",
+              }}
+            >
+              ✕ {language === "es" ? "Omitir" : "Dismiss"}
+            </button>
+          </div>
+        </section>
+      )}
 
       {/* CAPA SEPARADA: Avisos de Vitales y Entorno (Agudos) */}
       {evaluation.avisos_agudos.length > 0 && (
