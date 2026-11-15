@@ -10,6 +10,7 @@
 import { useState } from "react";
 import { Icon } from "@/components/ui";
 import { Orb } from "@/components/companion/Orb";
+import { useSpeech } from "@/hooks/useSpeech";
 import {
   useCompanion,
   VOICE_PROFILES,
@@ -28,13 +29,22 @@ export function AssistantPage() {
     setOrbEnergy,
     voiceProfile,
     setVoiceProfile,
-    voiceEnabled,
-    setVoiceEnabled,
     subtitles,
     setSubtitles,
     isDevMode,
     setIsDevMode,
   } = useCompanion();
+
+  const {
+    voices,
+    selectedVoiceURI,
+    setSelectedVoiceURI,
+    speak,
+    cancel,
+    isSpeaking,
+    voiceEnabled,
+    setVoiceEnabled,
+  } = useSpeech();
 
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
@@ -57,7 +67,7 @@ export function AssistantPage() {
     switch (id) {
       case "emergencia":
         openModal({ type: "emergency" });
-        setSubtitles(
+        speak(
           language === "es"
             ? "Protocolo de emergencia activado. Avisa de inmediato a la tripulación."
             : "Emergency protocol initiated. Alert the crew immediately.",
@@ -67,49 +77,49 @@ export function AssistantPage() {
         navigate("journal");
         break;
       case "estado":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Evaluando signos y descanso... Todos los sistemas de acompañamiento en línea."
             : "Evaluating vitals and rest... All companion systems online.",
         );
         break;
       case "ejercicio":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Para mitigar la pérdida ósea y muscular, se recomienda la rutina ARED de 40 min."
             : "To mitigate bone and muscle deconditioning, 40 min ARED protocol is advised.",
         );
         break;
       case "comer":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Próxima colación en 45 min. Recuerda hidratarte con 250 ml de sales."
             : "Next nutrition window in 45 min. Remember to hydrate with 250 ml electrolytes.",
         );
         break;
       case "presion":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Coloca el manguito en el brazo izquierdo en reposo siguiendo el protocolo MED-01."
             : "Place the cuff on left arm at rest following protocol MED-01.",
         );
         break;
       case "soledad":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Estar lejos no significa estar solo. Tomemos 1 minuto de respiración 4-4-4-4."
             : "Distance does not mean being alone. Let us take 1 minute for 4-4-4-4 breathing.",
         );
         break;
       case "familia":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Calculando retardo de enlace según tu entorno... Canal familiar disponible."
             : "Calculating uplink delay for your habitat... Family channel ready.",
         );
         break;
       case "dormir":
-        setSubtitles(
+        speak(
           language === "es"
             ? "Atenúa la iluminación de cabina 30 minutos antes del ciclo de descanso."
             : "Dim cabin illumination 30 minutes before your scheduled sleep cycle.",
@@ -124,7 +134,7 @@ export function AssistantPage() {
     e.preventDefault();
     if (!inputText.trim()) return;
 
-    setSubtitles(
+    speak(
       language === "es"
         ? `Recibido: "${inputText}". Procesando intención...`
         : `Received: "${inputText}". Processing query...`,
@@ -527,6 +537,41 @@ export function AssistantPage() {
               </button>
             ))}
           </div>
+
+          {/* Selector de Voz del Sistema */}
+          {voices.length > 0 && (
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <label
+                style={{
+                  fontFamily: "JetBrains Mono, monospace",
+                  fontSize: 10,
+                  color: "#1E1035",
+                  width: 120,
+                }}
+              >
+                Voz ({language.toUpperCase()}):
+              </label>
+              <select
+                value={selectedVoiceURI}
+                onChange={(e) => setSelectedVoiceURI(e.target.value)}
+                style={{
+                  flex: 1,
+                  padding: "4px 8px",
+                  borderRadius: 8,
+                  border: "1px solid #7C3AED",
+                  fontFamily: "JetBrains Mono, monospace",
+                  fontSize: 10,
+                  background: "#fff",
+                }}
+              >
+                {voices.map((v) => (
+                  <option key={v.voiceURI} value={v.voiceURI}>
+                    {v.name} ({v.lang})
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Selector de Nivel de Semáforo */}
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
