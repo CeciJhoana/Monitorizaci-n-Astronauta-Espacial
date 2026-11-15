@@ -82,23 +82,19 @@ export function JournalPage() {
       <section className="panel">
         <div className="panel-title">
           <div>
-            <h3>Tu perspectiva importa</h3>
+            <h3>Monitoreo psicosocial</h3>
           </div>
         </div>
         <div className="journal-tip">
-          <Icon name="book" size={30} />
-          <h3>
-            Un pequeño registro.
-            <br />
-            Una visión más completa.
-          </h3>
+          <Icon name="book" size={24} />
+          <h3>Registro personal diario</h3>
           <p>
-            El estado de ánimo se registra tal como lo expresas. Este prototipo no analiza
-            sentimientos ni calcula un diagnóstico psicológico.
+            Tus reflexiones alimentan la variable de ánimo del semáforo conductual para detectar
+            tempranamente el estrés por aislamiento en hábitats cerrados.
           </p>
         </div>
         <div className="journal-prompt">
-          <span>PREGUNTA PARA HOY</span>
+          <span>PREGUNTA GUÍA</span>
           <p>{JOURNAL_PROMPT}</p>
         </div>
       </section>

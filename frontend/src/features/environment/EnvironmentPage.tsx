@@ -4,7 +4,7 @@ import { getEnvironmentOption } from "@/config/mission";
 import { useMissionData } from "@/store/MissionDataContext";
 import { useUi } from "@/store/UiContext";
 
-/** Página de entorno: hábitat, radiación acumulada y contexto ambiental. */
+/** Página de entorno: hábitat, radiación y soporte vital. */
 export function EnvironmentPage() {
   const { environment } = useMissionData();
   const { openModal } = useUi();
@@ -19,7 +19,7 @@ export function EnvironmentPage() {
             HÁBITAT {option.id === "orbital-station" ? "ARES–01" : option.label.toUpperCase()}
           </span>
           <h2>{option.label}</h2>
-          <p>Telemetría de demostración · Módulo de habitación</p>
+          <p>Telemetría ambiental del módulo habitable</p>
         </div>
         <button className="button secondary" onClick={() => openModal({ type: "settings" })}>
           Cambiar entorno
@@ -34,7 +34,7 @@ export function EnvironmentPage() {
           <div className="panel-title">
             <div>
               <h3>Exposición a radiación</h3>
-              <p>Acumulada durante la misión · Datos simulados</p>
+              <p>Acumulada en hábitat · Dosis equivalente</p>
             </div>
           </div>
           <div className="radiation-number">
@@ -49,29 +49,40 @@ export function EnvironmentPage() {
           <p className="muted">
             Día 101 <span className="float-right">Día 128</span>
           </p>
+          <details className="astra-details">
+            <summary>¿Por qué?</summary>
+            <div className="astra-details-content">
+              La radiación espacial proviene de rayos cósmicos galácticos (GCR) y eventos solares. Se
+              registra en mSv para evaluar el riesgo biológico acumulado en misiones prolongadas.
+            </div>
+          </details>
         </section>
 
         <section className="panel">
           <div className="panel-title">
             <div>
-              <h3>La salud también depende del hábitat</h3>
+              <h3>Calidad ambiental del hábitat</h3>
             </div>
           </div>
           <div className="context-item">
             <Icon name="wind" />
             <div>
-              <h4>Ventilación y calidad del aire</h4>
-              <p>Relaciona cambios de CO₂ con dolor de cabeza, descanso y percepción de fatiga.</p>
+              <h4>Ventilación y CO₂</h4>
+              <p>Tendencia de revisión, no umbral clínico validado.</p>
+              <details className="astra-details">
+                <summary>¿Por qué?</summary>
+                <div className="astra-details-content">
+                  En microgravedad el CO₂ tiende a acumularse en bolsas sin flujo forzado, lo que
+                  puede provocar sensación de fatiga y cefaleas transitorias.
+                </div>
+              </details>
             </div>
           </div>
           <div className="context-item">
             <Icon name="sun" />
             <div>
-              <h4>Luz y ritmo circadiano</h4>
-              <p>
-                Ventana de luz de la tripulación: 06:30–08:00 UTC. Perfil adaptado al entorno
-                seleccionado.
-              </p>
+              <h4>Ciclo de iluminación</h4>
+              <p>Ventana circadiana adaptada al hábitat.</p>
             </div>
           </div>
         </section>

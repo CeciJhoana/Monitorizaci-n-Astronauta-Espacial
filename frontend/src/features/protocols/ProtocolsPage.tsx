@@ -2,7 +2,7 @@ import { Icon } from "@/components/ui";
 import { MOCK_PROTOCOLS } from "@/data/mockData";
 import { useUi } from "@/store/UiContext";
 
-/** Página de protocolos: listas de comprobación orientativas. */
+/** Página de protocolos: procedimientos operativos para contingencias autónomas. */
 export function ProtocolsPage() {
   const { openModal } = useUi();
 
@@ -11,11 +11,8 @@ export function ProtocolsPage() {
       <div className="safety-banner">
         <Icon name="shield" size={30} />
         <div>
-          <h3>Claridad antes que improvisación.</h3>
-          <p>
-            Listas de orientación para este prototipo. No sustituyen procedimientos médicos
-            oficiales ni ofrecen instrucciones de medicación.
-          </p>
+          <h3>Protocolos de contingencia médica</h3>
+          <p>Guías estandarizadas para soporte autónomo sin enlace con Tierra.</p>
         </div>
         <button className="button danger" onClick={() => openModal({ type: "emergency" })}>
           Asistencia urgente
@@ -37,7 +34,7 @@ export function ProtocolsPage() {
             <h3>{protocol.title}</h3>
             <p>{protocol.description}</p>
             <span className="text-link">
-              Abrir lista de comprobación
+              Abrir protocolo
               <Icon name="arrow" size={17} />
             </span>
           </button>
