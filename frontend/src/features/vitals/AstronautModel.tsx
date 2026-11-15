@@ -9,7 +9,7 @@ import { buildVitalReadings, SENSOR_POSITIONS } from "./vitalsConfig";
  * seleccionables y su detalle explicativo.
  */
 export function AstronautModel() {
-  const { crew, measurements } = useMissionData();
+  const { crew, measurements, telemetryStatus, liveTelemetry } = useMissionData();
   const [personId, setPersonId] = useState(crew[0].id);
   const [selectedKey, setSelectedKey] = useState<VitalKey>("heart");
   const [animated, setAnimated] = useState(true);
@@ -21,6 +21,14 @@ export function AstronautModel() {
   const respiratoryRate = Number(
     vitals.find((vital) => vital.key === "breathing")?.value ?? member.respiratoryRate,
   );
+
+  // El rótulo del escenario refleja el origen real de los datos.
+  const stationLive = telemetryStatus === "live";
+  const stageLabel = stationLive
+    ? liveTelemetry?.simulatedVitals
+      ? "EN VIVO · SIM"
+      : "EN VIVO"
+    : "SIMULACIÓN";
 
   const animationStyle = {
     "--heartbeat": `${60 / member.heartRate}s`,
@@ -64,7 +72,16 @@ export function AstronautModel() {
             <span>
               MODELO BIOMÉTRICO <b>01 / FRONTAL</b>
             </span>
-            <span className="astronaut-sim-label">SIMULACIÓN</span>
+            <span
+              className="astronaut-sim-label"
+              title={
+                stationLive
+                  ? "Datos en vivo desde la estación de telemetría"
+                  : "Datos simulados de demostración"
+              }
+            >
+              {stageLabel}
+            </span>
           </div>
           <svg
             className="astronaut-model"

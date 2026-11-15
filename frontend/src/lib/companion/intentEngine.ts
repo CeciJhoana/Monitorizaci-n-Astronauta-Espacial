@@ -105,81 +105,287 @@ export function distanciaLevenshtein(a: string, b: string): number {
 
 const DICCIONARIO_INTENCIONES: Record<Exclude<CompanionIntent, "desconocido">, string[]> = {
   emergencia: [
-    "fuego", "humo", "despresurizacion", "fuga", "toxico", "auxilio",
-    "socorro", "me ahogo", "no puedo respirar", "emergencia", "alarma",
-    "incendio", "asfixia", "brecha", "critico", "peligro", "evacuar",
-    "fire", "smoke", "depressurization", "leak", "toxic", "mayday",
-    "suffocating", "emergency", "alarm", "breach",
+    "fuego",
+    "humo",
+    "despresurizacion",
+    "fuga",
+    "toxico",
+    "auxilio",
+    "socorro",
+    "me ahogo",
+    "no puedo respirar",
+    "emergencia",
+    "alarma",
+    "incendio",
+    "asfixia",
+    "brecha",
+    "critico",
+    "peligro",
+    "evacuar",
+    "fire",
+    "smoke",
+    "depressurization",
+    "leak",
+    "toxic",
+    "mayday",
+    "suffocating",
+    "emergency",
+    "alarm",
+    "breach",
   ],
   saludo: [
-    "hola", "ola", "buenas", "buenos dias", "buenas tardes", "buenas noches",
-    "hey", "hello", "hi", "good morning", "good afternoon", "good evening",
-    "astra", "saludos", "que tal", "buen dia", "saludo",
+    "hola",
+    "ola",
+    "buenas",
+    "buenos dias",
+    "buenas tardes",
+    "buenas noches",
+    "hey",
+    "hello",
+    "hi",
+    "good morning",
+    "good afternoon",
+    "good evening",
+    "astra",
+    "saludos",
+    "que tal",
+    "buen dia",
+    "saludo",
   ],
   dolor: [
-    "me duele", "dolor", "duele", "pain", "hurts", "ache", "lastima",
-    "molestia", "dolencia", "me lastima", "tengo dolor", "siento dolor",
-    "doloroso", "sore", "hurting",
+    "me duele",
+    "dolor",
+    "duele",
+    "pain",
+    "hurts",
+    "ache",
+    "lastima",
+    "molestia",
+    "dolencia",
+    "me lastima",
+    "tengo dolor",
+    "siento dolor",
+    "doloroso",
+    "sore",
+    "hurting",
   ],
   ejercicio: [
-    "ejercicio", "entrenar", "entrenamiento", "rutina", "ared", "t2",
-    "cevis", "cardio", "pesas", "estirar", "estiramiento", "elongar",
-    "actividad fisica", "musculo", "muscular", "fuerza",
-    "exercise", "workout", "training", "stretching", "stretch",
+    "ejercicio",
+    "entrenar",
+    "entrenamiento",
+    "rutina",
+    "ared",
+    "t2",
+    "cevis",
+    "cardio",
+    "pesas",
+    "estirar",
+    "estiramiento",
+    "elongar",
+    "actividad fisica",
+    "musculo",
+    "muscular",
+    "fuerza",
+    "exercise",
+    "workout",
+    "training",
+    "stretching",
+    "stretch",
   ],
   comer: [
-    "comer", "comida", "hambre", "almuerzo", "cena", "desayuno",
-    "racion", "colacion", "calorias", "nutricion", "merendar", "alimento",
-    "eat", "food", "hungry", "lunch", "dinner", "breakfast", "meal", "snack",
+    "comer",
+    "comida",
+    "hambre",
+    "almuerzo",
+    "cena",
+    "desayuno",
+    "racion",
+    "colacion",
+    "calorias",
+    "nutricion",
+    "merendar",
+    "alimento",
+    "eat",
+    "food",
+    "hungry",
+    "lunch",
+    "dinner",
+    "breakfast",
+    "meal",
+    "snack",
   ],
   hidratacion: [
-    "agua", "sed", "beber", "hidratar", "hidratacion", "electrolitos",
-    "liquido", "tomar agua",
-    "water", "thirst", "drink", "hydrate", "hydration", "electrolytes",
+    "agua",
+    "sed",
+    "beber",
+    "hidratar",
+    "hidratacion",
+    "electrolitos",
+    "liquido",
+    "tomar agua",
+    "water",
+    "thirst",
+    "drink",
+    "hydrate",
+    "hydration",
+    "electrolytes",
   ],
   presion: [
-    "presion", "tension", "tensiometro", "med 01", "med01", "sistolica",
-    "diastolica", "manguito", "arterial", "tomar presion",
-    "pressure", "blood pressure", "bp", "cuff", "systolic", "diastolic",
+    "presion",
+    "tension",
+    "tensiometro",
+    "med 01",
+    "med01",
+    "sistolica",
+    "diastolica",
+    "manguito",
+    "arterial",
+    "tomar presion",
+    "pressure",
+    "blood pressure",
+    "bp",
+    "cuff",
+    "systolic",
+    "diastolic",
   ],
   soledad: [
-    "solo", "sola", "soledad", "extrano", "triste", "desanimado",
-    "bajon", "aislar", "aislado", "aislada", "aislamiento", "encerrado", "deprimido",
-    "sin ganas", "nostalgia", "angustia", "confinamiento",
-    "me siento solo", "me siento sola", "estoy triste", "estoy solo", "estoy sola",
-    "lonely", "alone", "isolation", "isolated", "sad", "down", "depressed",
-    "homesick", "feeling down", "feeling alone",
+    "solo",
+    "sola",
+    "soledad",
+    "extrano",
+    "triste",
+    "desanimado",
+    "bajon",
+    "aislar",
+    "aislado",
+    "aislada",
+    "aislamiento",
+    "encerrado",
+    "deprimido",
+    "sin ganas",
+    "nostalgia",
+    "angustia",
+    "confinamiento",
+    "me siento solo",
+    "me siento sola",
+    "estoy triste",
+    "estoy solo",
+    "estoy sola",
+    "lonely",
+    "alone",
+    "isolation",
+    "isolated",
+    "sad",
+    "down",
+    "depressed",
+    "homesick",
+    "feeling down",
+    "feeling alone",
   ],
   familia: [
-    "familia", "llamada", "hablar a casa", "tierra", "mensaje",
-    "hijos", "pareja", "casa", "videoconferencia", "comunicar con casa",
-    "llamar a casa", "contacto familiar",
-    "family", "call home", "earth", "message", "kids", "partner", "home",
+    "familia",
+    "llamada",
+    "hablar a casa",
+    "tierra",
+    "mensaje",
+    "hijos",
+    "pareja",
+    "casa",
+    "videoconferencia",
+    "comunicar con casa",
+    "llamar a casa",
+    "contacto familiar",
+    "family",
+    "call home",
+    "earth",
+    "message",
+    "kids",
+    "partner",
+    "home",
   ],
   dormir: [
-    "dormir", "sueno", "insomnio", "descansar", "descanso", "cansado",
-    "cansada", "siesta", "luz azul", "despertar", "antifaz", "reloj biologico",
-    "sleep", "rest", "insomnia", "tired", "nap", "blue light", "eyemask",
+    "dormir",
+    "sueno",
+    "insomnio",
+    "descansar",
+    "descanso",
+    "cansado",
+    "cansada",
+    "siesta",
+    "luz azul",
+    "despertar",
+    "antifaz",
+    "reloj biologico",
+    "sleep",
+    "rest",
+    "insomnia",
+    "tired",
+    "nap",
+    "blue light",
+    "eyemask",
   ],
   bitacora: [
-    "bitacora", "diario", "registrar animo", "como me siento",
-    "anotar", "escribir", "journal", "registro personal",
-    "diary", "log", "write", "record mood",
+    "bitacora",
+    "diario",
+    "registrar animo",
+    "como me siento",
+    "anotar",
+    "escribir",
+    "journal",
+    "registro personal",
+    "diary",
+    "log",
+    "write",
+    "record mood",
   ],
   estado: [
-    "estado", "como estoy", "salud", "semaforo", "reporte",
-    "resumen", "como voy", "signos", "vitales", "evaluacion",
-    "status", "how am i", "health", "semaphore", "vitals",
+    "estado",
+    "como estoy",
+    "salud",
+    "semaforo",
+    "reporte",
+    "resumen",
+    "como voy",
+    "signos",
+    "vitales",
+    "evaluacion",
+    "status",
+    "how am i",
+    "health",
+    "semaphore",
+    "vitals",
   ],
   ayuda: [
-    "ayuda", "que puedes hacer", "opciones", "comandos", "funciones",
-    "que sabes hacer", "menu", "instrucciones",
-    "help", "what can you do", "commands", "options", "features",
+    "ayuda",
+    "que puedes hacer",
+    "opciones",
+    "comandos",
+    "funciones",
+    "que sabes hacer",
+    "menu",
+    "instrucciones",
+    "help",
+    "what can you do",
+    "commands",
+    "options",
+    "features",
   ],
   seguimiento: [
-    "otro", "otra", "mas", "que mas", "repite", "repetir",
-    "no me gusta esa", "siguiente", "dame otra", "cambia",
-    "another", "more", "repeat", "next", "different",
+    "otro",
+    "otra",
+    "mas",
+    "que mas",
+    "repite",
+    "repetir",
+    "no me gusta esa",
+    "siguiente",
+    "dame otra",
+    "cambia",
+    "another",
+    "more",
+    "repeat",
+    "next",
+    "different",
   ],
 };
 
@@ -265,11 +471,17 @@ export function detectarIntencion(
 
   // 2. Comprobar seguimiento / repetición con contexto
   const tokensSeguimiento = DICCIONARIO_INTENCIONES.seguimiento;
-  const esSeguimiento = tokens.some((tok) =>
-    tokensSeguimiento.some((kw) => coincidePalabra(tok, kw)),
-  ) || textoLimpio.includes("que mas") || textoLimpio.includes("no me gusta");
+  const esSeguimiento =
+    tokens.some((tok) => tokensSeguimiento.some((kw) => coincidePalabra(tok, kw))) ||
+    textoLimpio.includes("que mas") ||
+    textoLimpio.includes("no me gusta");
 
-  if (esSeguimiento && ultimaIntencionValida && ultimaIntencionValida !== "desconocido" && ultimaIntencionValida !== "emergencia") {
+  if (
+    esSeguimiento &&
+    ultimaIntencionValida &&
+    ultimaIntencionValida !== "desconocido" &&
+    ultimaIntencionValida !== "emergencia"
+  ) {
     return {
       intent: "seguimiento",
       confidence: 0.9,
@@ -279,7 +491,9 @@ export function detectarIntencion(
   }
 
   // 3. Evaluar el resto de intenciones
-  const intencionesRestantes: Array<Exclude<CompanionIntent, "emergencia" | "desconocido" | "seguimiento">> = [
+  const intencionesRestantes: Array<
+    Exclude<CompanionIntent, "emergencia" | "desconocido" | "seguimiento">
+  > = [
     "saludo",
     "dolor",
     "ejercicio",
@@ -631,9 +845,13 @@ export function generarRespuesta(
     case "comer": {
       const entradaComida = entradas.find((e) => e.id === "nutricion-horarios") ?? entradas[3];
       const textoEs = `${entradaComida.texto.es} Si vas a realizar tareas de exigencia física, acompáñala con 250 ml de sales.`;
-      const speechEs = entradaComida.texto_hablado?.es ?? "Recuerda mantener tus comidas regulares y añadir una colación antes de entrenar.";
+      const speechEs =
+        entradaComida.texto_hablado?.es ??
+        "Recuerda mantener tus comidas regulares y añadir una colación antes de entrenar.";
       const textoEn = `${entradaComida.texto.en} If you have high-demand tasks ahead, pair it with 250 ml electrolyte hydration.`;
-      const speechEn = entradaComida.texto_hablado?.en ?? "Remember to keep regular meal hours and take a light snack before workouts.";
+      const speechEn =
+        entradaComida.texto_hablado?.en ??
+        "Remember to keep regular meal hours and take a light snack before workouts.";
 
       return {
         intent: "comer",
@@ -646,11 +864,16 @@ export function generarRespuesta(
     }
 
     case "hidratacion": {
-      const entradaHidratacion = entradas.find((e) => e.id === "nutricion-hidratacion") ?? entradas[4];
+      const entradaHidratacion =
+        entradas.find((e) => e.id === "nutricion-hidratacion") ?? entradas[4];
       const textoEs = `${entradaHidratacion.texto.es} Mantén la botella a mano en tu área de trabajo para evitar deshidratación inadvertida.`;
-      const speechEs = entradaHidratacion.texto_hablado?.es ?? "Recuerda beber al menos dos litros de agua y reponer electrolitos tras el ejercicio.";
+      const speechEs =
+        entradaHidratacion.texto_hablado?.es ??
+        "Recuerda beber al menos dos litros de agua y reponer electrolitos tras el ejercicio.";
       const textoEn = `${entradaHidratacion.texto.en} Keep your bottle accessible in your work bay to prevent unnoticed dehydration.`;
-      const speechEn = entradaHidratacion.texto_hablado?.en ?? "Remember to drink at least two liters of water daily and replenish electrolytes.";
+      const speechEn =
+        entradaHidratacion.texto_hablado?.en ??
+        "Remember to drink at least two liters of water daily and replenish electrolytes.";
 
       return {
         intent: "hidratacion",
@@ -663,13 +886,18 @@ export function generarRespuesta(
     }
 
     case "presion": {
-      const entradaPresion = entradas.find((e) => e.id === "presion-protocolo-med01") ?? entradas[6];
+      const entradaPresion =
+        entradas.find((e) => e.id === "presion-protocolo-med01") ?? entradas[6];
       const frecuenciaPresion = entradas.find((e) => e.id === "presion-frecuencia") ?? entradas[7];
 
       const textoEs = `${entradaPresion.texto.es} ${frecuenciaPresion.texto.es}`;
-      const speechEs = entradaPresion.texto_hablado?.es ?? "Para medir tu presión, descansa cinco minutos y coloca el manguito a la altura del corazón.";
+      const speechEs =
+        entradaPresion.texto_hablado?.es ??
+        "Para medir tu presión, descansa cinco minutos y coloca el manguito a la altura del corazón.";
       const textoEn = `${entradaPresion.texto.en} ${frecuenciaPresion.texto.en}`;
-      const speechEn = entradaPresion.texto_hablado?.en ?? "To check your blood pressure, rest five minutes and place cuff at heart level.";
+      const speechEn =
+        entradaPresion.texto_hablado?.en ??
+        "To check your blood pressure, rest five minutes and place cuff at heart level.";
 
       return {
         intent: "presion",
@@ -705,9 +933,12 @@ export function generarRespuesta(
       const habitat = data.entorno.nombre;
 
       const textoEs = `Tu entorno actual es ${habitat}. ${seleccionada.texto.es} ¿Deseas redactar una nota de voz para transmitir a Tierra?`;
-      const speechEs = seleccionada.texto_hablado?.es ?? "¿Deseas enviar una nota de voz o video a tu familia?";
+      const speechEs =
+        seleccionada.texto_hablado?.es ?? "¿Deseas enviar una nota de voz o video a tu familia?";
       const textoEn = `Your current habitat is ${habitat}. ${seleccionada.texto.en} Would you like to draft an audio memo for Earth transmission?`;
-      const speechEn = seleccionada.texto_hablado?.en ?? "Would you like to send a voice or video memo to your family?";
+      const speechEn =
+        seleccionada.texto_hablado?.en ??
+        "Would you like to send a voice or video memo to your family?";
 
       return {
         intent: "familia",
@@ -724,9 +955,13 @@ export function generarRespuesta(
       const seleccionada = candidatos[varianteIndice % candidatos.length];
 
       const textoEs = `${seleccionada.texto.es} Programa la cabina en modo noche 30 minutos antes para optimizar tu descanso.`;
-      const speechEs = seleccionada.texto_hablado?.es ?? "Atenúa las luces media hora antes de dormir y usa tu antifaz para descansar.";
+      const speechEs =
+        seleccionada.texto_hablado?.es ??
+        "Atenúa las luces media hora antes de dormir y usa tu antifaz para descansar.";
       const textoEn = `${seleccionada.texto.en} Switch the cabin to night mode 30 minutes prior to optimize recovery.`;
-      const speechEn = seleccionada.texto_hablado?.en ?? "Dim cabin lights thirty minutes before bed and use your eye mask to sleep.";
+      const speechEn =
+        seleccionada.texto_hablado?.en ??
+        "Dim cabin lights thirty minutes before bed and use your eye mask to sleep.";
 
       return {
         intent: "dormir",

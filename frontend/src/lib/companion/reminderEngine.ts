@@ -281,12 +281,16 @@ export class MissionClock {
     // Buscar el primer aviso que esté después de la hora actual y pendiente
     const siguiente = recordatorios.find((r) => {
       if (r.estado === "hecho" || r.estado === "omitido") return false;
-      const horaEfectiva = r.estado === "pospuesto" ? (r.pospuesto_hasta_min ?? r.minutos_dia) : r.minutos_dia;
+      const horaEfectiva =
+        r.estado === "pospuesto" ? (r.pospuesto_hasta_min ?? r.minutos_dia) : r.minutos_dia;
       return horaEfectiva > ahoraMin;
     });
 
     if (siguiente) {
-      const horaEfectiva = siguiente.estado === "pospuesto" ? (siguiente.pospuesto_hasta_min ?? siguiente.minutos_dia) : siguiente.minutos_dia;
+      const horaEfectiva =
+        siguiente.estado === "pospuesto"
+          ? (siguiente.pospuesto_hasta_min ?? siguiente.minutos_dia)
+          : siguiente.minutos_dia;
       this.minutosActuales = horaEfectiva;
       return siguiente;
     }
@@ -346,7 +350,9 @@ export class ReminderManager {
       // Reconciliar estados guardados con los items base
       this.recordatorios = base.map((item) => {
         const hallado = guardados!.find((g) => g.id === item.id);
-        return hallado ? { ...item, estado: hallado.estado, pospuesto_hasta_min: hallado.pospuesto_hasta_min } : item;
+        return hallado
+          ? { ...item, estado: hallado.estado, pospuesto_hasta_min: hallado.pospuesto_hasta_min }
+          : item;
       });
     } else {
       this.recordatorios = base;
@@ -373,7 +379,11 @@ export class ReminderManager {
       if (r.estado === "pendiente" && minutosActuales >= r.minutos_dia) {
         r.estado = "mostrado";
         disparados.push(r);
-      } else if (r.estado === "pospuesto" && r.pospuesto_hasta_min !== undefined && minutosActuales >= r.pospuesto_hasta_min) {
+      } else if (
+        r.estado === "pospuesto" &&
+        r.pospuesto_hasta_min !== undefined &&
+        minutosActuales >= r.pospuesto_hasta_min
+      ) {
         r.estado = "mostrado";
         disparados.push(r);
       }
@@ -418,6 +428,7 @@ export class ReminderManager {
   }
 
   public contarPendientes(): number {
-    return this.recordatorios.filter((r) => r.estado === "pendiente" || r.estado === "mostrado").length;
+    return this.recordatorios.filter((r) => r.estado === "pendiente" || r.estado === "mostrado")
+      .length;
   }
 }

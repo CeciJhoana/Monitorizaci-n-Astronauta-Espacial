@@ -15,11 +15,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePersistentState } from "./usePersistentState";
-import {
-  useCompanion,
-  VOICE_PROFILES,
-  type CompanionLanguage,
-} from "@/store/CompanionContext";
+import { useCompanion, VOICE_PROFILES, type CompanionLanguage } from "@/store/CompanionContext";
 
 export function useSpeech() {
   const {
@@ -169,7 +165,10 @@ export function useSpeech() {
         // Dividir texto largo en oraciones si supera 120 caracteres para mayor fluidez
         const oraciones =
           text.length > 120
-            ? text.split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean)
+            ? text
+                .split(/(?<=[.!?])\s+/)
+                .map((s) => s.trim())
+                .filter(Boolean)
             : [text];
 
         const profile = VOICE_PROFILES[voiceProfile] ?? VOICE_PROFILES.calma;
@@ -223,7 +222,10 @@ export function useSpeech() {
             }
 
             const wordLength = event.charLength || 5;
-            const peakEnergy = Math.min(1.0, 0.35 + (wordLength / 10) * 0.55 * profile.orbAmplitude);
+            const peakEnergy = Math.min(
+              1.0,
+              0.35 + (wordLength / 10) * 0.55 * profile.orbAmplitude,
+            );
             setOrbEnergy(peakEnergy);
 
             if (decayTimerRef.current) clearInterval(decayTimerRef.current);
@@ -278,9 +280,18 @@ export function useSpeech() {
   );
 
   const speechState = {
-    speaking: typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.speaking : false,
-    pending: typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.pending : false,
-    paused: typeof window !== "undefined" && "speechSynthesis" in window ? window.speechSynthesis.paused : false,
+    speaking:
+      typeof window !== "undefined" && "speechSynthesis" in window
+        ? window.speechSynthesis.speaking
+        : false,
+    pending:
+      typeof window !== "undefined" && "speechSynthesis" in window
+        ? window.speechSynthesis.pending
+        : false,
+    paused:
+      typeof window !== "undefined" && "speechSynthesis" in window
+        ? window.speechSynthesis.paused
+        : false,
   };
 
   return {

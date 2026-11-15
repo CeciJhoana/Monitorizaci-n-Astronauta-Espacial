@@ -8,15 +8,19 @@ import {
   type ReactNode,
 } from "react";
 import { MOCK_SNAPSHOT } from "@/data/mockData";
+import { useLiveTelemetry } from "@/hooks/useLiveTelemetry";
 import { usePersistentState } from "@/hooks/usePersistentState";
 import { healthApi, type JournalEntryInput, type MeasurementInput } from "@/services";
+import { applyLiveEnvironment, applyLiveVitals } from "@/services/telemetryMapper";
 import type {
   CrewMember,
   EnvironmentId,
   EnvironmentReading,
   JournalEntry,
+  LiveTelemetry,
   Measurement,
   MissionAlert,
+  TelemetryStatus,
   TrendMetric,
   TrendPeriod,
   TrendSeries,
@@ -35,6 +39,10 @@ interface MissionDataValue {
   environment: EnvironmentId;
   offline: boolean;
   isLoading: boolean;
+  /** Estado del enlace con la estación de telemetría real. */
+  telemetryStatus: TelemetryStatus;
+  /** Última telemetría válida recibida de la estación (si hay). */
+  liveTelemetry: LiveTelemetry | null;
   setEnvironment: (id: EnvironmentId) => void;
   setOffline: (offline: boolean) => void;
   addMeasurement: (input: MeasurementInput) => Promise<void>;
@@ -55,11 +63,15 @@ export function useMissionData(): MissionDataValue {
  * Datos de la misión: tripulación, alertas, mediciones y bitácora.
  *
  * Las lecturas iniciales pasan por `healthApi` (mock o HTTP según haya
- * backend configurado). Los registros de la sesión se persisten en
- * `localStorage` para que la app siga siendo útil sin conexión.
+ * backend configurado). La telemetría real de la estación ESP32 llega por
+ * `useLiveTelemetry` (sondeo REST) y se fusiona con los datos simulados:
+ * solo se sobrescriben los valores que el hardware entrega de verdad.
+ * Los registros de la sesión se persisten en `localStorage` para que la
+ * app siga siendo útil sin conexión.
  */
 export function MissionDataProvider({ children }: { children: ReactNode }) {
   const { notify } = useToast();
+  const { status: telemetryStatus, latest: liveTelemetry } = useLiveTelemetry();
 
   const [snapshot, setSnapshot] = useState(MOCK_SNAPSHOT);
   const [isLoading, setIsLoading] = useState(true);
@@ -136,18 +148,30 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
     [setAcknowledgedAlertIds],
   );
 
+  // Fusión de telemetría real sobre la base simulada (funciones puras).
+  const crew = useMemo(
+    () => applyLiveVitals(snapshot.crew, liveTelemetry),
+    [snapshot.crew, liveTelemetry],
+  );
+  const environmentReadings = useMemo(
+    () => applyLiveEnvironment(snapshot.environmentReadings, liveTelemetry),
+    [snapshot.environmentReadings, liveTelemetry],
+  );
+
   const value = useMemo<MissionDataValue>(
     () => ({
-      crew: snapshot.crew,
+      crew,
       alerts: snapshot.alerts,
       activeAlerts: snapshot.alerts.filter((alert) => !acknowledgedAlertIds.includes(alert.id)),
       measurements,
       journal,
-      environmentReadings: snapshot.environmentReadings,
+      environmentReadings,
       trends: snapshot.trends,
       environment,
       offline,
       isLoading,
+      telemetryStatus,
+      liveTelemetry,
       setEnvironment,
       setOffline,
       addMeasurement,
@@ -156,13 +180,17 @@ export function MissionDataProvider({ children }: { children: ReactNode }) {
       restoreDemoAlerts,
     }),
     [
+      crew,
       snapshot,
       acknowledgedAlertIds,
       measurements,
       journal,
+      environmentReadings,
       environment,
       offline,
       isLoading,
+      telemetryStatus,
+      liveTelemetry,
       setEnvironment,
       setOffline,
       addMeasurement,
