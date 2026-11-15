@@ -2,20 +2,28 @@
  * AssistantPage.tsx — Página principal del asistente ASTRA.
  *
  * Manual de Identidad Visual: Brand Book ASTRA (propuesta 3).
- * Incluye: Orbe central reactivo, zona de subtítulos, caja de texto,
- * fila de atajos (Estado, Ejercicio, Comer, Presión, Soledad, Familia, Dormir, Bitácora, Emergencia),
- * selector de idioma (ES/EN) y panel de pruebas dev (?dev=1).
+ * Incluye: Orbe central reactivo, zona de subtítulos, semáforo conductual,
+ * bloque independiente de avisos agudos, caja de texto,
+ * fila de 9 atajos de bienestar, selector de idioma (ES/EN) y panel de modo demo.
  */
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Icon } from "@/components/ui";
 import { Orb } from "@/components/companion/Orb";
 import { useSpeech } from "@/hooks/useSpeech";
+import { MOCK_DB } from "@/data/db";
+import { selectCompanionData } from "@/data/companion/companionData";
+import {
+  evaluateBehavior,
+  aplicarEscenario,
+  type SemaphoreLevel,
+} from "@/lib/companion/companionEngine";
 import {
   useCompanion,
   VOICE_PROFILES,
   type OrbState,
   type VoiceProfileId,
+  type ScenarioId,
 } from "@/store/CompanionContext";
 import { useUi } from "@/store/UiContext";
 
@@ -23,6 +31,10 @@ export function AssistantPage() {
   const {
     language,
     setLanguage,
+    activeAstronautId,
+    setActiveAstronautId,
+    scenario,
+    setScenario,
     orbState,
     setOrbState,
     orbEnergy,
@@ -48,7 +60,47 @@ export function AssistantPage() {
 
   const { openModal, navigate } = useUi();
   const [inputText, setInputText] = useState("");
-  const [testLevel, setTestLevel] = useState<0 | 1 | 2 | 3>(0);
+
+  // Evaluación dinámica del semáforo conductual
+  const rawData = useMemo(
+    () => selectCompanionData(MOCK_DB, activeAstronautId),
+    [activeAstronautId],
+  );
+
+  const activeData = useMemo(
+    () => aplicarEscenario(rawData, scenario),
+    [rawData, scenario],
+  );
+
+  const evaluation = useMemo(
+    () => evaluateBehavior(activeData, language),
+    [activeData, language],
+  );
+
+  // Lista de tripulantes disponibles para el modo demo
+  const CREW_OPTIONS = [
+    { id: "01", name: "Elena Martínez", role: "Comandante" },
+    { id: "02", name: "James Miller", role: "Ing. Vuelo" },
+    { id: "03", name: "Yuki Tanaka", role: "Oficial Médico" },
+    { id: "04", name: "Alex Chen", role: "Especialista" },
+  ];
+
+  // Escenarios de prueba interactiva
+  const SCENARIO_OPTIONS: Array<{ id: ScenarioId; label: { es: string; en: string } }> = [
+    { id: "normal", label: { es: "Normal (datos reales)", en: "Normal (real DB data)" } },
+    { id: "sleep_low", label: { es: "Sueño bajo (Nivel 2)", en: "Low sleep (Level 2)" } },
+    { id: "isolation", label: { es: "Aislamiento (Nivel 2-3)", en: "Isolation (Level 2-3)" } },
+    { id: "burnout_critical", label: { es: "Fatiga crítica (Nivel 3)", en: "Critical burnout (Level 3)" } },
+    { id: "solar_radiation", label: { es: "Radiación solar (Aviso agudo)", en: "Solar event (Acute alert)" } },
+  ];
+
+  // Colores por nivel de semáforo
+  const LEVEL_COLORS: Record<SemaphoreLevel, { bg: string; border: string; text: string; badge: string }> = {
+    0: { bg: "#ECFDF5", border: "#A7F3D0", text: "#065F46", badge: "#10B981" },
+    1: { bg: "#FFFBEB", border: "#FDE68A", text: "#92400E", badge: "#F59E0B" },
+    2: { bg: "#F5F3FF", border: "#DDD6FE", text: "#5B21B6", badge: "#8B5CF6" },
+    3: { bg: "#FEF2F2", border: "#FECACA", text: "#991B1B", badge: "#EF4444" },
+  };
 
   // Lista de 9 atajos requeridos
   const SHORTCUTS = [
@@ -79,21 +131,21 @@ export function AssistantPage() {
       case "estado":
         speak(
           language === "es"
-            ? "Evaluando signos y descanso... Todos los sistemas de acompañamiento en línea."
-            : "Evaluating vitals and rest... All companion systems online.",
+            ? `Estado de salud para ${activeData.nombreTripulante}: Semáforo Nivel ${evaluation.nivel}, ${evaluation.etiqueta}. ${evaluation.que_hacer}`
+            : `Health status for ${activeData.nombreTripulante}: Semaphore Level ${evaluation.nivel}, ${evaluation.etiqueta}. ${evaluation.que_hacer}`,
         );
         break;
       case "ejercicio":
         speak(
           language === "es"
-            ? "Para mitigar la pérdida ósea y muscular, se recomienda la rutina ARED de 40 min."
-            : "To mitigate bone and muscle deconditioning, 40 min ARED protocol is advised.",
+            ? "Para mitigar la pérdida ósea y muscular, se recomienda la rutina ARED de 40 a 60 min."
+            : "To mitigate bone and muscle deconditioning, 40 to 60 min ARED protocol is advised.",
         );
         break;
       case "comer":
         speak(
           language === "es"
-            ? "Próxima colación en 45 min. Recuerda hidratarte con 250 ml de sales."
+            ? "Próxima ventana de nutrición en 45 min. Recuerda hidratarte con 250 ml de electrolitos."
             : "Next nutrition window in 45 min. Remember to hydrate with 250 ml electrolytes.",
         );
         break;
@@ -107,22 +159,22 @@ export function AssistantPage() {
       case "soledad":
         speak(
           language === "es"
-            ? "Estar lejos no significa estar solo. Tomemos 1 minuto de respiración 4-4-4-4."
-            : "Distance does not mean being alone. Let us take 1 minute for 4-4-4-4 breathing.",
+            ? "Estar lejos no significa estar solo. Tomemos 1 minuto de respiración consciente 4-4-4-4."
+            : "Distance does not mean being alone. Let us take 1 minute for 4-4-4-4 box breathing.",
         );
         break;
       case "familia":
         speak(
           language === "es"
-            ? "Calculando retardo de enlace según tu entorno... Canal familiar disponible."
-            : "Calculating uplink delay for your habitat... Family channel ready.",
+            ? `Entorno actual: ${activeData.entorno.nombre}. Canal familiar disponible con retardo simulado.`
+            : `Current habitat: ${activeData.entorno.nombre}. Family channel ready with link latency.`,
         );
         break;
       case "dormir":
         speak(
           language === "es"
-            ? "Atenúa la iluminación de cabina 30 minutos antes del ciclo de descanso."
-            : "Dim cabin illumination 30 minutes before your scheduled sleep cycle.",
+            ? "Atenúa la iluminación de cabina 30 minutos antes del ciclo de descanso para facilitar melatonina."
+            : "Dim cabin illumination 30 minutes before your sleep cycle to facilitate melatonin release.",
         );
         break;
       default:
@@ -136,11 +188,13 @@ export function AssistantPage() {
 
     speak(
       language === "es"
-        ? `Recibido: "${inputText}". Procesando intención...`
-        : `Received: "${inputText}". Processing query...`,
+        ? `Recibido: "${inputText}". Evaluando requerimiento con datos de misión...`
+        : `Received: "${inputText}". Evaluating query with mission telemetry...`,
     );
     setInputText("");
   };
+
+  const currentLevelStyle = LEVEL_COLORS[evaluation.nivel];
 
   return (
     <div
@@ -190,6 +244,39 @@ export function AssistantPage() {
           >
             {language === "es" ? "Acompañante de Misión" : "Mission Companion"}
           </span>
+
+          {/* Astronauta activo */}
+          <span
+            style={{
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 10,
+              color: "#5A5668",
+              background: "rgba(90, 86, 104, 0.08)",
+              padding: "2px 8px",
+              borderRadius: 6,
+            }}
+          >
+            👤 {activeData.nombreTripulante} ({activeData.entorno.nombre})
+          </span>
+
+          {/* Etiqueta SIMULADO si el escenario no es normal */}
+          {scenario !== "normal" && (
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 9,
+                fontWeight: 700,
+                color: "#991B1B",
+                background: "#FEE2E2",
+                border: "1px solid #FCA5A5",
+                padding: "2px 8px",
+                borderRadius: 999,
+                letterSpacing: "0.08em",
+              }}
+            >
+              SIMULADO
+            </span>
+          )}
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -229,7 +316,7 @@ export function AssistantPage() {
             {language.toUpperCase()}
           </button>
 
-          {/* Botón para alternar panel dev */}
+          {/* Botón para alternar panel dev / demo */}
           <button
             onClick={() => setIsDevMode(!isDevMode)}
             style={{
@@ -242,12 +329,59 @@ export function AssistantPage() {
               fontSize: 9,
               cursor: "pointer",
             }}
-            title="Modo pruebas visuales"
+            title="Modo demo / pruebas"
           >
-            DEV
+            {isDevMode ? "MODO DEMO ✓" : "MODO DEMO"}
           </button>
         </div>
       </header>
+
+      {/* CAPA SEPARADA: Avisos de Vitales y Entorno (Agudos) */}
+      {evaluation.avisos_agudos.length > 0 && (
+        <section
+          style={{
+            background: "#FEF2F2",
+            border: "1px solid #F87171",
+            borderRadius: 12,
+            padding: "12px 16px",
+            display: "flex",
+            flexDirection: "column",
+            gap: 6,
+          }}
+          aria-label="Avisos agudos de vitales y entorno"
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 16 }}>🚨</span>
+            <strong
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 11,
+                color: "#991B1B",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+              }}
+            >
+              {language === "es" ? "AVISOS DE VITALES Y ENTORNO" : "ACUTE VITALS & ENVIRONMENT ALERTS"}
+            </strong>
+          </div>
+          {evaluation.avisos_agudos.map((a, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                fontFamily: "Instrument Sans, sans-serif",
+                fontSize: 12,
+                color: "#7F1D1D",
+                paddingLeft: 24,
+              }}
+            >
+              <strong>{a.titulo}</strong>
+              <span>{a.detalle}</span>
+            </div>
+          ))}
+        </section>
+      )}
 
       {/* Escenario central del Orbe ASTRA */}
       <section
@@ -255,12 +389,12 @@ export function AssistantPage() {
           background: "#F5F3FF",
           border: "1px solid rgba(90, 86, 104, 0.25)",
           borderRadius: 14,
-          padding: "36px 16px",
+          padding: "32px 16px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          minHeight: 300,
+          minHeight: 280,
           position: "relative",
         }}
         aria-label="Orbe interactivo ASTRA"
@@ -270,10 +404,10 @@ export function AssistantPage() {
           energy={orbEnergy}
           state={orbState}
           voiceProfile={voiceProfile}
-          level={testLevel}
+          level={evaluation.nivel}
         />
 
-        <div style={{ marginTop: 24, textAlign: "center" }}>
+        <div style={{ marginTop: 20, textAlign: "center" }}>
           <span
             style={{
               fontFamily: "JetBrains Mono, monospace",
@@ -302,7 +436,7 @@ export function AssistantPage() {
           borderRadius: 14,
           padding: "16px 20px",
           textAlign: "center",
-          minHeight: 70,
+          minHeight: 64,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -311,7 +445,7 @@ export function AssistantPage() {
         <p
           style={{
             fontFamily: "Instrument Serif, serif",
-            fontSize: 21,
+            fontSize: 20,
             lineHeight: 1.35,
             color: "#1E1035",
             margin: 0,
@@ -319,6 +453,125 @@ export function AssistantPage() {
         >
           {subtitles}
         </p>
+      </section>
+
+      {/* SEMÁFORO CONDUCTUAL Y EVALUACIÓN DETERMINISTA */}
+      <section
+        style={{
+          background: currentLevelStyle.bg,
+          border: `1px solid ${currentLevelStyle.border}`,
+          borderRadius: 14,
+          padding: "18px 20px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+        }}
+        aria-label="Semáforo de salud y bienestar"
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span
+              style={{
+                width: 12,
+                height: 12,
+                borderRadius: "50%",
+                background: currentLevelStyle.badge,
+                display: "inline-block",
+                boxShadow: `0 0 10px ${currentLevelStyle.badge}`,
+              }}
+            />
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 12,
+                fontWeight: 700,
+                color: currentLevelStyle.text,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+              }}
+            >
+              {language === "es" ? `SEMÁFORO: NIVEL ${evaluation.nivel} · ${evaluation.etiqueta}` : `SEMAPHORE: LEVEL ${evaluation.nivel} · ${evaluation.etiqueta}`}
+            </span>
+          </div>
+
+          <span
+            style={{
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 10,
+              background: "rgba(255, 255, 255, 0.8)",
+              border: `1px solid ${currentLevelStyle.border}`,
+              color: currentLevelStyle.text,
+              padding: "3px 10px",
+              borderRadius: 999,
+              fontWeight: 600,
+            }}
+          >
+            {evaluation.escalado}
+          </span>
+        </div>
+
+        {/* Recomendación "Qué hacer" */}
+        <div style={{ fontFamily: "Instrument Sans, sans-serif", fontSize: 13, color: currentLevelStyle.text }}>
+          <strong>{language === "es" ? "Acción sugerida: " : "Suggested action: "}</strong>
+          <span>{evaluation.que_hacer}</span>
+        </div>
+
+        {/* Razones "Por qué" */}
+        {evaluation.por_que.length > 0 && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 9.5,
+                color: "#5A5668",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+              }}
+            >
+              {language === "es" ? "MOTIVOS DE EVALUACIÓN:" : "EVALUATION DRIVERS:"}
+            </span>
+            <ul style={{ margin: 0, paddingLeft: 18, fontFamily: "Instrument Sans, sans-serif", fontSize: 12, color: "#1E1035" }}>
+              {evaluation.por_que.map((razon, idx) => (
+                <li key={idx}>{razon}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Desglose de variables */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+            gap: 8,
+            paddingTop: 8,
+            borderTop: `1px dashed ${currentLevelStyle.border}`,
+          }}
+        >
+          {Object.values(evaluation.variables).map((v) => (
+            <div
+              key={v.id}
+              style={{
+                background: "rgba(255, 255, 255, 0.7)",
+                borderRadius: 8,
+                padding: "6px 10px",
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 10,
+              }}
+            >
+              <div style={{ color: "#5A5668" }}>{v.nombre}</div>
+              <div style={{ fontWeight: 700, color: v.nivel > 0 ? LEVEL_COLORS[v.nivel].text : "#1E1035" }}>
+                {v.valorTexto} {v.disponible ? `(N${v.nivel})` : ""}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {evaluation.datos_parciales && (
+          <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 9, color: "#5A5668" }}>
+            ℹ️ {language === "es" ? "Datos parciales: eficiencia o vida social sin sensor directo en cabina." : "Partial data: social or efficiency metrics uninstrumented."}
+          </span>
+        )}
       </section>
 
       {/* Caja de Texto con Botón Enviar */}
@@ -336,8 +589,8 @@ export function AssistantPage() {
           onChange={(e) => setInputText(e.target.value)}
           placeholder={
             language === "es"
-              ? "Habla o escribe a ASTRA (ej: ¿cuándo me toca comer? ¿cómo está mi ánimo?)..."
-              : "Speak or type to ASTRA (e.g. When do I eat? How is my rest?)..."
+              ? "Habla o escribe a ASTRA (ej: ¿cuándo me toca comer? ¿cómo está mi salud?)..."
+              : "Speak or type to ASTRA (e.g. When do I eat? How is my health?)..."
           }
           style={{
             flex: 1,
@@ -425,7 +678,7 @@ export function AssistantPage() {
         </div>
       </section>
 
-      {/* Panel de pruebas Dev (visible si ?dev=1 o botón DEV activo) */}
+      {/* Panel de pruebas / Modo Demo (visible si ?dev=1 o botón DEV activo) */}
       {isDevMode && (
         <section
           style={{
@@ -437,7 +690,7 @@ export function AssistantPage() {
             flexDirection: "column",
             gap: 12,
           }}
-          aria-label="Panel de depuración del orbe"
+          aria-label="Panel de depuración y modo demo"
         >
           <strong
             style={{
@@ -448,8 +701,74 @@ export function AssistantPage() {
               textTransform: "uppercase",
             }}
           >
-            PANEL DE PRUEBAS · ORBE ANIMADO (?dev=1)
+            PANEL DE MODO DEMO Y PRUEBAS (?dev=1)
           </strong>
+
+          {/* Selector de Astronauta */}
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 10,
+                color: "#1E1035",
+                marginRight: 6,
+                width: 100,
+              }}
+            >
+              Astronauta:
+            </span>
+            {CREW_OPTIONS.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setActiveAstronautId(c.id)}
+                style={{
+                  background: activeAstronautId === c.id ? "#7C3AED" : "#FFFFFF",
+                  color: activeAstronautId === c.id ? "#fff" : "#1E1035",
+                  border: "1px solid #7C3AED",
+                  borderRadius: 999,
+                  padding: "3px 10px",
+                  fontSize: 10,
+                  fontFamily: "JetBrains Mono, monospace",
+                  cursor: "pointer",
+                }}
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Selector de Escenario */}
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+            <span
+              style={{
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: 10,
+                color: "#1E1035",
+                marginRight: 6,
+                width: 100,
+              }}
+            >
+              Escenario:
+            </span>
+            {SCENARIO_OPTIONS.map((sc) => (
+              <button
+                key={sc.id}
+                onClick={() => setScenario(sc.id)}
+                style={{
+                  background: scenario === sc.id ? "#1E1035" : "#FFFFFF",
+                  color: scenario === sc.id ? "#fff" : "#1E1035",
+                  border: "1px solid #1E1035",
+                  borderRadius: 999,
+                  padding: "3px 10px",
+                  fontSize: 10,
+                  fontFamily: "JetBrains Mono, monospace",
+                  cursor: "pointer",
+                }}
+              >
+                {sc.label[language]}
+              </button>
+            ))}
+          </div>
 
           {/* Deslizador de Energía */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -458,7 +777,7 @@ export function AssistantPage() {
                 fontFamily: "JetBrains Mono, monospace",
                 fontSize: 10,
                 color: "#1E1035",
-                width: 120,
+                width: 100,
               }}
             >
               Energía: {Math.round(orbEnergy * 100)}%
@@ -482,9 +801,10 @@ export function AssistantPage() {
                 fontSize: 10,
                 color: "#1E1035",
                 marginRight: 6,
+                width: 100,
               }}
             >
-              Estado:
+              Estado Orbe:
             </span>
             {(["idle", "listening", "speaking", "thinking"] as OrbState[]).map((st) => (
               <button
@@ -514,9 +834,10 @@ export function AssistantPage() {
                 fontSize: 10,
                 color: "#1E1035",
                 marginRight: 6,
+                width: 100,
               }}
             >
-              Perfil:
+              Perfil Voz:
             </span>
             {(["calma", "clara", "energique"] as VoiceProfileId[]).map((vp) => (
               <button
@@ -546,10 +867,10 @@ export function AssistantPage() {
                   fontFamily: "JetBrains Mono, monospace",
                   fontSize: 10,
                   color: "#1E1035",
-                  width: 120,
+                  width: 100,
                 }}
               >
-                Voz ({language.toUpperCase()}):
+                Voz Sistema:
               </label>
               <select
                 value={selectedVoiceURI}
@@ -572,38 +893,6 @@ export function AssistantPage() {
               </select>
             </div>
           )}
-
-          {/* Selector de Nivel de Semáforo */}
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
-            <span
-              style={{
-                fontFamily: "JetBrains Mono, monospace",
-                fontSize: 10,
-                color: "#1E1035",
-                marginRight: 6,
-              }}
-            >
-              Semáforo:
-            </span>
-            {([0, 1, 2, 3] as const).map((lvl) => (
-              <button
-                key={lvl}
-                onClick={() => setTestLevel(lvl)}
-                style={{
-                  background: testLevel === lvl ? "#7C3AED" : "#FFFFFF",
-                  color: testLevel === lvl ? "#fff" : "#1E1035",
-                  border: "1px solid #7C3AED",
-                  borderRadius: 999,
-                  padding: "3px 10px",
-                  fontSize: 10,
-                  fontFamily: "JetBrains Mono, monospace",
-                  cursor: "pointer",
-                }}
-              >
-                Nivel {lvl}
-              </button>
-            ))}
-          </div>
         </section>
       )}
 
